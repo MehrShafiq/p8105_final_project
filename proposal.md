@@ -14,6 +14,10 @@ The Impact of COVID-19 on Consumer Activity in the US (2019-2020)
 
 ### The motivation for this project
 
+To look at the impact of COVID-19 on the trends of commercial activity
+(foot traffic) in the travel, hospitality, and restaurant industries in
+the U.S.
+
 ### The intended final products
 
 Summary level tables and dashboard that visualize the comparison of

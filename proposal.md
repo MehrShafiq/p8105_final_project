@@ -16,6 +16,11 @@ The Impact of COVID-19 on Consumer Activity in the US (2019-2020)
 
 ### The intended final products
 
+Summary level tables and dashboard that visualize the comparison of
+commercial activity (foot traffic trends) in 2020 to the same time
+period in 2019 and aggregating the data by industries, specific brands,
+or geographic regions.
+
 ### The anticipated data sources
 
 [Safe Graph - U.S. Consumer Activity during COVID-19

@@ -26,6 +26,11 @@ Summary level tables and dashboard that visualize the comparison of commercial a
 
 ### The planned analyses / visualizations / coding challenges
 
+*  Create tables and plots (Time series)  related to  industry level trends associated with travel, hospitality, and restaurant industries in the U.S in 2019 vs 2020.   
+*  Analyse the foot traffic associated with specific brands related to the travel, hospitality, and restaurant industries in the U.S in 2019 vs 2020. Summary level tables and interactive plots (dashboard) will be included in the analysis.  
+*  One Potential coding challenge could be selectively filtering the relevant data in order to improve computational efficiency.  
+
+
 ### The planned timeline
 
 Nov 7: Submit project proposal & Request for free access to the data on SafeGraph

@@ -24,3 +24,17 @@ Pandemic](https://www.safegraph.com/)
 ### The planned analyses / visualizations / coding challenges
 
 ### The planned timeline
+
+Nov 7: Submit project proposal & Request for free access to the data on
+SafeGraph
+
+Nov 10-13: Project review meeting
+
+Nov 18 : Have dataset cleaned and ready to visualize and analyze
+
+Nov 27 : Create a webpage and dashboard with the preliminary results and
+graphs
+
+Dec 1: Troubleshoot, edit, fix, finalize all changes
+
+Dec 4: Record video with screencast

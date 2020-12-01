@@ -13,7 +13,7 @@ navbar:
       href: https://github.com/MehrShafiq/p8105_final_project
 output:
   html_document:
-    theme: superhero
+    theme: yeti
     css: style.css
     include:
     after_body: footer.html

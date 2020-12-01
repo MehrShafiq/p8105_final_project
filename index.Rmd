@@ -1,7 +1,12 @@
 ---
-title: "Analysis"
+title: "Leading causes of death in New York City (2007-2014)"
 output: html_document
-
+author: Chloe Chah, Mehr Shafiq, Krishna Vemulapalli, Amanda Tsai
 ---
 
 
+### The motivation for this project 
+ 
+### The intended final products 
+ 
+### The anticipated data sources 

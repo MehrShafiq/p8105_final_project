@@ -9,11 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Amanda Tsai" />
 
-<meta name="date" content="2020-11-30" />
 
-<title>clean_us</title>
+<title>Analysis</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -306,31 +304,12 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">clean_us</h1>
-<h4 class="author">Amanda Tsai</h4>
-<h4 class="date">11/30/2020</h4>
+<h1 class="title toc-ignore">Analysis</h1>
 
 </div>
 
 
-<p>This file cleans the dataset “Leading Causes of Death, US” that can be found here: <a href="https://data.cdc.gov/NCHS/NCHS-Leading-Causes-of-Death-United-States/bi63-dtpu" class="uri">https://data.cdc.gov/NCHS/NCHS-Leading-Causes-of-Death-United-States/bi63-dtpu</a></p>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre class="r"><code>causes_us = 
-  read_csv(file = &quot;./data/NCHS_-_Leading_Causes_of_Death__United_States.csv&quot;, col_types = &quot;ffffid&quot;) %&gt;%
-  janitor::clean_names() </code></pre>
-<pre class="r"><code># top 10 leading causes of death for the whole US every year from 1999 to 2017
-us_df = causes_us %&gt;% filter(state == &quot;United States&quot;)
-
-write_csv(us_df, &quot;./data/Leading_Causes_of_Death_US_Only.csv&quot;)
-
-
-
-# deaths and adjusted death rate in each state by the top 10 leading causes of death for the whole US every year (1999-2017) 
-# e.g. kidney disease is a leading cause of death for the US in 2017. In NY, NJ, TX etc , there were XXX deaths by kidney disease (kidney disease doesn&#39;t have to be the leading cause in NY, NJ or TX)
-
-state_df = causes_us %&gt;% filter(state != &quot;United States&quot;)
-
-write_csv(state_df, &quot;./data/Leading_Causes_of_Death_States_Only.csv&quot;)</code></pre>
+<p>Analysis goes here</p>
 
 
 

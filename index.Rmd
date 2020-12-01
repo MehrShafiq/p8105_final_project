@@ -1,26 +1,30 @@
 ---
-title: "index"
-author: "Amanda Tsai"
-date: "11/30/2020"
+title: "Leading Causes of Death in NYC 2007 - 2014"
+author: "Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli"
 output: html_document
+
 ---
 
-Leading Causes of Death in New York City from 2007 - 2014 
 
-**Motivation**
-
-
-**Inspiration**
+### Motivation
 
 
-**Research Questions** 
+
+### Inspiration
 
 
-**Data**
+
+### Data
 
 
-**Analysis** 
+
+### Research Questions
 
 
-**Discussion** 
+
+### Findings 
+
+
+
+### Discussion
 

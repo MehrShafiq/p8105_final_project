@@ -1,15 +1,17 @@
-name: "Home page"
+name: "Leading Causes of Death in NYC 2007 - 2014"
 output_dir: "."
 navbar:
-  title: "Home"
+  title: "Overview"
   right:
-    - text: "About"
-      href: about.html
     - text: "Data"
       href: data.html
     - text: "Analysis"
       href: analysis.html
+    - icon: fa-envelope fa-lg
+      href: mailto:<at3535@cumc.columbia.edu>
     - icon: fa-github fa-lg
       href: https://github.com/MehrShafiq/p8105_final_project
+      
 output:
-  html_document
+  html_document:
+  

@@ -1,5 +1,6 @@
 ---
 title: "Project Proposal"
+author: "Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli"
 output: github_document
 ---
 

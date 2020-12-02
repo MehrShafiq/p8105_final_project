@@ -9,6 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Chloe Chah" />
 
 
 <title>Analysis</title>
@@ -293,25 +294,12 @@ $(document).ready(function () {
     Data
   </a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+<li>
+  <a href="analysis.html">
     <span class="fa fa-bar-chart fa-lg"></span>
      
     Analysis
-     
-    <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="plot_1.html">Plot 1</a>
-    </li>
-    <li>
-      <a href="plot_2.html">Plot 2</a>
-    </li>
-    <li>
-      <a href="plot_3.html">Plot 3</a>
-    </li>
-  </ul>
 </li>
 <li>
   <a href="discuss.html">
@@ -343,11 +331,72 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Analysis</h1>
+<h4 class="author">Chloe Chah</h4>
+<h4 class="date">12/2/2020</h4>
 
 </div>
 
 
-<p>Analysis goes here</p>
+<div id="what-are-the-top-10-leading-causes-of-death-in-nyc" class="section level3">
+<h3>What are the top 10 leading causes of death in NYC?</h3>
+<pre class="r"><code>nyc_df %&gt;%
+  group_by(leading_cause) %&gt;%
+  count() %&gt;%
+  arrange(desc(n)) %&gt;%
+  head(10) %&gt;%
+  ggplot(aes(x = leading_cause, y = n, fill = leading_cause))+
+  geom_col()+
+  labs(title = &quot;Top 10 leading causes of death in NYC&quot;, 
+    x = &quot;Cause of death&quot;, 
+    y = &quot;Number of deaths&quot;
+  )+
+  theme(legend.position = &quot;none&quot;)+
+  coord_flip() </code></pre>
+<p><img src="analysis_files/figure-html/plot%201-1.png" width="90%" /></p>
+</div>
+<div id="how-has-the-death-rate-of-top-3-leading-causes-changed-over-the-years-in-nyc" class="section level3">
+<h3>How has the death rate of top 3 leading causes changed over the years in NYC?</h3>
+<pre class="r"><code>nyc_df %&gt;%
+  filter(leading_cause %in% c(&quot;Malignant Neoplasms&quot;, &quot;All Other Causes&quot;, &quot;Diseases of Heart&quot;)) %&gt;%
+  mutate(deaths = as.numeric(deaths)) %&gt;%
+  group_by(year, leading_cause) %&gt;%  
+  summarize(total_death = sum(deaths)) %&gt;%
+  ggplot(aes(x= year, y = total_death, color = leading_cause)) + 
+  geom_line(size=1) + 
+  labs(title=&#39;Top 10 leading causes of death (2007-2014)&#39;, x=&#39;Year&#39;, y=&#39;Death count&#39;)+ 
+  theme(legend.text= element_text(size =8))</code></pre>
+<pre><code>## `summarise()` regrouping output by &#39;year&#39; (override with `.groups` argument)</code></pre>
+<p><img src="analysis_files/figure-html/plot%202-1.png" width="90%" /></p>
+</div>
+<div id="how-have-the-top-3-leading-causes-of-death-changed-for-each-race-in-nyc" class="section level3">
+<h3>How have the top 3 leading causes of death changed for each race in NYC?</h3>
+<pre class="r"><code>nyc_df %&gt;%
+  filter(leading_cause %in% c(&quot;Malignant Neoplasms&quot;, &quot;All Other Causes&quot;, &quot;Diseases of Heart&quot;)) %&gt;%
+  mutate(deaths = as.numeric(deaths)) %&gt;%
+  group_by(year, leading_cause, race_ethnicity) %&gt;%  
+  summarize(total_death = sum(deaths)) %&gt;%
+  ggplot(aes(x= year, y = total_death, color = leading_cause)) + 
+  geom_line(size=1) + 
+  labs(title=&#39;Top 3 leading causes of death by ethnicity (2007-2014)&#39;, x=&#39;Year&#39;, y=&#39;Death count&#39;) +
+  facet_wrap(~race_ethnicity, ncol=3, scales = &#39;free_y&#39;)</code></pre>
+<pre><code>## `summarise()` regrouping output by &#39;year&#39;, &#39;leading_cause&#39; (override with `.groups` argument)</code></pre>
+<p><img src="analysis_files/figure-html/plot%203-1.png" width="90%" /></p>
+</div>
+<div id="are-there-gender-differences-in-the-leading-causes-of-death-in-nyc" class="section level3">
+<h3>Are there gender differences in the leading causes of death in NYC?</h3>
+<pre class="r"><code>nyc_df %&gt;%
+  filter(leading_cause %in% c(&quot;Accidents Except Drug Posioning&quot;,
+                              &quot;Diabetes Mellitus&quot;, 
+                              &quot;Human Immunodeficiency Virus Disease&quot;, 
+                              &quot;Cerebrovascular Disease&quot;)) %&gt;% 
+  group_by(leading_cause, sex) %&gt;% 
+  count() %&gt;%
+  ggplot(aes(x = sex, y = n, fill = sex)) +
+  geom_col() +
+  labs(title=&#39;Gender differences in leading causes of death&#39;, x=&#39;Sex&#39;, y= &#39;Death count&#39;) +
+  facet_wrap(~leading_cause)</code></pre>
+<p><img src="analysis_files/figure-html/plot%204-1.png" width="90%" /></p>
+</div>
 
 
 

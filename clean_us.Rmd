@@ -47,7 +47,7 @@ write_csv(state_df, "./data/Leading_Causes_of_Death_States_Only.csv")
 ```
 
 
-```{r data, message = FALSE}
+```{r nyc_data, message = FALSE}
 
 #load dataset
 nyc_df = 

@@ -17,6 +17,11 @@ Originally, we were going to look at the impact of COVID-19 on the trends of com
 
 ### Initial questions
 
+1. What is the general trend of leading causes of death over time?
+2. Are there any ethnicity differences in leading causes of death?
+3. Are there any gender differences in leading causes of death?
+4. How do the leading causes of death compare to the trends in the rest of the country?
+
 ### Data
 
 ### Exploratory analysis

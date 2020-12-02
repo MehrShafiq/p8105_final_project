@@ -7,8 +7,20 @@ output: html_document
 ![](./data/health_issues.jpg){width=700px}
 </center>
 
-### The motivation for this project
- 
-### The intended final products
- 
-### The anticipated data sources
+### Motivation
+
+The goal of the project is to examine the leading causes of death at a micro-level (New York City) and at a macro-level (nationwide). Cause of death statistics including information about the total number of people who die each year and the reason for their death is important for measuring the effectiveness of a country’s health system. For example, if deaths from heart ailments are rising rapidly over the years in one country, this trend can help government authorities decide on the focus of their surveillance and response programs in order to reduce preventable deaths. Therefore, obtaining high quality cause-of-death data and appropriate analyses are crucial for improving public health actions. 
+
+### Related work
+
+Originally, we were going to look at the impact of COVID-19 on the trends of commercial activity (foot traffic) in the travel, hospitality, and restaurant industries in the U.S based on the data from Safe Graph. However, the datasets we were able to get access to did not have enough data points and we decided to work with a different dataset. We chose to investigate leading causes of death using data from NYC Open Data and CDC because we still wanted to focus on health outcome related data and the data on the underlying leading causes of death is widely available. 
+
+### Initial questions
+
+### Data
+
+### Exploratory analysis
+
+### Additional analysis
+
+### Discussion

@@ -1,4 +1,4 @@
-Year,Leading Cause,Sex,Race Ethnicity,Deaths,Death Rate,Age Adjusted Death Rate
+year,leading_cause,sex,race_ethnicity,deaths,death_rate,age_adjusted_death_rate
 2010,Influenza (Flu) and Pneumonia (J09-J18),F,Hispanic,228,18.7,23.1
 2008,"Accidents Except Drug Posioning (V01-X39, X43, X45-X59, Y85-Y86)",F,Hispanic,68,5.8,6.6
 2013,"Accidents Except Drug Posioning (V01-X39, X43, X45-X59, Y85-Y86)",M,White Non-Hispanic,271,20.1,17.9

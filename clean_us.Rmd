@@ -8,6 +8,7 @@ This file cleans the dataset "Leading Causes of Death, US" that can be found her
 
 ```{r library, message = FALSE}
 library(tidyverse)
+library(stringr)
 ```
 
 ```{r data, message = FALSE}
@@ -37,11 +38,18 @@ write_csv(state_df, "./data/Leading_Causes_of_Death_States_Only.csv")
 
 
 ```{r data, message = FALSE}
+
+#load dataset
 nyc_df = 
   read_csv(file = "./data/New_York_City_Leading_Causes_of_Death.csv") %>%
   janitor::clean_names() 
 
 write_csv(nyc_df, "./data/New_York_City_Leading_Causes_of_Death.csv")
+
+# remove parentheses from leading cause column
+
+nyc_df$leading_cause = 
+  gsub("\\s*\\([^\\)]+\\)","",as.character(nyc_df$leading_cause))
 
 ```
 

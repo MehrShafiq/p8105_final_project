@@ -24,3 +24,5 @@ output:
     css: style.css
     include:
     after_body: footer.html
+    toc: true
+    toc_float: true

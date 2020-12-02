@@ -2,7 +2,7 @@ name: "Leading Causes of Death in NYC 2007 - 2014"
 output_dir: "."
 navbar:
   title: "Overview"
-  right:
+  right: 
     - text: "Data"
       href: data.html
     - text: "Analysis"
@@ -21,7 +21,9 @@ navbar:
       href: mailto:<at3535@cumc.columbia.edu>
     - icon: fa-github fa-lg
       href: https://github.com/MehrShafiq/p8105_final_project
-      
 output:
   html_document:
-  
+    theme: yeti
+    css: style.css
+    include:
+    after_body: footer.html

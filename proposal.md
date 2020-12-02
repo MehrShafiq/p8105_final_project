@@ -1,5 +1,6 @@
 Project Proposal
 ================
+Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli
 
 ### The group members (names and UNIs)
 

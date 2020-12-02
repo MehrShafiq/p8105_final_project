@@ -5,3 +5,6 @@ output: html_document
 
 The data source is here
 
+1) [NYC](https://data.cityofnewyork.us/Health/New-York-City-Leading-Causes-of-Death/jb7j-dtam)
+
+2) [US](https://data.cdc.gov/NCHS/NCHS-Leading-Causes-of-Death-United-States/bi63-dtpu)

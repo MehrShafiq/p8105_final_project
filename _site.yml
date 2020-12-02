@@ -4,28 +4,23 @@ navbar:
   title: "Overview"
   right:
     - text: "Data"
+      icon: fa-table fa-lg
       href: data.html
     - text: "Analysis"
-<<<<<<< HEAD
-      menu: 
-        - text: "Plot 1"
-          href: plot_1.html
-        - text: "Plot 2""
-=======
+      icon: fa-bar-chart fa-lg
       menu:
         - text: "Plot 1"
           href: plot_1.html
         - text: "Plot 2"
->>>>>>> fix navigation bar problem
           href: plot_2.html
         - text: "Plot 3"
           href: plot_3.html
     - text: "Discussion"
+      icon: fa-comments fa-lg
       href: discuss.html
     - text: "Interactive"
+      icon: fa-mouse-pointer fa-lg
       href: interactive.html
-    - icon: fa-envelope fa-lg
-      href: mailto:<at3535@cumc.columbia.edu>
     - icon: fa-github fa-lg
       href: https://github.com/MehrShafiq/p8105_final_project
 

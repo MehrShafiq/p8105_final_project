@@ -1,8 +1,12 @@
 ---
-title: "Leading Causes of Death in NYC 2007 - 2014"
-author: "Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli"
+title: <center>"Leading Causes of Death in NYC 2007 - 2014"
+author: <center>"Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli"
 output: html_document
 ---
+<center>
+![](./data/health_issues.jpg){width=700px}
+</center>
+
 ### The motivation for this project
  
 ### The intended final products

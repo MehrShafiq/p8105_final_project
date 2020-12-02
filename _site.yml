@@ -7,12 +7,12 @@ navbar:
       href: data.html
     - text: "Analysis"
       menu: 
-      - text: "Plot 1"
-      href: plot_1.html
-      - text: "Plot 2""
-      href: plot_2.html
-      -text: "Plot 3"
-      - text: plot_3.html
+        - text: "Plot 1"
+          href: plot_1.html
+        - text: "Plot 2""
+          href: plot_2.html
+        - text: "Plot 3"
+          href: plot_3.html
     - text: "Discussion"
       href: discuss.html
     - text: "Interactive"

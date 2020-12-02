@@ -59,3 +59,22 @@ nyc_df %>%
   facet_wrap(~race_ethnicity, ncol=3, scales = 'free_y')
 
 ```
+
+### Are there gender differences in the leading causes of death in NYC?
+
+```{r}
+
+nyc_df %>%
+  filter(leading_cause %in% c("Accidents Except Drug Posioning",
+                              "Diabetes Mellitus", 
+                              "Human Immunodeficiency Virus Disease", 
+                              "Cerebrovascular Disease")) %>% 
+  group_by(leading_cause, sex) %>% 
+  count() %>%
+  ggplot(aes(x = sex, y = n, fill = sex)) +
+  geom_col() +
+  labs(title='Gender differences in leading causes of death', x='Sex', y= 'Death count') +
+  facet_wrap(~leading_cause)
+
+```
+

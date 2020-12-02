@@ -6,7 +6,17 @@ navbar:
     - text: "Data"
       href: data.html
     - text: "Analysis"
-      href: analysis.html
+      menu: 
+      - text: "Plot 1"
+      href: plot_1.html
+      - text: "Plot 2""
+      href: plot_2.html
+      -text: "Plot 3"
+      - text: plot_3.html
+    - text: "Discussion"
+      href: discuss.html
+    - text: "Interactive"
+      href: interactive.html
     - icon: fa-envelope fa-lg
       href: mailto:<at3535@cumc.columbia.edu>
     - icon: fa-github fa-lg

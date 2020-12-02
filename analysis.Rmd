@@ -1,7 +1,5 @@
 ---
 title: "Analysis"
-author: "Chloe Chah"
-date: "12/2/2020"
 output: html_document
 ---
 
@@ -25,8 +23,24 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r data, echo = FALSE, message = FALSE}
+
+#load dataset
+nyc_df = 
+  read_csv(file = "./data/New_York_City_Leading_Causes_of_Death.csv") %>%
+  janitor::clean_names() 
+
+write_csv(nyc_df, "./data/New_York_City_Leading_Causes_of_Death.csv")
+
+# remove parentheses from leading cause column
+
+nyc_df$leading_cause = 
+  gsub("\\s*\\([^\\)]+\\)","",as.character(nyc_df$leading_cause))
+
+```
+
 ### What are the top 10 leading causes of death in NYC?
-```{r plot 1}
+```{r plot 1, echo = FALSE, message = FALSE}
 
 nyc_df %>%
   group_by(leading_cause) %>%
@@ -47,7 +61,7 @@ nyc_df %>%
 
 ### How has the death rate of top 3 leading causes changed over the years in NYC?
 
-```{r plot 2}
+```{r plot 2, echo = FALSE, message = FALSE}
 
 nyc_df %>%
   filter(leading_cause %in% c("Malignant Neoplasms", "All Other Causes", "Diseases of Heart")) %>%
@@ -64,7 +78,7 @@ nyc_df %>%
 
 ### How have the top 3 leading causes of death changed for each race in NYC?
 
-```{r plot 3}
+```{r plot 3, echo = FALSE, message = FALSE}
 
 nyc_df %>%
   filter(leading_cause %in% c("Malignant Neoplasms", "All Other Causes", "Diseases of Heart")) %>%
@@ -80,7 +94,7 @@ nyc_df %>%
 
 ### Are there gender differences in the leading causes of death in NYC?
 
-```{r plot 4}
+```{r plot 4, echo = FALSE, message = FALSE}
 
 nyc_df %>%
   filter(leading_cause %in% c("Accidents Except Drug Posioning",

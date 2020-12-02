@@ -11,7 +11,7 @@ library(tidyverse)
 library(stringr)
 ```
 
-```{r data, message = FALSE}
+```{r data_us, message = FALSE}
 causes_us = 
   read_csv(file = "./data/NCHS_-_Leading_Causes_of_Death__United_States.csv", col_types = "ffffid") %>%
   janitor::clean_names() 

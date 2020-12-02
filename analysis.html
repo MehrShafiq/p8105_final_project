@@ -26,15 +26,6 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-      </style>
-
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
   pre:not([class]) {
@@ -339,6 +330,7 @@ $(document).ready(function () {
 
 <div id="what-are-the-top-10-leading-causes-of-death-in-nyc" class="section level3">
 <h3>What are the top 10 leading causes of death in NYC?</h3>
+<<<<<<< HEAD
 <pre class="r"><code>nyc_df %&gt;%
   group_by(leading_cause) %&gt;%
   count() %&gt;%
@@ -352,10 +344,13 @@ $(document).ready(function () {
   )+
   theme(legend.position = &quot;none&quot;)+
   coord_flip() </code></pre>
+=======
+>>>>>>> link analysis to homepage
 <p><img src="analysis_files/figure-html/plot%201-1.png" width="90%" /></p>
 </div>
 <div id="how-has-the-death-rate-of-top-3-leading-causes-changed-over-the-years-in-nyc" class="section level3">
 <h3>How has the death rate of top 3 leading causes changed over the years in NYC?</h3>
+<<<<<<< HEAD
 <pre class="r"><code>nyc_df %&gt;%
   filter(leading_cause %in% c(&quot;Malignant Neoplasms&quot;, &quot;All Other Causes&quot;, &quot;Diseases of Heart&quot;)) %&gt;%
   mutate(deaths = as.numeric(deaths)) %&gt;%
@@ -366,10 +361,13 @@ $(document).ready(function () {
   labs(title=&#39;Top 10 leading causes of death (2007-2014)&#39;, x=&#39;Year&#39;, y=&#39;Death count&#39;)+ 
   theme(legend.text= element_text(size =8))</code></pre>
 <pre><code>## `summarise()` regrouping output by &#39;year&#39; (override with `.groups` argument)</code></pre>
+=======
+>>>>>>> link analysis to homepage
 <p><img src="analysis_files/figure-html/plot%202-1.png" width="90%" /></p>
 </div>
 <div id="how-have-the-top-3-leading-causes-of-death-changed-for-each-race-in-nyc" class="section level3">
 <h3>How have the top 3 leading causes of death changed for each race in NYC?</h3>
+<<<<<<< HEAD
 <pre class="r"><code>nyc_df %&gt;%
   filter(leading_cause %in% c(&quot;Malignant Neoplasms&quot;, &quot;All Other Causes&quot;, &quot;Diseases of Heart&quot;)) %&gt;%
   mutate(deaths = as.numeric(deaths)) %&gt;%
@@ -380,10 +378,13 @@ $(document).ready(function () {
   labs(title=&#39;Top 3 leading causes of death by ethnicity (2007-2014)&#39;, x=&#39;Year&#39;, y=&#39;Death count&#39;) +
   facet_wrap(~race_ethnicity, ncol=3, scales = &#39;free_y&#39;)</code></pre>
 <pre><code>## `summarise()` regrouping output by &#39;year&#39;, &#39;leading_cause&#39; (override with `.groups` argument)</code></pre>
+=======
+>>>>>>> link analysis to homepage
 <p><img src="analysis_files/figure-html/plot%203-1.png" width="90%" /></p>
 </div>
 <div id="are-there-gender-differences-in-the-leading-causes-of-death-in-nyc" class="section level3">
 <h3>Are there gender differences in the leading causes of death in NYC?</h3>
+<<<<<<< HEAD
 <pre class="r"><code>nyc_df %&gt;%
   filter(leading_cause %in% c(&quot;Accidents Except Drug Posioning&quot;,
                               &quot;Diabetes Mellitus&quot;, 
@@ -395,6 +396,8 @@ $(document).ready(function () {
   geom_col() +
   labs(title=&#39;Gender differences in leading causes of death&#39;, x=&#39;Sex&#39;, y= &#39;Death count&#39;) +
   facet_wrap(~leading_cause)</code></pre>
+=======
+>>>>>>> link analysis to homepage
 <p><img src="analysis_files/figure-html/plot%204-1.png" width="90%" /></p>
 </div>
 

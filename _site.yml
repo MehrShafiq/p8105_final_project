@@ -8,13 +8,7 @@ navbar:
       href: data.html
     - text: "Analysis"
       icon: fa-bar-chart fa-lg
-      menu:
-        - text: "Plot 1"
-          href: plot_1.html
-        - text: "Plot 2"
-          href: plot_2.html
-        - text: "Plot 3"
-          href: plot_3.html
+      href: analysis.html
     - text: "Discussion"
       icon: fa-comments fa-lg
       href: discuss.html

@@ -44,9 +44,27 @@ nyc_df %>%
 
 ```
 
-### How have the top 3 leading causes of death changed for each race in NYC?
+
+### How has the death rate of top 3 leading causes changed over the years in NYC?
 
 ```{r plot 2}
+
+nyc_df %>%
+  filter(leading_cause %in% c("Malignant Neoplasms", "All Other Causes", "Diseases of Heart")) %>%
+  mutate(deaths = as.numeric(deaths)) %>%
+  group_by(year, leading_cause) %>%  
+  summarize(total_death = sum(deaths)) %>%
+  ggplot(aes(x= year, y = total_death, color = leading_cause)) + 
+  geom_line(size=1) + 
+  labs(title='Top 10 leading causes of death (2007-2014)', x='Year', y='Death count')+ 
+  theme(legend.text= element_text(size =8))
+
+```
+
+
+### How have the top 3 leading causes of death changed for each race in NYC?
+
+```{r plot 3}
 
 nyc_df %>%
   filter(leading_cause %in% c("Malignant Neoplasms", "All Other Causes", "Diseases of Heart")) %>%
@@ -62,7 +80,7 @@ nyc_df %>%
 
 ### Are there gender differences in the leading causes of death in NYC?
 
-```{r}
+```{r plot 4}
 
 nyc_df %>%
   filter(leading_cause %in% c("Accidents Except Drug Posioning",

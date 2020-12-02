@@ -18,9 +18,9 @@ navbar:
     - text: "Discussion"
       icon: fa-comments fa-lg
       href: discuss.html
-    - text: "Interactive"
-      icon: fa-mouse-pointer fa-lg
-      href: interactive.html
+    - text: "Screencast"
+      icon: fa-video-camera fa-lg
+      href: screencast.html
     - icon: fa-github fa-lg
       href: https://github.com/MehrShafiq/p8105_final_project
 

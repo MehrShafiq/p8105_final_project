@@ -1,6 +1,6 @@
 ---
-title: <center>"Leading Causes of Death in NYC 2007 - 2014"
-author: <center>"Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli"
+title: <center>Leading Causes of Death in NYC 2007 - 2014</center>
+author: <center>Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli</center>
 output: html_document
 ---
 <center>

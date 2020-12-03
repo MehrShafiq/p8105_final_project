@@ -41,6 +41,31 @@ nyc_df$leading_cause =
 
 ```
 
+### What are the top 10 leading causes of death in the US?
+
+
+```{r us plot 1, echo = FALSE, error = TRUE, message = FALSE}
+nyc_df_1 = read_csv(file = "./data/nyc_clean.csv")
+US_df_1 = read_csv(file = "./data/Leading_Causes_of_Death_States_Only.csv")
+
+US_df_1_plot = 
+  US_df_1 %>%
+  filter(x113_cause_name != "All Causes") %>% 
+  group_by(x113_cause_name) %>%
+  summarize(total_death = sum(deaths)) %>%
+  arrange(desc(total_death)) %>%
+  mutate(x113_cause_name = fct_reorder(x113_cause_name, total_death)) %>% 
+  ggplot(aes(x = x113_cause_name, y = total_death, fill = x113_cause_name)) +
+  geom_col() +
+  labs(title = "Top 10 Leading Causes of Death in the U.S.", 
+    x = "Cause of Death", 
+    y = "Number of Deaths") +
+  theme(legend.position = "none") +
+  coord_flip() 
+
+US_df_1_plot
+```
+
 ### What are the top 10 leading causes of death in NYC?
 
 ```{r plot 1, echo = FALSE, error = TRUE, message = FALSE}
@@ -54,26 +79,12 @@ nyc_df_1 %>%
   mutate(leading_cause = fct_reorder(leading_cause, total_death)) %>% 
   ggplot(aes(x = leading_cause, y = total_death, fill = leading_cause)) +
   geom_col() +
-  labs(title = "Top 10 leading causes of death in NYC.", 
-    x = "Cause of death", 
-    y = "Number of deaths") +
+  labs(title = "Top 10 Leading Causes of Death in NYC", 
+    x = "Cause of Death", 
+    y = "Number of Deaths") +
   theme(legend.position = "none") +
   coord_flip() 
   
-  
-#group_by(leading_cause) %>%
-#  count() %>%
-#  arrange(desc(n)) %>%
-#  head(10) %>%
-#  mutate(leading_cause = fct_reorder(leading_cause, n)) %>% 
-#  ggplot(aes(x = leading_cause, y = n, fill = leading_cause)) +
-#  geom_col() +
-#  labs(title = "Top 10 leading causes of death in NYC", 
-#    x = "Cause of death", 
-#    y = "Number of deaths"
-#  )+
-#  theme(legend.position = "none")+
-#  coord_flip() 
 
 ```
 
@@ -113,8 +124,7 @@ nyc_df %>%
 
 ```
 
-### Are there gender differences in the leading causes of death in NYC?
-
+### Are there differences in the leading causes of death between men and women in NYC?
 
 ```{r plot 4, echo = FALSE, error = TRUE, message = FALSE}
 
@@ -133,7 +143,7 @@ nyc_df %>%
 ```
 
 
-### Is there any significant difference in death rates between men and women, in New York City?
+### Is there a statistically significant difference in death rates between men and women in New York City?
 
 
 ```{r t test, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
@@ -154,7 +164,7 @@ p-value = 0.479 > 0.05
 At 0.05 significance level, we fail to reject the null hypothesis and conclude that true mean difference in death rates between men and women is 0. Hence, we can state that there isn't any significant difference in the death rates between men and women in New York. 
         
             
-### Is there any significant difference in death rates across different ethnicities, in New York City?    
+### Is there a statistically significant difference in death rates across different ethnicities in New York City?    
        
          
 ```{r anova, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE}
@@ -181,31 +191,6 @@ p-value = 1.83e-14 < 0.05
 
 At 0.05 significance level, we reject the null hypothesis and conclude that there is a significant difference in death rates across different ethnicities, in New York City.
 
-
-### What are the top 10 leading causes of death in the US?
-
-
-```{r us plot 1, echo = FALSE, error = TRUE, message = FALSE}
-nyc_df_1 = read_csv(file = "./data/nyc_clean.csv")
-US_df_1 = read_csv(file = "./data/Leading_Causes_of_Death_States_Only.csv")
-
-US_df_1_plot = 
-  US_df_1 %>%
-  filter(x113_cause_name != "All Causes") %>% 
-  group_by(x113_cause_name) %>%
-  summarize(total_death = sum(deaths)) %>%
-  arrange(desc(total_death)) %>%
-  mutate(x113_cause_name = fct_reorder(x113_cause_name, total_death)) %>% 
-  ggplot(aes(x = x113_cause_name, y = total_death, fill = x113_cause_name)) +
-  geom_col() +
-  labs(title = "Top 10 Leading Causes of Death in the U.S.", 
-    x = "Cause of Death", 
-    y = "Number of Deaths") +
-  theme(legend.position = "none") +
-  coord_flip() 
-
-US_df_1_plot
-```
 
 
 ### How has the death rate of top 3 leading causes changed over the years in NYC?

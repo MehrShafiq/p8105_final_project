@@ -11,37 +11,35 @@ Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli
 
 ### The tentative project title
 
-The Impact of COVID-19 on Consumer Activity in the US (2019-2020)
+Leading causes of death in New York City (2007-2014)
 
 ### The motivation for this project
 
-To look at the impact of COVID-19 on the trends of commercial activity
-(foot traffic) in the travel, hospitality, and restaurant industries in
-the U.S.
+The goal of the project is to examine the leading causes of death at a
+micro-level (New York City) and at a macro-level (nationwide).
 
 ### The intended final products
 
-Summary level tables and dashboard that visualize the comparison of
-commercial activity (foot traffic trends) in 2020 to the same time
-period in 2019 and aggregating the data by industries, specific brands,
-or geographic regions.
+Summary level tables and dashboard that visualize the comparison of the
+leading causes of death in NYC vs. those in the entire country, as well
+as leading causes of death by sex and race/ethnicity, look at trends
+over time, and conduct statistical analysis to gauge whether any of the
+differences are statistically significant.
 
 ### The anticipated data sources
 
-[Safe Graph - U.S. Consumer Activity during COVID-19
-Pandemic](https://www.safegraph.com/)
+[Leading Causes of Death in
+NYC](https://data.cityofnewyork.us/Health/New-York-City-Leading-Causes-of-Death/jb7j-dtam)
+
+[Leading Causes of Death in the
+U.S.](https://data.cdc.gov/NCHS/NCHS-Leading-Causes-of-Death-United-States/bi63-dtpu)
 
 ### The planned analyses / visualizations / coding challenges
 
-  - Create tables and plots (Time series) related to industry level
-    trends associated with travel, hospitality, and restaurant
-    industries in the U.S in 2019 vs 2020.  
-  - Analyse the foot traffic associated with specific brands related to
-    the travel, hospitality, and restaurant industries in the U.S in
-    2019 vs 2020. Summary level tables and interactive plots (dashboard)
-    will be included in the analysis.  
-  - One Potential coding challenge could be selectively filtering the
-    relevant data in order to improve computational efficiency.
+  - Trends over time (death rate vs. age-adjusted)  
+  - Top leading causes of death by sex/race
+  - Compare NY to other states
+  - Statistical analysis
 
 ### The planned timeline
 

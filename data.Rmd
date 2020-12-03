@@ -28,7 +28,7 @@ nyc_df = read_csv(file = "./data/nyc_clean.csv")
 *   `r names(nyc_df[6])`
 *   `r names(nyc_df[7])`. 
 
-### 2) [Leading causes of deaths in US at the state-level](https://data.cdc.gov/NCHS/NCHS-Leading-Causes-of-Death-United-States/bi63-dtpu)
+### 2) [US Leading Causes of Death, State-Level](https://data.cdc.gov/NCHS/NCHS-Leading-Causes-of-Death-United-States/bi63-dtpu)
 
 #### **Data Description**
 This dataset presents the age-adjusted death rates for the 10 leading causes of death in the United States beginning in 1999. Data are based on information from all resident death certificates filed in the 50 states and the District of Columbia using demographic and medical characteristics. 

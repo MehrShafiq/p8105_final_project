@@ -412,15 +412,15 @@ Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli
 <img src="data/health_issues.jpg" width="700" />
 </center>
 <div id="motivation" class="section level3">
-<h3>Motivation</h3>
+<h3><strong>Motivation</strong></h3>
 <p>The goal of the project is to examine the leading causes of death at a micro-level (New York City) and at a macro-level (nationwide). Cause of death statistics including information about the total number of people who die each year and the reason for their death is important for measuring the effectiveness of a country’s health system. For example, if deaths from heart ailments are rising rapidly over the years in one country, this trend can help government authorities decide on the focus of their surveillance and response programs in order to reduce preventable deaths. Therefore, obtaining high quality cause-of-death data and appropriate analyses are crucial for improving public health actions.</p>
 </div>
 <div id="related-work" class="section level3">
-<h3>Related work</h3>
-<p>Originally, we were going to look at the impact of COVID-19 on the trends of commercial activity (foot traffic) in the travel, hospitality, and restaurant industries in the U.S based on the data from Safe Graph. However, the datasets we were able to get access to did not have enough data points and we decided to work with a different dataset. We chose to investigate leading causes of death using data from NYC Open Data and CDC because we still wanted to focus on health outcome related data and the data on the underlying leading causes of death is widely available.</p>
+<h3><strong>Related work</strong></h3>
+<p>Originally, we were going to look at the impact of COVID-19 on the trends of commercial activity (foot traffic) in the travel, hospitality, and restaurant industries in the U.S based on the data from Safe Graph. However, the datasets we were able to get access to did not have enough data points and we decided to work with a different topic. We were inspired to investigate leading causes of death using data from NYC Open Data and CDC because in the face of a pandemic, it is easy to forget about preventive care. While the cause of death data we used is not the most up-to-date and does not show excess deaths related to COVID-19, we thought it was important to learn more about the list of diseases for which routine care might not be delivered at the recommended levels due to the pandemic. The fact that data on the underlying leading causes of death is widely available further motivated us to pursue this topic.</p>
 </div>
 <div id="initial-questions" class="section level3">
-<h3>Initial questions</h3>
+<h3><strong>Initial questions</strong></h3>
 <ol style="list-style-type: decimal">
 <li>What is the general trend of leading causes of death over time?</li>
 <li>Are there any ethnicity differences in leading causes of death?</li>
@@ -429,18 +429,18 @@ Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli
 </ol>
 </div>
 <div id="data" class="section level3">
-<h3>Data</h3>
-<p>The data used in this project was borrowed primarily from two sources, NYC Open Data and CDC (Centers for Disease Control and Prevention). Specifically, the “New York City Leading Causes of Death” dataset published on the NYC Open Data website was used to analyze the leading causes of death in NYC. While, the dataset under the National Center for Health Statistics of CDC was used to analyze the overall leading causes of death in the US. As part of the data cleaning procedure, the raw dataset from NYC Open Data was modified as follows: the rows of data with missing information for death, death rate and age adjusted death rate variables were excluded from the dataset , the row cells with only partial missing information in regards to the above variables were replaced with NULL , the variable names were transformed and the leading causes were renamed in adherence to the tidy dataset naming convention.</p>
+<h3><strong>Data</strong></h3>
+<p>The data used in this project was retrieved primarily from two sources, NYC Open Data and CDC (Centers for Disease Control and Prevention). Specifically, the “New York City Leading Causes of Death” dataset published on the NYC Open Data website was used to analyze the leading causes of death in NYC. While the dataset available on the National Center for Health Statistics page of CDC was used to analyze the overall leading causes of death in the US. As part of the data cleaning procedure, the raw datasets were modified as follows: removed irrelevant or redundant rows, converted the variable types to a category that is appropriate for the analysis (e.g., character to numeric), the variable names were renamed in adherence to the tidy dataset naming convention.</p>
 </div>
 <div id="exploratory-analysis" class="section level3">
-<h3>Exploratory analysis</h3>
+<h3><strong>Exploratory analysis</strong></h3>
 </div>
 <div id="additional-analysis" class="section level3">
-<h3>Additional analysis</h3>
+<h3><strong>Additional analysis</strong></h3>
 <p>In order to test for significant differences in death rates between men and women, a t-test was performed. Similarly, an ANOVA was performed to test for significant differences in death rates across the various ethnicities.</p>
 </div>
 <div id="discussion" class="section level3">
-<h3>Discussion</h3>
+<h3><strong>Discussion</strong></h3>
 </div>
 
 

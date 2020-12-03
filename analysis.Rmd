@@ -8,6 +8,8 @@ output: html_document
 library(tidyverse)
 library(patchwork)
 library(ggplot2)
+library(rstatix)
+library(knitr)
 
 theme_set(theme_minimal() + theme(legend.position = "bottom"))
 options(
@@ -114,3 +116,51 @@ nyc_df %>%
 
 ```
 
+
+### Is there any significant difference in death rates between men and women, in New York City?
+
+
+```{r t test, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+
+t_test_df = nyc_df %>%
+  select(death_rate, sex) %>%
+  mutate(
+    death_rate = as.numeric(death_rate),
+    sex = factor(sex)
+  )
+
+t.test(death_rate ~ sex, data = t_test_df)
+
+```
+
+p-value = 0.479 > 0.05
+
+At 0.05 significance level, we fail to reject the null hypothesis and conclude that true mean difference in death rates between men and women is 0. Hence, we can state that there isn't any significant difference in the death rates between men and women in New York. 
+        
+            
+### Is there any significant difference in death rates across different ethnicities, in New York City?    
+       
+         
+```{r anova, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE}
+anova_df = nyc_df %>%
+  select(death_rate, race_ethnicity) %>%
+  mutate(
+    death_rate = as.numeric(death_rate),
+    race_ethnicity = recode(
+      race_ethnicity, 
+      "White Non-Hispanic" = "White",
+      "Black Non-Hispanic" = "Black",
+      "Other Race/ Ethnicity" = "Other",
+      "Asian and Pacific Islander" = "Asian/PI",
+      "Not Stated/Unknown" = "Unknown"
+      ),
+    race_ethnicity = factor(race_ethnicity)
+  )
+
+anova_test(death_rate ~ race_ethnicity, data = anova_df) %>% kable()
+```
+        
+          
+p-value = 1.83e-14 < 0.05
+
+At 0.05 significance level, we reject the null hypothesis and conclude that there is a significant difference in death rates across different ethnicities, in New York City.

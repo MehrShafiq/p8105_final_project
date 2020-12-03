@@ -417,6 +417,51 @@ div.tocify {
 <h3>Are there gender differences in the leading causes of death in NYC?</h3>
 <p><img src="analysis_files/figure-html/plot%204-1.png" width="90%" /></p>
 </div>
+<div id="is-there-any-significant-difference-in-death-rates-between-men-and-women-in-new-york-city" class="section level3">
+<h3>Is there any significant difference in death rates between men and women, in New York City?</h3>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  death_rate by sex
+t = -0.70828, df = 704.9, p-value = 0.479
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -15.372408   7.221561
+sample estimates:
+mean in group F mean in group M 
+       51.40113        55.47655 </code></pre>
+<p>p-value = 0.479 &gt; 0.05</p>
+<p>At 0.05 significance level, we fail to reject the null hypothesis and conclude that true mean difference in death rates between men and women is 0. Hence, we can state that there isn’t any significant difference in the death rates between men and women in New York.</p>
+</div>
+<div id="is-there-any-significant-difference-in-death-rates-across-different-ethnicities-in-new-york-city" class="section level3">
+<h3>Is there any significant difference in death rates across different ethnicities, in New York City?</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Effect</th>
+<th align="right">DFn</th>
+<th align="right">DFd</th>
+<th align="right">F</th>
+<th align="right">p</th>
+<th align="left">p&lt;.05</th>
+<th align="right">ges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">race_ethnicity</td>
+<td align="right">3</td>
+<td align="right">704</td>
+<td align="right">23.428</td>
+<td align="right">0</td>
+<td align="left">*</td>
+<td align="right">0.091</td>
+</tr>
+</tbody>
+</table>
+<p>p-value = 1.83e-14 &lt; 0.05</p>
+<p>At 0.05 significance level, we reject the null hypothesis and conclude that there is a significant difference in death rates across different ethnicities, in New York City.</p>
+</div>
 
 
 

@@ -25,28 +25,18 @@ janitor::clean_names() %>%
       "Other Race/ Ethnicity" = "Other",
       "Asian and Pacific Islander" = "Asian/PI",
       "Not Stated/Unknown" = "Unknown"
-      ),
-    leading_cause = recode(
-      leading_cause, 
-      "Accidents Except Drug Posioning (V01-X39, X43, X45-X59, Y85-Y86)" = "accidents", 
-      "All Other Causes" = "Other",
-      "Alzheimer's Disease (G30)" = "alzheimers_disease",
-      "Aneurysm and Dissection (I71)" = "aneurysm_and_dissection",
-      "Assault (Homicide: Y87.1, X85-Y09)" = "assault",
-      "Atherosclerosis (I70)" = "atherosclerosis",
-      "Cerebrovascular Disease (Stroke: I60-I69)" = "cerebrovascular_disease",
-      "Certain Conditions originating in the Perinatal Period (P00-P96)" = "perinatal",
-      "Chronic Liver Disease and Cirrhosis (K70, K73)" = "CLD_cirrhosis",
-      "Chronic Lower Respiratory Diseases (J40-J47)" = "chronic_lower_respiratory_diseases"
-    )) 
+      )) %>% 
+   separate(
+    leading_cause,
+    into = c("leading_cause", NA),
+    sep = "\\(",
+    )
+
+write.csv(nyc_df,"data\\nyc_clean.csv", row.names = FALSE)
 
 nyc_df %>% 
   view()
 ```
 
-```{r}
-table = 
-  tableby(~ leading_cause, data = nyc_df)
-summary(table)
-```
+
 

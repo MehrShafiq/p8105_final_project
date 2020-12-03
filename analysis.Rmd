@@ -181,12 +181,13 @@ p-value = 1.83e-14 < 0.05
 
 At 0.05 significance level, we reject the null hypothesis and conclude that there is a significant difference in death rates across different ethnicities, in New York City.
 
+
 ### What are the top 10 leading causes of death in the US?
 
-```{r plot 1, echo = FALSE, error = TRUE, message = FALSE}
+
+```{r us plot 1, echo = FALSE, error = TRUE, message = FALSE}
 nyc_df_1 = read_csv(file = "./data/nyc_clean.csv")
 US_df_1 = read_csv(file = "./data/Leading_Causes_of_Death_States_Only.csv")
-US_df_1
 
 US_df_1_plot = 
   US_df_1 %>%
@@ -202,10 +203,15 @@ US_df_1_plot =
     y = "Number of Deaths") +
   theme(legend.position = "none") +
   coord_flip() 
+
+US_df_1_plot
 ```
 
 
-```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE}
+### How has the death rate of top 3 leading causes changed over the years in NYC?
+
+
+```{r us plot 2, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE}
 US_df_1_plot_1 = 
   US_df_1 %>% 
   filter(x113_cause_name == c("Diseases of heart", "Malignant neoplasms", "Cerebrovascular diseases")) %>% 
@@ -216,10 +222,12 @@ US_df_1_plot_1 =
   ggplot(aes(x = year, y = total_death, color = x113_cause_name)) + 
   geom_line(size = 1) + 
   labs(title = 'Top 3 Leading Causes of Death (2000-2015)', x = 'Year', y = 'Death Count') 
+
+US_df_1_plot_1
 ```
 
 
-```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE}
+```{r us plot 3, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE}
 #US_df_1_plot_2 = 
 #  US_df_1 %>% 
 #  filter(x113_cause_name == c("Diseases of heart", "Malignant neoplasms", "Cerebrovascular diseases")) %>% 

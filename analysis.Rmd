@@ -66,16 +66,33 @@ nyc_df %>%
 
 
 ```{r plot 2, echo = FALSE, error = TRUE, message = FALSE}
-
-nyc_df %>%
+nyc_change = 
+  nyc_df %>%
   filter(leading_cause %in% c("Malignant Neoplasms", "All Other Causes", "Diseases of Heart")) %>%
   mutate(deaths = as.numeric(deaths)) %>%
   group_by(year, leading_cause) %>%  
   summarize(total_death = sum(deaths)) %>%
   ggplot(aes(x= year, y = total_death, color = leading_cause)) + 
   geom_line(size=1) + 
-  labs(title='Top 10 leading causes of death (2007-2014)', x='Year', y='Death count')+ 
+  labs(title='Top 3 leading causes of death (2007-2014)', x='Year', y='Death count')+ 
   theme(legend.text= element_text(size =8))
+
+
+# Death rate change for US
+
+us_df = read_csv(file = "./data/Leading_Causes_of_Death_US_Only.csv", col_types = "ffffid") %>%
+  filter(cause_name != "All causes") 
+
+us_deaths = us_df %>%
+  group_by(x113_cause_name) %>%
+  summarize(Counts = sum(deaths)) %>% 
+  arrange(Counts) %>% 
+  tail(3)
+  
+# Top 3 leading causes of death for US from 1999 to 2017 are: 
+# "Diseases of heart"
+# "Malignant neoplasms"
+# "Cerebrovascular diseases"
 
 ```
 
@@ -164,3 +181,28 @@ anova_test(death_rate ~ race_ethnicity, data = anova_df) %>% kable()
 p-value = 1.83e-14 < 0.05
 
 At 0.05 significance level, we reject the null hypothesis and conclude that there is a significant difference in death rates across different ethnicities, in New York City.
+
+
+```{r}
+
+
+# find top 10 leading causes for each state each year from 1999 - 2017
+states_df = read_csv(file = "./data/Leading_Causes_of_Death_States_Only.csv", col_types = "ffffid") %>%
+  filter(cause_name != "All Causes") %>%
+  arrange(year, state, age_adjusted_death_rate) %>%
+  slice(which(row_number() %% 10 == 0))
+
+us_df
+states_df 
+
+# mode function
+mode <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+  
+states_df %>% group_by(year) %>% 
+  summarize(Mode = mode(cause_name))
+
+```
+

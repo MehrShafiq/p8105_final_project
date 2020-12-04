@@ -72,10 +72,11 @@ anim_us = US_df_2 %>%
   scale_y_continuous(name = "Total Death Count") +
   transition_states(year, transition_length = 1, state_length = 3) +
   geom_text(aes(y = 0, label = x113_cause_name), hjust = 1) +
-  coord_flip(clip = "off", expand = TRUE) +
-  ggtitle("Top 10 Leading Causes in US by Year: {closest_state}")+
+  coord_flip(clip = "off") +
+  ggtitle("Top Causes of Death in US by Year: {closest_state}")+
   theme(legend.position = "none", 
-        plot.margin = margin(1,1,1,7.5, 'cm'))
+        plot.margin = margin(1,1,1,7.5, 'cm'), 
+        title = element_text(size = 9))
 
 animate(anim_us, nframes = 100)
 

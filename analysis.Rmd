@@ -197,7 +197,7 @@ US_df_1_plot_1
 
 ```{r plot 2, echo = FALSE, error = TRUE, message = FALSE}
 nyc_change = 
-  nyc_df %>%
+  nyc_df_1 %>%
   filter(leading_cause %in% c("Malignant Neoplasms", "Diseases of Heart")) %>%
   mutate(deaths = as.numeric(deaths)) %>%
   group_by(year, leading_cause) %>%  
@@ -221,7 +221,7 @@ nyc_change
 
 ```{r plot 3, echo = FALSE, error = TRUE, message = FALSE}
 
-nyc_df %>%
+nyc_df_1 %>%
   filter(leading_cause %in% c("Malignant Neoplasms", "Diseases of Heart")) %>%
   mutate(deaths = as.numeric(deaths)) %>%
   group_by(year, leading_cause, race_ethnicity) %>%  

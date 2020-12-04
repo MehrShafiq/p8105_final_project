@@ -70,7 +70,7 @@ anim_us = US_df_2 %>%
   geom_tile(aes(y = total_death / 2, height = total_death, width = 0.9, fill = x113_cause_name)) +
   theme(axis.text.y = element_blank(), axis.title.y = element_blank()) +
   scale_y_continuous(name = "Total Death Count") +
-  transition_states(year, transition_length = 1, state_length = 3) +
+  transition_states(year, transition_length = 4, state_length = 3) +
   geom_text(aes(y = 0, label = x113_cause_name), hjust = 1) +
   coord_flip(clip = "off") +
   ggtitle("Top Causes of Death in US by Year: {closest_state}")+
@@ -98,6 +98,8 @@ animate(anim_us, nframes = 100)
 
 ```
 
+* It appears that the top 2 leading causes of death in the U.S. (#1 Diseases of heart and #2 Malignant neoplasms) remained the same from 1999 to 2017 with some variations in the rest of the list.
+
 ### What are the leading causes of death in NYC?
 
 ```{r plot 1, echo = FALSE, error = TRUE, message = FALSE}
@@ -122,7 +124,7 @@ anim_nyc = nyc_df_2 %>%
   geom_tile(aes(y = total_death / 2, height = total_death, width = 0.9, fill = leading_cause)) +
   theme(axis.text.y = element_blank(), axis.title.y = element_blank()) +
   scale_y_continuous(name = "Total Death Count") +
-  transition_states(year, transition_length = 1, state_length = 3) +
+  transition_states(year, transition_length = 4, state_length = 3) +
   geom_text(aes(y = 0, label = leading_cause), hjust = 1) +
   coord_flip(clip = "off") +
   ggtitle("Top Causes of Death in NYC by Year: {closest_state}")+
@@ -149,7 +151,8 @@ animate(anim_nyc, nframes = 100)
   
 ```
 
-
+* It appears that the top 2 leading causes of death in New York City (#1 Diseases of heart and #2 Malignant neoplasms) remained the same from 2007 to 2014 with a lot of variations in the rest of the list. 
+* This high variability in the total death count for other causes of death could be due to unique epidemiologic factors in New York City or changes in the causes of death that were measured throughout the years in New York City. 
 
 ```{r, echo = FALSE, message = FALSE}
 # Death rate change for US
@@ -188,6 +191,8 @@ US_df_1_plot_1 =
 US_df_1_plot_1
 ```
 
+* It appears that from 1999 to 2017, deaths due to malignant neoplasms in the U.S. showed a steadily increasing trend, while deaths due to diseases of heart showed a declining trend initially but started increasing again in recent years. Deaths due to cerebrovascular diseases remained relatively stable throughout the years.
+
 ### How has the death count of top 2 leading causes changed over the years in NYC?
 
 ```{r plot 2, echo = FALSE, error = TRUE, message = FALSE}
@@ -206,6 +211,8 @@ nyc_change =
 nyc_change
 ```
 
+* It appears that from 2007 to 2014, deaths due to malignant neoplasms in NYC also showed an increasing trend but the change is not as drastic as in the nationwide plot, while deaths due to diseases of heart showed a declining trend, similar to the U.S. plot.  
+* We originally wanted to show changes in top 3 leading causes for NYC as well similar to the US time series plot, but a lot of the data was fragmented (e.g. not available for all the years) for causes other than "All Other Causes" and we didn't think it was meaningful to include "All Other Causes" as one of the top causes for this plot, so we decided to just include "Malignant Neoplasms" and "Diseases of Heart". 
 
 ## **Racial and Sex Differences in NYC Mortality**
 
@@ -226,13 +233,15 @@ nyc_df %>%
 
 ```
 
+* It appears that the general trends in the top 2 leading causes in NYC varied by race/ethnicity. One noticeable contrast that stands out is that deaths due to malignant neoplams seem to be on a steeper increasing trend for Asians/Pacific Islanders and Other race/ethnicity in NYC unlike for rest of the ethnicity groups. 
+* Another noticeable difference is that deaths due to diseases of heart seem to be on an increasing trend for Other race/ethnicity in NYC unlike for rest of the ethnicity groups.
+
 ### Are there differences in the leading causes of death between men and women in NYC?
 
 ```{r plot 4, echo = FALSE, error = TRUE, message = FALSE}
 
-nyc_df %>%
-  ungroup() %>%
-  filter(leading_cause %in% c("Diseases of Heart ","Malignant Neoplasms ", "Diabetes Mellitus ", "Chronic Lower Respiratory Diseases ")) %>% 
+nyc_df_1 %>%
+  filter(leading_cause %in% c("Diseases of Heart","Malignant Neoplasms", "Diabetes Mellitus", "Chronic Lower Respiratory Diseases")) %>% 
   group_by(leading_cause, sex) %>% 
   summarize(total_death = sum(deaths, na.rm = TRUE)) %>%
   ggplot(aes(x = sex, y = total_death, fill = sex)) +
@@ -241,6 +250,8 @@ nyc_df %>%
   facet_wrap(~leading_cause, scales = 'free_y')
 
 ```
+
+* While there seem to be some visible gender differences in these leading causes of deaths in NYC, it is unclear whether these differences are statistically significant solely based on these plots. We further investigated these differences in our statistical analyses section below. 
 
 ## **Statistical Analyses**
 

@@ -408,10 +408,17 @@ div.tocify {
 <div id="what-are-the-leading-causes-of-death-in-the-us" class="section level3">
 <h3>What are the leading causes of death in the US?</h3>
 <p><img src="analysis_files/figure-html/us%20plot%201-1.gif" width="90%" /></p>
+<ul>
+<li>It appears that the top 2 leading causes of death in the U.S. (#1 Diseases of heart and #2 Malignant neoplasms) remained the same from 1999 to 2017 with some variations in the rest of the list.</li>
+</ul>
 </div>
 <div id="what-are-the-leading-causes-of-death-in-nyc" class="section level3">
 <h3>What are the leading causes of death in NYC?</h3>
 <p><img src="analysis_files/figure-html/plot%201-1.gif" width="90%" /></p>
+<ul>
+<li>It appears that the top 2 leading causes of death in New York City (#1 Diseases of heart and #2 Malignant neoplasms) remained the same from 2007 to 2014 with a lot of variations in the rest of the list.</li>
+<li>This high variability in the total death count for other causes of death could be due to unique epidemiologic factors in New York City or changes in the causes of death that were measured throughout the years in New York City.</li>
+</ul>
 </div>
 </div>
 <div id="changes-in-the-leading-causes-of-death" class="section level2">
@@ -419,10 +426,18 @@ div.tocify {
 <div id="how-has-the-death-count-of-top-leading-causes-changed-over-the-years-in-the-us" class="section level3">
 <h3>How has the death count of top leading causes changed over the years in the US?</h3>
 <p><img src="analysis_files/figure-html/us%20plot%202-1.gif" width="90%" /></p>
+<ul>
+<li>It appears that from 1999 to 2017, deaths due to malignant neoplasms in the U.S. showed a steadily increasing trend, while deaths due to diseases of heart showed a declining trend initially but started increasing again in recent years. Deaths due to cerebrovascular diseases remained relatively stable throughout the years.</li>
+</ul>
 </div>
 <div id="how-has-the-death-count-of-top-2-leading-causes-changed-over-the-years-in-nyc" class="section level3">
 <h3>How has the death count of top 2 leading causes changed over the years in NYC?</h3>
 <p><img src="analysis_files/figure-html/plot%202-1.gif" width="90%" /></p>
+<ul>
+<li>It appears that from 2007 to 2014, deaths due to malignant neoplasms in NYC also showed an increasing trend but the change is not as drastic as in the nationwide plot, while deaths due to diseases of heart showed a declining trend, similar to the U.S. plot.<br />
+</li>
+<li>We originally wanted to show changes in top 3 leading causes for NYC as well similar to the US time series plot, but a lot of the data was fragmented (e.g. not available for all the years) for causes other than “All Other Causes” and we didn’t think it was meaningful to include “All Other Causes” as one of the top causes for this plot, so we decided to just include “Malignant Neoplasms” and “Diseases of Heart”.</li>
+</ul>
 </div>
 </div>
 <div id="racial-and-sex-differences-in-nyc-mortality" class="section level2">
@@ -430,12 +445,17 @@ div.tocify {
 <div id="how-have-the-top-2-leading-causes-of-death-changed-for-each-race-in-nyc" class="section level3">
 <h3>How have the top 2 leading causes of death changed for each race in NYC?</h3>
 <p><img src="analysis_files/figure-html/plot%203-1.png" width="90%" /></p>
+<ul>
+<li>It appears that the general trends in the top 2 leading causes in NYC varied by race/ethnicity. One noticeable contrast that stands out is that deaths due to malignant neoplams seem to be on a steeper increasing trend for Asians/Pacific Islanders and Other race/ethnicity in NYC unlike for rest of the ethnicity groups.</li>
+<li>Another noticeable difference is that deaths due to diseases of heart seem to be on an increasing trend for Other race/ethnicity in NYC unlike for rest of the ethnicity groups.</li>
+</ul>
 </div>
 <div id="are-there-differences-in-the-leading-causes-of-death-between-men-and-women-in-nyc" class="section level3">
 <h3>Are there differences in the leading causes of death between men and women in NYC?</h3>
-<pre><code>## Error: Can&#39;t subset elements that don&#39;t exist.
-## [31mx[39m Location 1 doesn&#39;t exist.
-## [34mi[39m There are only 0 elements.</code></pre>
+<p><img src="analysis_files/figure-html/plot%204-1.png" width="90%" /></p>
+<ul>
+<li>While there seem to be some visible gender differences in these leading causes of deaths in NYC, it is unclear whether these differences are statistically significant solely based on these plots. We further investigated these differences in our statistical analyses section below.</li>
+</ul>
 </div>
 </div>
 <div id="statistical-analyses" class="section level2">

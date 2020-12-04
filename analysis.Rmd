@@ -257,43 +257,96 @@ nyc_df_1 %>%
 
 ### Is there a statistically significant difference in death rates between men and women in New York City?
 
+__Summary statistics__
 
-```{r t test, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_df_1 %>%
+  group_by(sex) %>%
+  get_summary_stats(death_rate, type = "common") %>%
+  kable()
+```
 
-t_test_df = nyc_df %>%
-  select(death_rate, sex) %>%
-  mutate(
-    death_rate = as.numeric(death_rate),
-    sex = factor(sex)
-  )
+__Visualization__
 
-t.test(death_rate ~ sex, data = t_test_df)
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_df_1 %>%
+  ggplot(aes(x = sex, y = death_rate)) +
+  geom_boxplot() +
+  labs(x='Sex', y= 'Death rate')
+```
+
+__Assumptions__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_df_1 %>%
+  group_by(sex) %>%
+  shapiro_test(death_rate) %>%
+  kable()
 
 ```
 
-p-value = 0.479 > 0.05
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_male = nyc_df_1 %>%
+  filter(sex == "M") %>%
+  select(death_rate) 
 
-At 0.05 significance level, we fail to reject the null hypothesis and conclude that true mean difference in death rates between men and women is 0. Hence, we can state that there isn't any significant difference in the death rates between men and women in New York. 
+  qqnorm(nyc_male$death_rate) 
+  qqline(nyc_male$death_rate) 
+```
+
+From the boxplot visualization and the p-values (< 0.05) associated with the The Shapiro–Wilk test, there is evidence that the data from both the sex groups is not normally distributed. This is also evident from the qqplot above.     
+
+Since the normality assumption has been violated, the Wilcoxon rank sum test (non-parametric) will be performed. 
+
+__Test__
+
+```{r stat_test1, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+
+nyc_df_1 %>% 
+  wilcox_test(death_rate ~ sex) %>%
+  add_significance() %>%
+  kable()
+```
+
+p-value = 0.00125 < 0.05
+
+__Report__
+
+The respective median death rates for male and female groups are as follows: 20 and 17.45. Based on the Wilcoxon rank sum test result, we have evidence to state that there is a statistically significant difference in death rates between men and women in New York City (p = 0.00125). 
         
             
 ### Is there a statistically significant difference in death rates across different ethnicities in New York City?    
        
-         
+__Summary statistics__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_df_1 %>%
+  mutate(race_ethnicity = as.factor(race_ethnicity)) %>%
+  group_by(race_ethnicity) %>%
+  summarize(mean = mean(death_rate), 
+            sd = sd(death_rate), 
+            median = median(death_rate), 
+            IQR = IQR(death_rate, na.rm = T)) %>%
+  kable()
+```
+
+Since the "Other" and "Unknown" categories of race don't have any associated death rates, these categories have been filtered out. 
+
+__Visualization__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_df_1 %>%
+  filter(!race_ethnicity == "Other" & !race_ethnicity == "Unknown") %>%
+  ggplot(aes(x = race_ethnicity, y = death_rate)) +
+  geom_boxplot() +
+  labs(x='Race', y= 'Death rate')
+```
+
+__One-way ANOVA test__
+
 ```{r anova, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE}
-anova_df = nyc_df %>%
-  select(death_rate, race_ethnicity) %>%
-  mutate(
-    death_rate = as.numeric(death_rate),
-    race_ethnicity = recode(
-      race_ethnicity, 
-      "White Non-Hispanic" = "White",
-      "Black Non-Hispanic" = "Black",
-      "Other Race/ Ethnicity" = "Other",
-      "Asian and Pacific Islander" = "Asian/PI",
-      "Not Stated/Unknown" = "Unknown"
-      ),
-    race_ethnicity = factor(race_ethnicity)
-  )
+anova_df = nyc_df_1 %>%
+           filter(!race_ethnicity == "Other" & !race_ethnicity == "Unknown")
 
 anova_test(death_rate ~ race_ethnicity, data = anova_df) %>% kable()
 ```
@@ -303,7 +356,46 @@ p-value = 1.83e-14 < 0.05
 
 At 0.05 significance level, we reject the null hypothesis and conclude that there is a significant difference in death rates across different ethnicities, in New York City.
 
+__Multiple Comparisons__
 
+A Tukey pairwise-comparisons test is performed to account for multiple comparisons
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+mod.aov = aov(death_rate ~ race_ethnicity, data = anova_df)
+
+TukeyHSD(mod.aov) 
+```
+
+From the above table, it can be inferred that there was a significant difference in death rates for the following pairs: Black and Asian/PI, White-Asian/PI, Hispanic-Black, White-Hispanic. 
+
+__Assumptions__
+
+Homogeneity of variances   
+    
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+levene_test(death_rate ~ race_ethnicity, data = anova_df) %>% kable()
+```
+
+Levene’s test was performed to check for the homogeneity of variances assumption. Based on the p-value, it can be inferred that there is no homogeneity of variances in different ethnicities.  
+
+Normality
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+mod_residuals = residuals(object = mod.aov)
+
+shapiro.test(x = mod_residuals)
+```
+
+Since the p-value < 0.00000000000000022, it can be assumed that the residuals are not normally distributed. Therefore, a Kruskal-Wallis rank sum test will be performed because the assumptions of one-way have been violated. 
+
+__Kruskal-Wallis rank sum test__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+kruskal.test(death_rate ~ race_ethnicity, data = anova_df)
+```
+
+__Report__
+
+Based on the Kruskal-Wallis rank sum test result, we have evidence to state that there is a statistically significant difference in death rates across different ethnicities in New York City (p-value < 0.00000000000000022). 
 
 ```{r, echo = FALSE, message = FALSE, error = TRUE}
 

@@ -28,15 +28,6 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-      </style>
-
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
   pre:not([class]) {
@@ -462,22 +453,175 @@ div.tocify {
 <h2><strong>Statistical Analyses</strong></h2>
 <div id="is-there-a-statistically-significant-difference-in-death-rates-between-men-and-women-in-new-york-city" class="section level3">
 <h3>Is there a statistically significant difference in death rates between men and women in New York City?</h3>
-<pre><code>
-    Welch Two Sample t-test
-
-data:  death_rate by sex
-t = -0.70828, df = 704.9, p-value = 0.479
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -15.372408   7.221561
-sample estimates:
-mean in group F mean in group M 
-       51.40113        55.47655 </code></pre>
-<p>p-value = 0.479 &gt; 0.05</p>
-<p>At 0.05 significance level, we fail to reject the null hypothesis and conclude that true mean difference in death rates between men and women is 0. Hence, we can state that there isn’t any significant difference in the death rates between men and women in New York.</p>
+<p><strong>Summary statistics</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">sex</th>
+<th align="left">variable</th>
+<th align="right">n</th>
+<th align="right">min</th>
+<th align="right">max</th>
+<th align="right">median</th>
+<th align="right">iqr</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">se</th>
+<th align="right">ci</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">F</td>
+<td align="left">death_rate</td>
+<td align="right">354</td>
+<td align="right">2.4</td>
+<td align="right">491.4</td>
+<td align="right">17.45</td>
+<td align="right">46.900</td>
+<td align="right">51.401</td>
+<td align="right">78.049</td>
+<td align="right">4.148</td>
+<td align="right">8.158</td>
+</tr>
+<tr class="even">
+<td align="left">M</td>
+<td align="left">death_rate</td>
+<td align="right">354</td>
+<td align="right">2.8</td>
+<td align="right">421.0</td>
+<td align="right">20.00</td>
+<td align="right">59.625</td>
+<td align="right">55.477</td>
+<td align="right">75.024</td>
+<td align="right">3.987</td>
+<td align="right">7.842</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Visualization</strong></p>
+<p><img src="analysis_files/figure-html/unnamed-chunk-3-1.png" width="90%" /></p>
+<p><strong>Assumptions</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">sex</th>
+<th align="left">variable</th>
+<th align="right">statistic</th>
+<th align="right">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">F</td>
+<td align="left">death_rate</td>
+<td align="right">0.6276062</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">M</td>
+<td align="left">death_rate</td>
+<td align="right">0.6597610</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p><img src="analysis_files/figure-html/unnamed-chunk-5-1.png" width="90%" /></p>
+<p>From the boxplot visualization and the p-values (&lt; 0.05) associated with the The Shapiro–Wilk test, there is evidence that the data from both the sex groups is not normally distributed. This is also evident from the qqplot above.</p>
+<p>Since the normality assumption has been violated, the Wilcoxon rank sum test (non-parametric) will be performed.</p>
+<p><strong>Test</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">.y.</th>
+<th align="left">group1</th>
+<th align="left">group2</th>
+<th align="right">n1</th>
+<th align="right">n2</th>
+<th align="right">statistic</th>
+<th align="right">p</th>
+<th align="left">p.signif</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">death_rate</td>
+<td align="left">F</td>
+<td align="left">M</td>
+<td align="right">554</td>
+<td align="right">540</td>
+<td align="right">53875</td>
+<td align="right">0.00125</td>
+<td align="left">**</td>
+</tr>
+</tbody>
+</table>
+<p>p-value = 0.00125 &lt; 0.05</p>
+<p><strong>Report</strong></p>
+<p>The respective median death rates for male and female groups are as follows: 20 and 17.45. Based on the Wilcoxon rank sum test result, we have evidence to state that there is a statistically significant difference in death rates between men and women in New York City (p = 0.00125).</p>
 </div>
 <div id="is-there-a-statistically-significant-difference-in-death-rates-across-different-ethnicities-in-new-york-city" class="section level3">
 <h3>Is there a statistically significant difference in death rates across different ethnicities in New York City?</h3>
+<p><strong>Summary statistics</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">race_ethnicity</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">median</th>
+<th align="right">IQR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Asian/PI</td>
+<td align="right">27.31356</td>
+<td align="right">32.50134</td>
+<td align="right">11.4</td>
+<td align="right">36.300</td>
+</tr>
+<tr class="even">
+<td align="left">Black</td>
+<td align="right">65.94663</td>
+<td align="right">74.79932</td>
+<td align="right">26.1</td>
+<td align="right">107.375</td>
+</tr>
+<tr class="odd">
+<td align="left">Hispanic</td>
+<td align="right">35.85876</td>
+<td align="right">38.89141</td>
+<td align="right">16.0</td>
+<td align="right">71.400</td>
+</tr>
+<tr class="even">
+<td align="left">Other</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Unknown</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">White</td>
+<td align="right">84.74261</td>
+<td align="right">115.18831</td>
+<td align="right">24.6</td>
+<td align="right">116.200</td>
+</tr>
+</tbody>
+</table>
+<p>Since the “Other” and “Unknown” categories of race don’t have any associated death rates, these categories have been filtered out.</p>
+<p><strong>Visualization</strong></p>
+<p><img src="analysis_files/figure-html/unnamed-chunk-7-1.png" width="90%" /></p>
+<p><strong>One-way ANOVA test</strong></p>
 <table>
 <thead>
 <tr class="header">
@@ -504,6 +648,59 @@ mean in group F mean in group M
 </table>
 <p>p-value = 1.83e-14 &lt; 0.05</p>
 <p>At 0.05 significance level, we reject the null hypothesis and conclude that there is a significant difference in death rates across different ethnicities, in New York City.</p>
+<p><strong>Multiple Comparisons</strong></p>
+<p>A Tukey pairwise-comparisons test is performed to account for multiple comparisons</p>
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = death_rate ~ race_ethnicity, data = anova_df)
+
+$race_ethnicity
+                        diff        lwr       upr     p adj
+Black-Asian/PI     38.633070  18.644324  58.62182 0.0000048
+Hispanic-Asian/PI   8.545198 -11.471682  28.56208 0.6900543
+White-Asian/PI     57.429054  37.383762  77.47435 0.0000000
+Hispanic-Black    -30.087872 -50.076618 -10.09913 0.0006691
+White-Black        18.795984  -1.221215  38.81318 0.0746105
+White-Hispanic     48.883857  28.838564  68.92915 0.0000000</code></pre>
+<p>From the above table, it can be inferred that there was a significant difference in death rates for the following pairs: Black and Asian/PI, White-Asian/PI, Hispanic-Black, White-Hispanic.</p>
+<p><strong>Assumptions</strong></p>
+<p>Homogeneity of variances</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">df1</th>
+<th align="right">df2</th>
+<th align="right">statistic</th>
+<th align="right">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">704</td>
+<td align="right">18.61912</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p>Levene’s test was performed to check for the homogeneity of variances assumption. Based on the p-value, it can be inferred that there is no homogeneity of variances in different ethnicities.</p>
+<p>Normality</p>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  mod_residuals
+W = 0.7833, p-value &lt; 0.00000000000000022</code></pre>
+<p>Since the p-value &lt; 0.00000000000000022, it can be assumed that the residuals are not normally distributed. Therefore, a Kruskal-Wallis rank sum test will be performed because the assumptions of one-way have been violated.</p>
+<p><strong>Kruskal-Wallis rank sum test</strong></p>
+<pre><code>
+    Kruskal-Wallis rank sum test
+
+data:  death_rate by race_ethnicity
+Kruskal-Wallis chi-squared = 117.22, df = 3, p-value &lt;
+0.00000000000000022</code></pre>
+<p><strong>Report</strong></p>
+<p>Based on the Kruskal-Wallis rank sum test result, we have evidence to state that there is a statistically significant difference in death rates across different ethnicities in New York City (p-value &lt; 0.00000000000000022).</p>
 </div>
 </div>
 

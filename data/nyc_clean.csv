@@ -4,7 +4,7 @@
 2013,"Accidents Except Drug Posioning ","M","White",271,20.1,17.9
 2010,"Cerebrovascular Disease ","M","Hispanic",140,12.3,21.4
 2009,"Assault ","M","Black",255,30,30
-2012,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","F","Other",NA,NA,NA
+2012,"Mental and Behavioral Disorders","F","Other",NA,NA,NA
 2012,"Cerebrovascular Disease ","F","Asian/PI",102,17.5,20.7
 2009,"Essential Hypertension and Renal Diseases ","M","Asian/PI",26,5.1,7.2
 2010,"All Other Causes","F","White",2140,149.7,93.9
@@ -13,7 +13,7 @@
 2011,"Cerebrovascular Disease ","F","Black",281,26.8,23.6
 2012,"Diseases of Heart ","F","Unknown",76,NA,NA
 2013,"Intentional Self-Harm ","M","Unknown",17,NA,NA
-2011,"Human Immunodeficiency Virus Disease ","F","Hispanic",70,5.7,5.7
+2011,"HIV","F","Hispanic",70,5.7,5.7
 2011,"Accidents Except Drug Posioning ","F","Other",NA,NA,NA
 2014,"Chronic Liver Disease and Cirrhosis ","M","Other",10,NA,NA
 2007,"Diseases of Heart ","M","Black",2121,248.9,340.2
@@ -30,14 +30,14 @@
 2010,"All Other Causes","F","Black",1326,126.5,117.4
 2007,"Chronic Liver Disease and Cirrhosis ","M","Hispanic",107,9.8,12.8
 2011,"Cerebrovascular Disease ","F","White",466,32.9,17.6
-2008,"Human Immunodeficiency Virus Disease ","M","Black",356,41.9,41.8
+2008,"HIV","M","Black",356,41.9,41.8
 2007,"All Other Causes","F","White",1680,117.1,81.5
 2011,"Malignant Neoplasms ","M","White",3222,241.6,206.1
 2014,"Essential Hypertension and Renal Diseases ","F","Other",NA,NA,NA
 2013,"Malignant Neoplasms ","M","Black",1592,185.5,212.8
 2010,"Chronic Lower Respiratory Diseases ","F","Unknown",6,NA,NA
 2013,"Cerebrovascular Disease ","F","Black",271,25.9,21.7
-2013,"Human Immunodeficiency Virus Disease ","M","Black",204,23.8,23.2
+2013,"HIV","M","Black",204,23.8,23.2
 2010,"Cerebrovascular Disease ","M","Other",NA,NA,NA
 2009,"Diseases of Heart ","M","White",5168,384.2,319.8
 2009,"Diabetes Mellitus ","M","White",290,21.6,18.2
@@ -54,7 +54,7 @@
 2007,"Malignant Neoplasms ","M","Unknown",45,NA,NA
 2008,"Cerebrovascular Disease ","M","Hispanic",124,11.2,18.8
 2009,"Diseases of Heart ","F","Asian/PI",448,81.6,108.7
-2011,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Hispanic",145,12.6,13
+2011,"Mental and Behavioral Disorders","M","Hispanic",145,12.6,13
 2012,"Diabetes Mellitus ","F","Unknown",15,NA,NA
 2007,"Accidents Except Drug Posioning ","M","Other",5,NA,NA
 2010,"Accidents Except Drug Posioning ","M","White",271,20.2,18.4
@@ -62,7 +62,7 @@
 2014,"Septicemia ","M","Unknown",8,NA,NA
 2010,"Malignant Neoplasms ","M","Unknown",46,NA,NA
 2014,"Diseases of Heart ","F","Unknown",95,NA,NA
-2008,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Hispanic",172,15.6,16.3
+2008,"Mental and Behavioral Disorders","M","Hispanic",172,15.6,16.3
 2008,"Malignant Neoplasms ","M","Black",1464,172.4,220.4
 2008,"Essential Hypertension and Renal Diseases ","F","Other",NA,NA,NA
 2013,"Diabetes Mellitus ","M","Black",300,35,41.1
@@ -71,7 +71,7 @@
 2007,"Diabetes Mellitus ","F","White",231,16.1,9.8
 2008,"Certain Conditions originating in the Perinatal Period ","F","Other",NA,NA,NA
 2009,"Influenza ","M","White",555,41.3,34.3
-2014,"Human Immunodeficiency Virus Disease ","F","Black",102,9.7,8.5
+2014,"HIV","F","Black",102,9.7,8.5
 2011,"Cerebrovascular Disease ","M","Hispanic",147,12.8,20.9
 2013,"Septicemia ","F","Asian/PI",16,2.7,2.9
 2009,"Chronic Lower Respiratory Diseases ","M","Black",147,17.3,22.6
@@ -80,7 +80,7 @@
 2009,"Cerebrovascular Disease ","F","Other",NA,NA,NA
 2012,"Diseases of Heart ","F","Hispanic",1263,102,118.4
 2013,"Accidents Except Drug Posioning ","F","White",166,11.7,8.1
-2014,"Human Immunodeficiency Virus Disease ","F","Unknown",7,NA,NA
+2014,"HIV","F","Unknown",7,NA,NA
 2012,"Aortic Aneurysm and Dissection ","F","Other",NA,NA,NA
 2007,"Influenza ","F","Black",295,28,26.9
 2012,"Accidents Except Drug Posioning ","M","Hispanic",191,16.3,19.7
@@ -107,7 +107,7 @@
 2009,"Malignant Neoplasms ","M","Unknown",47,NA,NA
 2010,"Cerebrovascular Disease ","F","Unknown",NA,NA,NA
 2008,"Chronic Liver Disease and Cirrhosis ","F","Hispanic",63,5.3,6.2
-2007,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Unknown",10,NA,NA
+2007,"Mental and Behavioral Disorders","M","Unknown",10,NA,NA
 2008,"Malignant Neoplasms ","F","Unknown",36,NA,NA
 2007,"All Other Causes","F","Black",1230,116.8,113.4
 2007,"Cerebrovascular Disease ","F","Black",279,26.5,25.3
@@ -135,13 +135,13 @@
 2010,"Malignant Neoplasms ","M","Asian/PI",526,101,124.5
 2013,"All Other Causes","M","Hispanic",1193,101,146.4
 2014,"All Other Causes","M","Black",1375,159.3,177.8
-2011,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Unknown",5,NA,NA
-2012,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Unknown",7,NA,NA
+2011,"Mental and Behavioral Disorders","M","Unknown",5,NA,NA
+2012,"Mental and Behavioral Disorders","M","Unknown",7,NA,NA
 2011,"Influenza ","F","Black",273,26.1,22.8
 2010,"Influenza ","F","Black",275,26.2,23.6
 2012,"Chronic Lower Respiratory Diseases ","F","Unknown",8,NA,NA
 2012,"Cerebrovascular Disease ","M","Hispanic",129,11,17.2
-2014,"Human Immunodeficiency Virus Disease ","M","Other",10,NA,NA
+2014,"HIV","M","Other",10,NA,NA
 2009,"Accidents Except Drug Posioning ","M","Asian/PI",55,10.8,12.3
 2008,"Certain Conditions originating in the Perinatal Period ","M","Unknown",6,NA,NA
 2014,"Chronic Lower Respiratory Diseases ","F","White",515,36.3,21
@@ -171,7 +171,7 @@
 2012,"Alzheimer's Disease ","F","Hispanic",126,10.2,12.2
 2011,"Diseases of Heart ","F","White",5016,354.1,179.8
 2008,"All Other Causes","F","Asian/PI",214,40.2,50.3
-2008,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","F","White",86,6,5.5
+2008,"Mental and Behavioral Disorders","F","White",86,6,5.5
 2008,"Cerebrovascular Disease ","M","Black",206,24.3,31
 2013,"Diabetes Mellitus ","M","Unknown",19,NA,NA
 2010,"Essential Hypertension and Renal Diseases ","F","Black",252,24,21.4
@@ -183,10 +183,10 @@
 2012,"Diseases of Heart ","F","Black",2269,217.1,183.9
 2010,"Essential Hypertension and Renal Diseases ","F","Asian/PI",33,5.9,7.1
 2010,"Diseases of Heart ","M","Other",52,NA,NA
-2008,"Human Immunodeficiency Virus Disease ","M","Hispanic",222,20.1,22.7
+2008,"HIV","M","Hispanic",222,20.1,22.7
 2011,"Septicemia ","F","Unknown",NA,NA,NA
 2008,"Chronic Lower Respiratory Diseases ","F","Black",191,18.2,17.1
-2010,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Hispanic",138,12.1,12.9
+2010,"Mental and Behavioral Disorders","M","Hispanic",138,12.1,12.9
 2011,"All Other Causes","M","White",2165,162.3,139.5
 2009,"Chronic Liver Disease and Cirrhosis ","M","Asian/PI",17,3.3,3.5
 2008,"Chronic Lower Respiratory Diseases ","F","Other",NA,NA,NA
@@ -194,7 +194,7 @@
 2012,"Diabetes Mellitus ","M","Black",308,36,42.9
 2008,"All Other Causes","M","White",1824,135.9,119.9
 2014,"Diseases of Heart ","M","Other",63,NA,NA
-2013,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Hispanic",188,15.9,16.6
+2013,"Mental and Behavioral Disorders","M","Hispanic",188,15.9,16.6
 2013,"Certain Conditions originating in the Perinatal Period ","M","Unknown",25,NA,NA
 2012,"All Other Causes","F","Other",22,NA,NA
 2013,"Chronic Lower Respiratory Diseases ","M","Asian/PI",72,13,18.5
@@ -212,7 +212,7 @@
 2012,"Malignant Neoplasms ","F","Unknown",36,NA,NA
 2012,"Chronic Lower Respiratory Diseases ","F","Asian/PI",39,6.7,8
 2007,"Malignant Neoplasms ","F","Other",22,NA,NA
-2012,"Human Immunodeficiency Virus Disease ","M","Hispanic",103,8.8,10.1
+2012,"HIV","M","Hispanic",103,8.8,10.1
 2011,"Diseases of Heart ","F","Other",31,NA,NA
 2007,"Cerebrovascular Disease ","M","Black",213,25,33
 2009,"Chronic Lower Respiratory Diseases ","F","Unknown",7,NA,NA
@@ -229,22 +229,22 @@
 2013,"Diabetes Mellitus ","F","Hispanic",221,17.7,19.6
 2011,"Malignant Neoplasms ","M","Unknown",27,NA,NA
 2013,"Viral Hepatitis ","F","Asian/PI",15,2.5,2.5
-2009,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Other",NA,NA,NA
+2009,"Mental and Behavioral Disorders","M","Other",NA,NA,NA
 2014,"Diseases of Heart ","M","Unknown",115,NA,NA
 2009,"Diseases of Heart ","F","White",6297,438.3,226.2
-2011,"Human Immunodeficiency Virus Disease ","M","Hispanic",162,14.1,16.2
+2011,"HIV","M","Hispanic",162,14.1,16.2
 2014,"Malignant Neoplasms ","F","Asian/PI",502,80.2,80.6
 2012,"All Other Causes","M","Hispanic",1199,102.6,150.5
 2011,"Essential Hypertension and Renal Diseases ","M","Black",154,18.1,21.7
 2012,"Diseases of Heart ","M","Other",39,NA,NA
 2008,"Diabetes Mellitus ","F","Black",380,36.3,34.3
 2011,"All Other Causes","M","Black",1337,156.7,181.7
-2007,"Human Immunodeficiency Virus Disease ","F","Unknown",5,NA,NA
+2007,"HIV","F","Unknown",5,NA,NA
 2010,"Chronic Lower Respiratory Diseases ","M","Black",202,23.7,30.9
 2012,"Influenza ","F","Other",6,NA,NA
 2010,"All Other Causes","M","Other",25,NA,NA
 2014,"Cerebrovascular Disease ","F","White",418,29.5,15.6
-2008,"Human Immunodeficiency Virus Disease ","F","Black",227,21.7,20
+2008,"HIV","F","Black",227,21.7,20
 2010,"Septicemia ","F","Unknown",NA,NA,NA
 2008,"Diabetes Mellitus ","F","Hispanic",228,19.3,24.1
 2013,"Chronic Lower Respiratory Diseases ","F","White",521,36.6,21.6
@@ -252,7 +252,7 @@
 2012,"Influenza ","M","Asian/PI",76,14.1,20.9
 2011,"Accidents Except Drug Posioning ","F","Asian/PI",43,7.5,8.5
 2010,"Intentional Self-Harm ","F","Asian/PI",17,3,2.9
-2011,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Black",135,15.8,14.8
+2011,"Mental and Behavioral Disorders","M","Black",135,15.8,14.8
 2012,"Influenza ","F","Asian/PI",74,12.7,15.1
 2013,"Influenza ","F","Hispanic",204,16.3,18.5
 2013,"Malignant Neoplasms ","F","Other",43,NA,NA
@@ -292,7 +292,7 @@
 2007,"Chronic Lower Respiratory Diseases ","M","Unknown",NA,NA,NA
 2007,"Diseases of Heart ","M","Other",36,NA,NA
 2012,"Alzheimer's Disease ","F","Other",NA,NA,NA
-2009,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","F","White",75,5.2,5.1
+2009,"Mental and Behavioral Disorders","F","White",75,5.2,5.1
 2012,"Chronic Lower Respiratory Diseases ","F","White",507,35.7,21.4
 2009,"Essential Hypertension and Renal Diseases ","F","White",215,15,7.8
 2014,"Cerebrovascular Disease ","F","Unknown",10,NA,NA
@@ -306,7 +306,7 @@
 2009,"All Other Causes","M","Black",1246,146.7,167.7
 2013,"Accidents Except Drug Posioning ","M","Black",159,18.5,19.1
 2014,"Intentional Self-Harm ","M","Asian/PI",50,8.7,8.7
-2008,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","White",227,16.9,15.5
+2008,"Mental and Behavioral Disorders","M","White",227,16.9,15.5
 2011,"Assault ","M","Black",266,31.2,31.5
 2007,"Accidents Except Drug Posioning ","F","Other",NA,NA,NA
 2013,"All Other Causes","F","Asian/PI",320,53.3,59
@@ -332,7 +332,7 @@
 2012,"Certain Conditions originating in the Perinatal Period ","M","Unknown",17,NA,NA
 2008,"All Other Causes","F","Black",1268,121,116.1
 2012,"Septicemia ","F","Other",NA,NA,NA
-2011,"Human Immunodeficiency Virus Disease ","F","Black",144,13.8,12.4
+2011,"HIV","F","Black",144,13.8,12.4
 2008,"Alzheimer's Disease ","F","White",151,10.5,5.1
 2009,"Cerebrovascular Disease ","F","Hispanic",154,12.9,16
 2010,"Malignant Neoplasms ","F","White",3438,240.4,163
@@ -371,18 +371,18 @@
 2009,"Cerebrovascular Disease ","F","Black",245,23.4,21.3
 2010,"Essential Hypertension and Renal Diseases ","F","Hispanic",95,7.8,9.5
 2008,"Malignant Neoplasms ","M","Hispanic",1080,97.7,165.9
-2011,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","F","Unknown",NA,NA,NA
+2011,"Mental and Behavioral Disorders","F","Unknown",NA,NA,NA
 2013,"Influenza ","F","White",622,43.7,22.1
 2009,"Accidents Except Drug Posioning ","M","Black",134,15.8,16.8
 2012,"Influenza ","M","Hispanic",205,17.5,31.5
 2008,"Diabetes Mellitus ","M","Black",265,31.2,40.2
 2010,"Viral Hepatitis ","F","Unknown",NA,NA,NA
-2008,"Human Immunodeficiency Virus Disease ","M","Unknown",9,NA,NA
+2008,"HIV","M","Unknown",9,NA,NA
 2009,"Cerebrovascular Disease ","F","Unknown",5,NA,NA
 2014,"Cerebrovascular Disease ","F","Black",274,26.1,21.4
-2007,"Human Immunodeficiency Virus Disease ","M","Black",377,44.2,44.2
+2007,"HIV","M","Black",377,44.2,44.2
 2010,"Intentional Self-Harm ","F","Other",5,NA,NA
-2010,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","F","Other",NA,NA,NA
+2010,"Mental and Behavioral Disorders","F","Other",NA,NA,NA
 2010,"Malignant Neoplasms ","F","Asian/PI",414,73.6,79.9
 2009,"All Other Causes","M","Unknown",55,NA,NA
 2013,"Cerebrovascular Disease ","M","Asian/PI",71,12.8,16.1
@@ -392,7 +392,7 @@
 2011,"Essential Hypertension and Renal Diseases ","F","Unknown",NA,NA,NA
 2012,"Assault ","F","Other",NA,NA,NA
 2009,"Diseases of Heart ","M","Unknown",94,NA,NA
-2009,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Unknown",7,NA,NA
+2009,"Mental and Behavioral Disorders","M","Unknown",7,NA,NA
 2010,"Intentional Self-Harm ","M","White",182,13.6,12.3
 2013,"Chronic Liver Disease and Cirrhosis ","M","Asian/PI",29,5.2,5.4
 2009,"Malignant Neoplasms ","F","Unknown",41,NA,NA
@@ -413,9 +413,9 @@
 2010,"Cerebrovascular Disease ","F","Other",NA,NA,NA
 2014,"Influenza ","M","Asian/PI",105,18.3,25
 2011,"Diabetes Mellitus ","M","White",258,19.3,16.3
-2007,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Black",163,19.1,19
+2007,"Mental and Behavioral Disorders","M","Black",163,19.1,19
 2011,"Chronic Lower Respiratory Diseases ","M","Unknown",NA,NA,NA
-2007,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","White",261,19.5,17.6
+2007,"Mental and Behavioral Disorders","M","White",261,19.5,17.6
 2014,"Alzheimer's Disease ","F","Asian/PI",26,4.2,4.7
 2008,"Essential Hypertension and Renal Diseases ","M","Asian/PI",31,6.2,9.8
 2009,"Diseases of Heart ","F","Hispanic",1349,112.7,143.8
@@ -433,14 +433,14 @@
 2009,"Chronic Lower Respiratory Diseases ","M","Hispanic",111,9.9,18.3
 2013,"Influenza ","M","Asian/PI",102,18.4,26.8
 2011,"All Other Causes","M","Unknown",38,NA,NA
-2010,"Human Immunodeficiency Virus Disease ","F","Hispanic",79,6.5,6.5
+2010,"HIV","F","Hispanic",79,6.5,6.5
 2012,"Diabetes Mellitus ","M","Asian/PI",76,14.1,18
-2011,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","F","White",88,6.2,6.1
+2011,"Mental and Behavioral Disorders","F","White",88,6.2,6.1
 2011,"Influenza ","M","Hispanic",209,18.1,34.4
 2014,"All Other Causes","F","Hispanic",1135,89.6,96
 2011,"Diseases of Heart ","M","White",4220,316.4,260.2
 2013,"Chronic Lower Respiratory Diseases ","F","Hispanic",168,13.5,14.8
-2007,"Human Immunodeficiency Virus Disease ","M","Unknown",6,NA,NA
+2007,"HIV","M","Unknown",6,NA,NA
 2013,"Diabetes Mellitus ","M","Asian/PI",96,17.3,21.1
 2007,"Malignant Neoplasms ","M","Other",29,NA,NA
 2012,"Congenital Malformations, Deformations, and Chromosomal Abnormalities ","F","Unknown",8,NA,NA
@@ -519,7 +519,7 @@
 2007,"Certain Conditions originating in the Perinatal Period ","F","Other",NA,NA,NA
 2008,"Accidents Except Drug Posioning ","F","White",193,13.4,9.4
 2014,"Accidents Except Drug Posioning ","M","White",258,19.2,16.4
-2013,"Human Immunodeficiency Virus Disease ","F","Black",107,10.2,8.7
+2013,"HIV","F","Black",107,10.2,8.7
 2010,"All Other Causes","F","Unknown",18,NA,NA
 2012,"Influenza ","F","White",576,40.6,20.2
 2014,"All Other Causes","F","Unknown",48,NA,NA
@@ -570,19 +570,19 @@
 2011,"All Other Causes","F","Black",1473,140.7,128.8
 2013,"Essential Hypertension and Renal Diseases ","M","Unknown",15,NA,NA
 2011,"Essential Hypertension and Renal Diseases ","F","Hispanic",83,6.8,8.1
-2008,"Human Immunodeficiency Virus Disease ","M","Other",NA,NA,NA
+2008,"HIV","M","Other",NA,NA,NA
 2012,"Diseases of Heart ","M","Asian/PI",469,86.8,116.9
 2013,"Chronic Lower Respiratory Diseases ","F","Black",258,24.7,20.8
 2009,"Malignant Neoplasms ","F","Other",19,NA,NA
 2013,"Malignant Neoplasms ","M","Other",32,NA,NA
 2007,"All Other Causes","F","Other",15,NA,NA
-2012,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Hispanic",173,14.8,15.5
+2012,"Mental and Behavioral Disorders","M","Hispanic",173,14.8,15.5
 2008,"Accidents Except Drug Posioning ","F","Black",70,6.7,6.4
 2010,"Diabetes Mellitus ","M","Hispanic",187,16.4,27.3
 2008,"Influenza ","M","Hispanic",187,16.9,35.5
 2009,"All Other Causes","F","White",1684,117.2,77.2
 2011,"Certain Conditions originating in the Perinatal Period ","F","Unknown",14,NA,NA
-2009,"Human Immunodeficiency Virus Disease ","M","Unknown",8,NA,NA
+2009,"HIV","M","Unknown",8,NA,NA
 2008,"Influenza ","M","Other",5,NA,NA
 2010,"Diseases of Heart ","F","Hispanic",1316,108.1,133.2
 2012,"Alzheimer's Disease ","F","Black",115,11,8.9
@@ -636,7 +636,7 @@
 2007,"Essential Hypertension and Renal Diseases ","F","Black",166,15.8,15
 2007,"Diseases of Heart ","M","Unknown",86,NA,NA
 2009,"All Other Causes","F","Hispanic",775,64.7,75.3
-2013,"Human Immunodeficiency Virus Disease ","M","Hispanic",122,10.3,11.3
+2013,"HIV","M","Hispanic",122,10.3,11.3
 2012,"Assault ","M","Black",235,27.5,27.6
 2009,"Essential Hypertension and Renal Diseases ","F","Black",227,21.7,19.6
 2008,"All Other Causes","M","Other",8,NA,NA
@@ -645,18 +645,18 @@
 2010,"Cerebrovascular Disease ","F","White",382,26.7,14.1
 2013,"Diabetes Mellitus ","F","White",238,16.7,10.4
 2011,"Diseases of Heart ","M","Other",42,NA,NA
-2009,"Human Immunodeficiency Virus Disease ","M","Black",329,38.7,38.5
-2010,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","White",211,15.7,14.5
-2013,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","F","Hispanic",63,5,4.9
+2009,"HIV","M","Black",329,38.7,38.5
+2010,"Mental and Behavioral Disorders","M","White",211,15.7,14.5
+2013,"Mental and Behavioral Disorders","F","Hispanic",63,5,4.9
 2011,"All Other Causes","F","White",2445,172.6,105.4
 2009,"Diabetes Mellitus ","F","Other",NA,NA,NA
 2010,"Insitu or Benign / Uncertain Neoplasms ","F","Other",NA,NA,NA
 2013,"Assault ","M","Black",174,20.3,20.6
 2012,"Essential Hypertension and Renal Diseases ","F","Other",NA,NA,NA
 2011,"Alzheimer's Disease ","F","Other",NA,NA,NA
-2012,"Human Immunodeficiency Virus Disease ","M","Black",223,26.1,25.8
+2012,"HIV","M","Black",223,26.1,25.8
 2013,"Essential Hypertension and Renal Diseases ","M","Other",5,NA,NA
-2010,"Human Immunodeficiency Virus Disease ","M","Unknown",8,NA,NA
+2010,"HIV","M","Unknown",8,NA,NA
 2009,"Certain Conditions originating in the Perinatal Period ","M","Unknown",8,NA,NA
 2013,"Chronic Lower Respiratory Diseases ","M","Unknown",15,NA,NA
 2011,"Malignant Neoplasms ","M","Hispanic",1144,99.2,157.7
@@ -667,7 +667,7 @@
 2013,"Accidents Except Drug Posioning ","F","Other",NA,NA,NA
 2013,"Essential Hypertension and Renal Diseases ","F","White",206,14.5,7.5
 2013,"Certain Conditions originating in the Perinatal Period ","F","Other",NA,NA,NA
-2007,"Human Immunodeficiency Virus Disease ","F","Hispanic",109,9.3,9.5
+2007,"HIV","F","Hispanic",109,9.3,9.5
 2009,"Malignant Neoplasms ","F","Black",1735,165.7,151.1
 2007,"Influenza ","M","Other",7,NA,NA
 2011,"Chronic Liver Disease and Cirrhosis ","M","Hispanic",167,14.5,18.8
@@ -675,12 +675,12 @@
 2013,"Diabetes Mellitus ","F","Other",10,NA,NA
 2010,"Influenza ","M","White",614,45.8,37.6
 2010,"Accidents Except Drug Posioning ","M","Black",147,17.3,18.3
-2011,"Human Immunodeficiency Virus Disease ","M","Black",277,32.5,31.8
+2011,"HIV","M","Black",277,32.5,31.8
 2012,"All Other Causes","M","Other",24,NA,NA
 2007,"All Other Causes","M","Unknown",43,NA,NA
 2007,"Diabetes Mellitus ","F","Hispanic",205,17.6,22.6
 2007,"Essential Hypertension and Renal Diseases ","M","Black",137,16.1,22
-2014,"Human Immunodeficiency Virus Disease ","M","Unknown",10,NA,NA
+2014,"HIV","M","Unknown",10,NA,NA
 2008,"Diabetes Mellitus ","F","Asian/PI",47,8.8,11.3
 2012,"Chronic Lower Respiratory Diseases ","F","Hispanic",158,12.8,14.6
 2012,"Accidents Except Drug Posioning ","M","White",286,21.4,18.8
@@ -695,7 +695,7 @@
 2014,"Alzheimer's Disease ","F","Black",123,11.7,9.2
 2008,"Accidents Except Drug Posioning ","M","Asian/PI",53,10.6,12.2
 2011,"Malignant Neoplasms ","F","Asian/PI",451,79.1,86.1
-2010,"Human Immunodeficiency Virus Disease ","M","Hispanic",189,16.5,18.4
+2010,"HIV","M","Hispanic",189,16.5,18.4
 2014,"Essential Hypertension and Renal Diseases ","M","White",175,13,10.5
 2010,"All Other Causes","M","Black",1230,144.5,166.2
 2014,"Diabetes Mellitus ","F","Unknown",9,NA,NA
@@ -724,7 +724,7 @@
 2011,"Intentional Self-Harm ","M","Unknown",NA,NA,NA
 2007,"Assault ","M","Hispanic",114,10.5,9.9
 2011,"Chronic Lower Respiratory Diseases ","M","Asian/PI",73,13.8,22
-2007,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","F","Black",87,8.3,7.4
+2007,"Mental and Behavioral Disorders","F","Black",87,8.3,7.4
 2009,"Chronic Lower Respiratory Diseases ","F","Black",188,18,16.4
 2012,"All Other Causes","M","Unknown",78,NA,NA
 2008,"Intentional Self-Harm ","M","White",195,14.5,13.1
@@ -746,7 +746,7 @@
 2011,"Chronic Lower Respiratory Diseases ","F","Asian/PI",30,5.3,6.6
 2008,"Essential Hypertension and Renal Diseases ","M","White",165,12.3,10.3
 2009,"Influenza ","M","Black",207,24.4,33.3
-2011,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","F","Hispanic",56,4.6,4.5
+2011,"Mental and Behavioral Disorders","F","Hispanic",56,4.6,4.5
 2007,"Cerebrovascular Disease ","M","Asian/PI",56,11.6,16.2
 2007,"Diseases of Heart ","M","Hispanic",1327,121.7,238.4
 2009,"Congenital Malformations, Deformations, and Chromosomal Abnormalities ","F","Other",NA,NA,NA
@@ -761,14 +761,14 @@
 2011,"Diabetes Mellitus ","F","Other",8,NA,NA
 2014,"Diabetes Mellitus ","M","Hispanic",186,15.6,23.2
 2010,"Accidents Except Drug Posioning ","F","Unknown",NA,NA,NA
-2008,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Unknown",13,NA,NA
+2008,"Mental and Behavioral Disorders","M","Unknown",13,NA,NA
 2013,"Cerebrovascular Disease ","F","Unknown",14,NA,NA
 2014,"Cerebrovascular Disease ","M","Unknown",8,NA,NA
 2011,"Accidents Except Drug Posioning ","M","Other",10,NA,NA
-2013,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","White",286,21.2,19.5
+2013,"Mental and Behavioral Disorders","M","White",286,21.2,19.5
 2013,"Chronic Lower Respiratory Diseases ","M","Hispanic",142,12,20
 2011,"Influenza ","F","Unknown",8,NA,NA
-2014,"Human Immunodeficiency Virus Disease ","M","Black",196,22.7,21.7
+2014,"HIV","M","Black",196,22.7,21.7
 2008,"Influenza ","F","White",621,43.3,22.2
 2010,"Diseases of Heart ","M","Black",2015,236.7,307.7
 2007,"Diabetes Mellitus ","M","White",237,17.7,15
@@ -783,7 +783,7 @@
 2014,"Malignant Neoplasms ","M","Hispanic",1146,96,143.5
 2014,"Chronic Lower Respiratory Diseases ","F","Hispanic",193,15.2,16.8
 2010,"All Other Causes","M","Unknown",32,NA,NA
-2014,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Hispanic",191,16,16.6
+2014,"Mental and Behavioral Disorders","M","Hispanic",191,16,16.6
 2012,"Essential Hypertension and Renal Diseases ","M","Asian/PI",39,7.2,10.8
 2007,"Cerebrovascular Disease ","M","Hispanic",126,11.6,20
 2011,"Diabetes Mellitus ","F","White",253,17.9,11.1
@@ -811,20 +811,20 @@
 2013,"Influenza ","M","Hispanic",233,19.7,33.1
 2007,"Accidents Except Drug Posioning ","M","Unknown",8,NA,NA
 2012,"Accidents Except Drug Posioning ","F","Asian/PI",34,5.8,6.4
-2009,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Hispanic",145,12.9,13.5
+2009,"Mental and Behavioral Disorders","M","Hispanic",145,12.9,13.5
 2012,"All Other Causes","M","Asian/PI",333,61.6,79.7
 2007,"Diseases of Heart ","F","White",7050,491.4,250.7
 2008,"Influenza ","F","Asian/PI",73,13.7,19.1
 2011,"Cerebrovascular Disease ","F","Asian/PI",98,17.2,20.6
-2009,"Human Immunodeficiency Virus Disease ","F","Black",208,19.9,17.9
+2009,"HIV","F","Black",208,19.9,17.9
 2014,"Diabetes Mellitus ","F","Black",398,37.9,31.6
 2012,"Cerebrovascular Disease ","M","Other",7,NA,NA
 2012,"Intentional Self-Harm ","M","Unknown",8,NA,NA
 2011,"Diseases of Heart ","M","Black",1840,215.7,268.3
 2014,"Congenital Malformations, Deformations, and Chromosomal Abnormalities ","F","Other",NA,NA,NA
 2008,"All Other Causes","F","Other",19,NA,NA
-2011,"Human Immunodeficiency Virus Disease ","F","Unknown",NA,NA,NA
-2007,"Human Immunodeficiency Virus Disease ","M","Other",NA,NA,NA
+2011,"HIV","F","Unknown",NA,NA,NA
+2007,"HIV","M","Other",NA,NA,NA
 2010,"Chronic Lower Respiratory Diseases ","F","White",501,35,20.7
 2010,"Diabetes Mellitus ","F","Asian/PI",51,9.1,11.3
 2011,"Diseases of Heart ","M","Asian/PI",452,85.5,117.8
@@ -840,35 +840,35 @@
 2008,"Diseases of Heart ","M","Other",39,NA,NA
 2010,"Essential Hypertension and Renal Diseases ","M","Asian/PI",30,5.8,8.7
 2012,"Diabetes Mellitus ","F","White",240,16.9,10.3
-2007,"Human Immunodeficiency Virus Disease ","M","Hispanic",218,20,23.1
+2007,"HIV","M","Hispanic",218,20,23.1
 2008,"Cerebrovascular Disease ","M","Other",5,NA,NA
 2012,"Malignant Neoplasms ","M","Other",34,NA,NA
 2008,"All Other Causes","F","Hispanic",885,74.9,90.2
-2013,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Unknown",21,NA,NA
+2013,"Mental and Behavioral Disorders","M","Unknown",21,NA,NA
 2009,"Nephritis, Nephrotic Syndrome and Nephrisis ","F","Other",NA,NA,NA
 2014,"Chronic Liver Disease and Cirrhosis ","M","Asian/PI",31,5.4,5.3
 2008,"Essential Hypertension and Renal Diseases ","F","White",151,10.5,5.9
 2012,"Influenza ","M","Black",242,28.3,37.4
 2007,"Malignant Neoplasms ","M","Hispanic",1013,92.9,163.5
 2009,"Essential Hypertension and Renal Diseases ","M","Other",NA,NA,NA
-2012,"Human Immunodeficiency Virus Disease ","M","Unknown",9,NA,NA
+2012,"HIV","M","Unknown",9,NA,NA
 2008,"Influenza ","M","Asian/PI",90,18.1,30.2
 2009,"Malignant Neoplasms ","M","Other",12,NA,NA
 2010,"Chronic Lower Respiratory Diseases ","M","Unknown",12,NA,NA
 2010,"Malignant Neoplasms ","F","Black",1768,168.6,151.8
 2012,"Cerebrovascular Disease ","F","Hispanic",169,13.6,15.7
 2012,"Chronic Liver Disease and Cirrhosis ","M","Asian/PI",20,3.7,4.1
-2010,"Human Immunodeficiency Virus Disease ","M","Black",297,34.9,34
+2010,"HIV","M","Black",297,34.9,34
 2011,"Diseases of Heart ","F","Hispanic",1348,110,131.8
 2011,"Assault ","F","Unknown",NA,NA,NA
 2013,"Accidents Except Drug Posioning ","M","Other",5,NA,NA
 2007,"Accidents Except Drug Posioning ","F","Black",87,8.3,8.1
-2014,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","White",314,23.4,21.4
+2014,"Mental and Behavioral Disorders","M","White",314,23.4,21.4
 2014,"Essential Hypertension and Renal Diseases ","M","Unknown",9,NA,NA
 2009,"Influenza ","F","Asian/PI",83,15.1,20.3
 2007,"All Other Causes","M","Black",1163,136.5,162.4
-2014,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Other",12,NA,NA
-2009,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","White",221,16.4,14.8
+2014,"Mental and Behavioral Disorders","M","Other",12,NA,NA
+2009,"Mental and Behavioral Disorders","M","White",221,16.4,14.8
 2011,"Influenza ","M","Asian/PI",94,17.8,28.7
 2013,"Diseases of Heart ","M","Hispanic",1307,110.7,183.3
 2011,"Chronic Lower Respiratory Diseases ","M","Black",200,23.4,29.1
@@ -876,7 +876,7 @@
 2007,"Cerebrovascular Disease ","M","White",267,20,16.7
 2013,"Cerebrovascular Disease ","F","Asian/PI",80,13.3,14.4
 2014,"Diabetes Mellitus ","F","Asian/PI",50,8,8.5
-2014,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","F","Unknown",6,NA,NA
+2014,"Mental and Behavioral Disorders","F","Unknown",6,NA,NA
 2007,"Septicemia ","F","Black",89,8.5,8.1
 2011,"All Other Causes","M","Other",27,NA,NA
 2007,"All Other Causes","M","Other",24,NA,NA
@@ -958,7 +958,7 @@
 2014,"Accidents Except Drug Posioning ","M","Hispanic",176,14.7,16.9
 2014,"Accidents Except Drug Posioning ","M","Black",148,17.1,17.7
 2014,"Diabetes Mellitus ","M","Black",318,36.8,42.2
-2011,"Human Immunodeficiency Virus Disease ","M","Unknown",10,NA,NA
+2011,"HIV","M","Unknown",10,NA,NA
 2013,"All Other Causes","F","White",2595,182.5,111.1
 2008,"Chronic Lower Respiratory Diseases ","M","Hispanic",132,11.9,22.8
 2014,"Essential Hypertension and Renal Diseases ","F","Black",207,19.7,15.9
@@ -966,7 +966,7 @@
 2008,"Intentional Self-Harm ","F","Unknown",NA,NA,NA
 2013,"Influenza ","M","White",618,45.9,36.7
 2008,"Diseases of Heart ","F","Hispanic",1445,122.3,160.7
-2009,"Human Immunodeficiency Virus Disease ","M","Hispanic",196,17.5,20
+2009,"HIV","M","Hispanic",196,17.5,20
 2012,"Accidents Except Drug Posioning ","M","Unknown",11,NA,NA
 2011,"Certain Conditions originating in the Perinatal Period ","M","Other",NA,NA,NA
 2014,"Influenza ","F","Hispanic",218,17.2,18.8
@@ -984,7 +984,7 @@
 2008,"Chronic Lower Respiratory Diseases ","M","Unknown",10,NA,NA
 2012,"Intentional Self-Harm ","F","Asian/PI",33,5.6,5.8
 2012,"Influenza ","F","Black",295,28.2,24.1
-2009,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","F","Hispanic",57,4.8,4.7
+2009,"Mental and Behavioral Disorders","F","Hispanic",57,4.8,4.7
 2008,"Malignant Neoplasms ","M","White",3361,250.4,214.3
 2007,"Influenza ","M","Asian/PI",66,13.6,25.7
 2007,"Congenital Malformations, Deformations, and Chromosomal Abnormalities ","F","Other",NA,NA,NA
@@ -1015,7 +1015,7 @@
 2012,"Diseases of Heart ","F","Other",48,NA,NA
 2010,"Diabetes Mellitus ","M","Asian/PI",64,12.3,15.5
 2013,"Cerebrovascular Disease ","F","White",427,30,16.4
-2012,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","White",272,20.3,18.7
+2012,"Mental and Behavioral Disorders","M","White",272,20.3,18.7
 2007,"Accidents Except Drug Posioning ","F","Hispanic",71,6.1,7.1
 2008,"Assault ","M","Black",286,33.7,33.8
 2010,"Chronic Liver Disease and Cirrhosis ","M","Hispanic",150,13.1,17.6
@@ -1025,7 +1025,7 @@
 2008,"Diseases of Heart ","F","Asian/PI",456,85.6,117.7
 2012,"Congenital Malformations, Deformations, and Chromosomal Abnormalities ","F","Other",NA,NA,NA
 2007,"Diseases of Heart ","F","Unknown",82,NA,NA
-2009,"Human Immunodeficiency Virus Disease ","F","Hispanic",96,8,8.1
+2009,"HIV","F","Hispanic",96,8,8.1
 2007,"Assault ","F","Other",NA,NA,NA
 2011,"Accidents Except Drug Posioning ","M","Asian/PI",61,11.5,14.8
 2014,"Malignant Neoplasms ","M","White",3142,234,195.1
@@ -1049,8 +1049,8 @@
 2014,"Essential Hypertension and Renal Diseases ","F","Unknown",NA,NA,NA
 2012,"All Other Causes","M","Black",1320,154.3,175
 2008,"Malignant Neoplasms ","M","Unknown",60,NA,NA
-2012,"Human Immunodeficiency Virus Disease ","F","Black",136,13,11.6
-2008,"Human Immunodeficiency Virus Disease ","F","Hispanic",113,9.6,9.6
+2012,"HIV","F","Black",136,13,11.6
+2008,"HIV","F","Hispanic",113,9.6,9.6
 2014,"Alzheimer's Disease ","F","Hispanic",142,11.2,12.5
 2008,"All Other Causes","F","Unknown",42,NA,NA
 2010,"Diabetes Mellitus ","F","White",258,18,11.1
@@ -1064,9 +1064,9 @@
 2008,"Accidents Except Drug Posioning ","F","Asian/PI",36,6.8,8.5
 2014,"Alzheimer's Disease ","F","White",276,19.5,8.6
 2013,"Diabetes Mellitus ","F","Unknown",15,NA,NA
-2010,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Unknown",6,NA,NA
-2007,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","Hispanic",183,16.8,17.9
-2009,"Human Immunodeficiency Virus Disease ","F","Unknown",NA,NA,NA
+2010,"Mental and Behavioral Disorders","M","Unknown",6,NA,NA
+2007,"Mental and Behavioral Disorders","M","Hispanic",183,16.8,17.9
+2009,"HIV","F","Unknown",NA,NA,NA
 2008,"Diseases of Heart ","F","White",6836,476.2,245.5
 2009,"Cerebrovascular Disease ","M","White",227,16.9,14.2
 2008,"Diabetes Mellitus ","M","Asian/PI",52,10.4,14.9
@@ -1074,16 +1074,16 @@
 2012,"All Other Causes","F","Hispanic",1109,89.5,98.8
 2007,"Diabetes Mellitus ","F","Asian/PI",34,6.6,8.3
 2008,"Chronic Lower Respiratory Diseases ","F","Hispanic",156,13.2,16.8
-2013,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","F","Unknown",6,NA,NA
-2011,"Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use ","M","White",254,19,17.3
+2013,"Mental and Behavioral Disorders","F","Unknown",6,NA,NA
+2011,"Mental and Behavioral Disorders","M","White",254,19,17.3
 2008,"Accidents Except Drug Posioning ","F","Other",NA,NA,NA
 2009,"Diabetes Mellitus ","M","Other",NA,NA,NA
 2010,"Malignant Neoplasms ","M","Other",25,NA,NA
-2014,"Human Immunodeficiency Virus Disease ","M","Hispanic",92,7.7,8.7
-2010,"Human Immunodeficiency Virus Disease ","F","Black",152,14.5,12.9
+2014,"HIV","M","Hispanic",92,7.7,8.7
+2010,"HIV","F","Black",152,14.5,12.9
 2008,"Nephritis, Nephrotic Syndrome and Nephrisis ","F","Asian/PI",13,2.4,3.3
 2014,"Chronic Lower Respiratory Diseases ","F","Unknown",12,NA,NA
-2007,"Human Immunodeficiency Virus Disease ","F","Black",248,23.6,22.1
+2007,"HIV","F","Black",248,23.6,22.1
 2010,"Atherosclerosis ","F","Unknown",NA,NA,NA
 2014,"All Other Causes","F","Black",1536,146.4,126.4
 2009,"Nephritis, Nephrotic Syndrome and Nephrisis ","F","Black",75,7.2,6.7

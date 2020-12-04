@@ -44,9 +44,9 @@ nyc_df$leading_cause =
 
 ```
 
-## **Top 10 Leading Causes of Death**
+## **Leading Causes of Death**
 
-### What are the top 10 leading causes of death in the US?
+### What are the leading causes of death in the US?
 
 ```{r us plot 1, echo = FALSE, error = TRUE, message = FALSE}
 nyc_df_1 = read_csv(file = "./data/nyc_clean.csv")
@@ -98,24 +98,54 @@ animate(anim_us, nframes = 100)
 
 ```
 
-### What are the top 10 leading causes of death in NYC?
+### What are the leading causes of death in NYC?
 
 ```{r plot 1, echo = FALSE, error = TRUE, message = FALSE}
 nyc_df_1 = read_csv(file = "./data/nyc_clean.csv")
 
-nyc_df_1 %>%
-  group_by(leading_cause) %>%
-  summarize(total_death = sum(deaths, na.rm = TRUE)) %>%
-  arrange(desc(total_death)) %>%
-  head(10) %>%
-  mutate(leading_cause = fct_reorder(leading_cause, total_death)) %>% 
-  ggplot(aes(x = leading_cause, y = total_death, fill = leading_cause)) +
-  geom_col() +
-  labs(title = "Top 10 Leading Causes of Death in NYC", 
-    x = "Cause of Death", 
-    y = "Number of Deaths") +
-  theme(legend.position = "none") +
-  coord_flip() 
+# to create ranking
+nyc_df_2 = nyc_df_1 %>%
+          subset(nyc_df_1$leading_cause != "All Other Causes") %>%
+          group_by(leading_cause, year) %>% 
+          summarise(total_death = sum(deaths)) %>% 
+          arrange(desc(total_death)) %>% 
+          subset(total_death > 200) %>%
+          group_by(year) %>% 
+          mutate(order = min_rank(total_death) * 1.0) %>% 
+          ungroup()
+
+options(scipen=999)
+
+#animated plot for nyc! 
+anim_nyc = nyc_df_2 %>%
+  ggplot(aes(order, group = leading_cause)) +
+  geom_tile(aes(y = total_death / 2, height = total_death, width = 0.9, fill = leading_cause)) +
+  theme(axis.text.y = element_blank(), axis.title.y = element_blank()) +
+  scale_y_continuous(name = "Total Death Count") +
+  transition_states(year, transition_length = 1, state_length = 3) +
+  geom_text(aes(y = 0, label = leading_cause), hjust = 1) +
+  coord_flip(clip = "off") +
+  ggtitle("Top Causes of Death in NYC by Year: {closest_state}")+
+  theme(legend.position = "none", 
+        plot.margin = margin(1,1,1,7.5, 'cm'), 
+        title = element_text(size = 9))
+
+animate(anim_nyc, nframes = 100)
+
+#original static plot we made for NYC
+#nyc_df_1 %>%
+  #group_by(leading_cause) %>%
+  #summarize(total_death = sum(deaths, na.rm = TRUE)) %>%
+  #arrange(desc(total_death)) %>%
+  #head(10) %>%
+  #mutate(leading_cause = fct_reorder(leading_cause, total_death)) %>% 
+  #ggplot(aes(x = leading_cause, y = total_death, fill = leading_cause)) +
+  #geom_col() +
+  #labs(title = "Top 10 Leading Causes of Death in NYC", 
+    #x = "Cause of Death", 
+    #y = "Number of Deaths") +
+  #theme(legend.position = "none") +
+  #coord_flip() 
   
 ```
 
@@ -139,9 +169,9 @@ us_deaths = us_df %>%
 # "Cerebrovascular diseases"
 ```
 
-## **Changes in the Leading Cause of Death**
+## **Changes in the Leading Causes of Death**
 
-### How has the death rate of top 3 leading causes changed over the years in the US?
+### How has the death count of top leading causes changed over the years in the US?
 ```{r us plot 2, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE}
 US_df_1_plot_1 = 
   US_df_1 %>% 
@@ -152,24 +182,24 @@ US_df_1_plot_1 =
   mutate(x113_cause_name = fct_reorder(x113_cause_name, total_death)) %>% 
   ggplot(aes(x = year, y = total_death, color = x113_cause_name)) + 
   geom_line(size = 1) + 
-  labs(title = 'Top 3 Leading Causes of Death (2000-2015)', x = 'Year', y = 'Death Count') + 
+  labs(title = 'Top 3 Leading Causes of Death in US (2000-2015)', x = 'Year', y = 'Death Count') + 
   transition_reveal(year)
 
 US_df_1_plot_1
 ```
 
-### How has the death rate of top 3 leading causes changed over the years in NYC?
+### How has the death count of top 2 leading causes changed over the years in NYC?
 
 ```{r plot 2, echo = FALSE, error = TRUE, message = FALSE}
 nyc_change = 
   nyc_df %>%
-  filter(leading_cause %in% c("Malignant Neoplasms", "All Other Causes", "Diseases of Heart")) %>%
+  filter(leading_cause %in% c("Malignant Neoplasms", "Diseases of Heart")) %>%
   mutate(deaths = as.numeric(deaths)) %>%
   group_by(year, leading_cause) %>%  
   summarize(total_death = sum(deaths)) %>%
   ggplot(aes(x= year, y = total_death, color = leading_cause)) + 
   geom_line(size=1) + 
-  labs(title='Top 3 leading causes of death (2007-2014)', x='Year', y='Death count')+ 
+  labs(title='Top 2 Leading Causes of Death in NYC (2007-2014)', x='Year', y='Death count')+ 
   theme(legend.text= element_text(size =8))+ 
   transition_reveal(year)
 
@@ -177,21 +207,21 @@ nyc_change
 ```
 
 
-## **Racial and Sex Differences in U.S. Mortality**
+## **Racial and Sex Differences in NYC Mortality**
 
-### How have the top 3 leading causes of death changed for each race in NYC?
+### How have the top 2 leading causes of death changed for each race in NYC?
 
 
 ```{r plot 3, echo = FALSE, error = TRUE, message = FALSE}
 
 nyc_df %>%
-  filter(leading_cause %in% c("Malignant Neoplasms", "All Other Causes", "Diseases of Heart")) %>%
+  filter(leading_cause %in% c("Malignant Neoplasms", "Diseases of Heart")) %>%
   mutate(deaths = as.numeric(deaths)) %>%
   group_by(year, leading_cause, race_ethnicity) %>%  
   summarize(total_death = sum(deaths)) %>%
   ggplot(aes(x= year, y = total_death, color = leading_cause)) + 
   geom_line(size=1) + 
-  labs(title='Top 3 leading causes of death by ethnicity (2007-2014)', x='Year', y='Death count') +
+  labs(title='Top 2 leading causes of death by ethnicity in NYC (2007-2014)', x='Year', y='Death count') +
   facet_wrap(~race_ethnicity, ncol=3, scales = 'free_y')
 
 ```
@@ -201,16 +231,14 @@ nyc_df %>%
 ```{r plot 4, echo = FALSE, error = TRUE, message = FALSE}
 
 nyc_df %>%
-  filter(leading_cause %in% c("Accidents Except Drug Posioning",
-                              "Diabetes Mellitus", 
-                              "Human Immunodeficiency Virus Disease", 
-                              "Cerebrovascular Disease")) %>% 
+  ungroup() %>%
+  filter(leading_cause %in% c("Diseases of Heart ","Malignant Neoplasms ", "Diabetes Mellitus ", "Chronic Lower Respiratory Diseases ")) %>% 
   group_by(leading_cause, sex) %>% 
-  count() %>%
-  ggplot(aes(x = sex, y = n, fill = sex)) +
+  summarize(total_death = sum(deaths, na.rm = TRUE)) %>%
+  ggplot(aes(x = sex, y = total_death, fill = sex)) +
   geom_col() +
-  labs(title='Gender differences in leading causes of death', x='Sex', y= 'Death count') +
-  facet_wrap(~leading_cause)
+  labs(title='Gender differences in leading causes of death in NYC', x='Sex', y= 'Death count') +
+  facet_wrap(~leading_cause, scales = 'free_y')
 
 ```
 

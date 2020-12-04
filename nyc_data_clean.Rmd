@@ -30,12 +30,14 @@ janitor::clean_names() %>%
     leading_cause,
     into = c("leading_cause", NA),
     sep = "\\(",
-    )
+    ) 
+
+nyc_df$leading_cause[nyc_df$leading_cause == "Human Immunodeficiency Virus Disease "] = "HIV"
+
+nyc_df$leading_cause[nyc_df$leading_cause == "Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use "] = "Mental and Behavioral Disorders"
 
 write.csv(nyc_df,"data\\nyc_clean.csv", row.names = FALSE)
 
-nyc_df %>% 
-  view()
 ```
 
 

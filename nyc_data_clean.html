@@ -425,7 +425,7 @@ janitor::clean_names() %&gt;%
     leading_cause,
     into = c(&quot;leading_cause&quot;, NA),
     sep = &quot;\\(&quot;,
-    )</code></pre>
+    ) </code></pre>
 <pre><code>## 
 ## -- Column specification --------------------------------------------------------
 ## cols(
@@ -455,10 +455,11 @@ janitor::clean_names() %&gt;%
 <pre><code>## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 96 rows [9, 27,
 ## 29, 33, 51, 69, 111, 135, 136, 148, 153, 162, 172, 189, 194, 198, 236, 240, 244,
 ## 261, ...].</code></pre>
-<pre class="r"><code>write.csv(nyc_df,&quot;data\\nyc_clean.csv&quot;, row.names = FALSE)
+<pre class="r"><code>nyc_df$leading_cause[nyc_df$leading_cause == &quot;Human Immunodeficiency Virus Disease &quot;] = &quot;HIV&quot;
 
-nyc_df %&gt;% 
-  view()</code></pre>
+nyc_df$leading_cause[nyc_df$leading_cause == &quot;Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use &quot;] = &quot;Mental and Behavioral Disorders&quot;
+
+write.csv(nyc_df,&quot;data\\nyc_clean.csv&quot;, row.names = FALSE)</code></pre>
 
 
 

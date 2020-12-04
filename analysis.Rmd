@@ -41,8 +41,8 @@ nyc_df$leading_cause =
 
 ```
 
-### What are the top 10 leading causes of death in the US?
 
+### What are the top 10 leading causes of death in the US?
 
 ```{r us plot 1, echo = FALSE, error = TRUE, message = FALSE}
 nyc_df_1 = read_csv(file = "./data/nyc_clean.csv")
@@ -85,26 +85,11 @@ nyc_df_1 %>%
   theme(legend.position = "none") +
   coord_flip() 
   
-
 ```
 
 
-### How has the death rate of top 3 leading causes changed over the years in NYC?
 
-
-```{r plot 2, echo = FALSE, error = TRUE, message = FALSE}
-nyc_change = 
-  nyc_df %>%
-  filter(leading_cause %in% c("Malignant Neoplasms", "All Other Causes", "Diseases of Heart")) %>%
-  mutate(deaths = as.numeric(deaths)) %>%
-  group_by(year, leading_cause) %>%  
-  summarize(total_death = sum(deaths)) %>%
-  ggplot(aes(x= year, y = total_death, color = leading_cause)) + 
-  geom_line(size=1) + 
-  labs(title='Top 3 leading causes of death (2007-2014)', x='Year', y='Death count')+ 
-  theme(legend.text= element_text(size =8))
-
-
+```{r, echo = FALSE, message = FALSE}
 # Death rate change for US
 
 us_df = read_csv(file = "./data/Leading_Causes_of_Death_US_Only.csv", col_types = "ffffid") %>%
@@ -120,7 +105,39 @@ us_deaths = us_df %>%
 # "Diseases of heart"
 # "Malignant neoplasms"
 # "Cerebrovascular diseases"
+```
 
+### How has the death rate of top 3 leading causes changed over the years in the US?
+```{r us plot 2, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE}
+US_df_1_plot_1 = 
+  US_df_1 %>% 
+  filter(x113_cause_name == c("Diseases of heart", "Malignant neoplasms", "Cerebrovascular diseases")) %>% 
+  group_by(year, x113_cause_name) %>%  
+  summarize(total_death = sum(deaths)) %>%
+  arrange(desc(total_death)) %>%
+  mutate(x113_cause_name = fct_reorder(x113_cause_name, total_death)) %>% 
+  ggplot(aes(x = year, y = total_death, color = x113_cause_name)) + 
+  geom_line(size = 1) + 
+  labs(title = 'Top 3 Leading Causes of Death (2000-2015)', x = 'Year', y = 'Death Count') 
+
+US_df_1_plot_1
+```
+
+### How has the death rate of top 3 leading causes changed over the years in NYC?
+
+```{r plot 2, echo = FALSE, error = TRUE, message = FALSE}
+nyc_change = 
+  nyc_df %>%
+  filter(leading_cause %in% c("Malignant Neoplasms", "All Other Causes", "Diseases of Heart")) %>%
+  mutate(deaths = as.numeric(deaths)) %>%
+  group_by(year, leading_cause) %>%  
+  summarize(total_death = sum(deaths)) %>%
+  ggplot(aes(x= year, y = total_death, color = leading_cause)) + 
+  geom_line(size=1) + 
+  labs(title='Top 3 leading causes of death (2007-2014)', x='Year', y='Death count')+ 
+  theme(legend.text= element_text(size =8))
+
+nyc_change
 ```
 
 
@@ -209,8 +226,8 @@ p-value = 1.83e-14 < 0.05
 At 0.05 significance level, we reject the null hypothesis and conclude that there is a significant difference in death rates across different ethnicities, in New York City.
 
 
-<<<<<<< HEAD
-```{r}
+
+```{r, echo = FALSE, message = FALSE, error = TRUE}
 
 
 # find top 10 leading causes for each state each year from 1999 - 2017
@@ -219,37 +236,19 @@ states_df = read_csv(file = "./data/Leading_Causes_of_Death_States_Only.csv", co
   arrange(year, state, age_adjusted_death_rate) %>%
   slice(which(row_number() %% 10 == 0))
 
-us_df
-states_df 
-
 # mode function
 mode <- function(x) {
   ux <- unique(x)
   ux[which.max(tabulate(match(x, ux)))]
 }
-  
-states_df %>% group_by(year) %>% 
+
+states_summary =   
+  states_df %>% group_by(year) %>% 
   summarize(Mode = mode(cause_name))
 
-=======
-
-### How has the death rate of top 3 leading causes changed over the years in NYC?
-
-
-```{r us plot 2, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE}
-US_df_1_plot_1 = 
-  US_df_1 %>% 
-  filter(x113_cause_name == c("Diseases of heart", "Malignant neoplasms", "Cerebrovascular diseases")) %>% 
-  group_by(year, x113_cause_name) %>%  
-  summarize(total_death = sum(deaths)) %>%
-  arrange(desc(total_death)) %>%
-  mutate(x113_cause_name = fct_reorder(x113_cause_name, total_death)) %>% 
-  ggplot(aes(x = year, y = total_death, color = x113_cause_name)) + 
-  geom_line(size = 1) + 
-  labs(title = 'Top 3 Leading Causes of Death (2000-2015)', x = 'Year', y = 'Death Count') 
-
-US_df_1_plot_1
 ```
+
+
 
 
 ```{r us plot 3, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE}
@@ -263,6 +262,6 @@ US_df_1_plot_1
 #  geom_line(size = 1) + 
 #  facet_wrap(~x113_cause_name, ncol=3, scales = 'free_y') +
 #  labs(title = 'Top 3 Leading Causes of Death by States', x = 'State', y = 'Death Count') 
->>>>>>> b75008fbb387009f5632fa7f289f63a6dcd0633f
+
 ```
 

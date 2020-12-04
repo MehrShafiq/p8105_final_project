@@ -1,10 +1,49 @@
 ---
-title: "data"
+title: "Data"
 output: html_document
 ---
 
-The data source is here
+For this project, two datasets were used: 
 
-1) [NYC](https://data.cityofnewyork.us/Health/New-York-City-Leading-Causes-of-Death/jb7j-dtam)
 
-2) [US](https://data.cdc.gov/NCHS/NCHS-Leading-Causes-of-Death-United-States/bi63-dtpu)
+### 1) [New York City Leading Causes of Death](https://data.cityofnewyork.us/Health/New-York-City-Leading-Causes-of-Death/jb7j-dtam) <br> 
+
+#### **Data Description** 
+New York City Leading Causes of Death contains the leading causes of death by sex and ethnicity in New York City from 2007 to 2014. Cause of death is derived from the NYC death certificate which is issued for every death that occurs in New York City.
+
+Source: Bureau of Vital Statistics and New York City Department of Health and Mental Hygiene
+
+```{r, include = FALSE}
+library(tidyverse)
+library(readxl)
+
+nyc_df = read_csv(file = "./data/nyc_clean.csv")
+```
+
+##### The file contains a single dataframe with `r nrow(nyc_df)` rows of data on `r ncol(nyc_df)` variables: 
+
+*   `r names(nyc_df[1])`: the year of death
+*   `r names(nyc_df[2])`: the cause of death
+*   `r names(nyc_df[3])`: the decedent's sex
+*   `r names(nyc_df[4])`: the decedent's ethnicity
+*   `r names(nyc_df[5])`: the number of people who died due to cause of death
+*   `r names(nyc_df[6])`: the death rate within the sex and race/ethnicity category
+*   `r names(nyc_df[7])`: the age-adjusted death rate within the sex and race/ethnicity category
+
+### 2) [US Leading Causes of Death, State-Level](https://data.cdc.gov/NCHS/NCHS-Leading-Causes-of-Death-United-States/bi63-dtpu)
+
+#### **Data Description**
+This dataset presents the age-adjusted death rates for the 10 leading causes of death in the United States beginning in 1999. Data are based on information from all resident death certificates filed in the 50 states and the District of Columbia using demographic and medical characteristics. 
+
+```{r, include = FALSE}
+US_df = read_csv(file = "./data/Leading_Causes_of_Death_States_Only.csv")
+```
+
+##### The file contains a single dataframe with `r nrow(US_df)` rows of data on `r ncol(US_df)` variables: 
+
+*   `r names(US_df[1])`: the year of death
+*   `r names(US_df[2])`: the broader category of cause of death
+*   `r names(US_df[3])`: the cause of death
+*   `r names(US_df[4])`: the name of state
+*   `r names(US_df[5])`: the number of people who died due to cause of death
+*   `r names(US_df[6])`: the age-adjusted death rate

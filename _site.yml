@@ -9,9 +9,6 @@ navbar:
     - text: "Analysis"
       icon: fa-bar-chart fa-lg
       href: analysis.html
-    - text: "Discussion"
-      icon: fa-comments fa-lg
-      href: discuss.html
     - text: "Screencast"
       icon: fa-video-camera fa-lg
       href: screencast.html

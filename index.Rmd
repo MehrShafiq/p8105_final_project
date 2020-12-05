@@ -87,3 +87,7 @@ The results of our project indicate a few important findings:
 * There may be some ethnicity groups in New York City for which these trends may be accentuated or reversed. 
 * There are some leading causes of death in New York City that do not overlap with the top 10 leading causes of death in the U.S. 
 * There may be some gender differences in the leading causes of death in New York City. 
+* There is a statistically significant difference in death rates between men and women in New York City
+* There is a statistically significant difference in death rates across different ethnicities in New York City
+* The top four leading causes of deaths (Diseases of Heart, Malignant Neoplasms, Diabetes   Mellitus and Chronic Lower Respiratory Diseases) are associated with significant death counts in the New York City
+* There are significant differences in the top 2 leading causes of death (Diseases of Heart and Malignant Neoplasms) across different ethnicities in NYC.

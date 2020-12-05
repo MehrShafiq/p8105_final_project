@@ -691,7 +691,7 @@ White-Hispanic     48.883857  28.838564  68.92915 0.0000000</code></pre>
 
 data:  mod_residuals
 W = 0.7833, p-value &lt; 0.00000000000000022</code></pre>
-<p>Since the p-value &lt; 0.00000000000000022, it can be assumed that the residuals are not normally distributed. Therefore, a Kruskal-Wallis rank sum test will be performed because the assumptions of one-way have been violated.</p>
+<p>Since the p-value &lt; 0.00000000000000022, it can be assumed that the residuals are not normally distributed. Therefore, a Kruskal-Wallis rank sum test will be performed because the assumptions of one-way ANOVA have been violated.</p>
 <p><strong>Kruskal-Wallis rank sum test</strong></p>
 <pre><code>
     Kruskal-Wallis rank sum test
@@ -701,6 +701,331 @@ Kruskal-Wallis chi-squared = 117.22, df = 3, p-value &lt;
 0.00000000000000022</code></pre>
 <p><strong>Report</strong></p>
 <p>Based on the Kruskal-Wallis rank sum test result, we have evidence to state that there is a statistically significant difference in death rates across different ethnicities in New York City (p-value &lt; 0.00000000000000022).</p>
+</div>
+<div id="are-there-significant-differences-in-the-leading-causes-of-death-between-men-and-women-in-nyc" class="section level3">
+<h3>Are there significant differences in the leading causes of death between men and women in NYC?</h3>
+<p><strong>Summary statistics</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">leading_cause</th>
+<th align="left">sex</th>
+<th align="right">count</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">median</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Chronic Lower Respiratory Diseases</td>
+<td align="left">F</td>
+<td align="right">45</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Chronic Lower Respiratory Diseases</td>
+<td align="left">M</td>
+<td align="right">43</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Diseases of Heart</td>
+<td align="left">F</td>
+<td align="right">48</td>
+<td align="right">1640.667</td>
+<td align="right">1992.524</td>
+<td align="right">846.0</td>
+</tr>
+<tr class="even">
+<td align="left">Diseases of Heart</td>
+<td align="left">M</td>
+<td align="right">48</td>
+<td align="right">1433.312</td>
+<td align="right">1633.663</td>
+<td align="right">877.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Malignant Neoplasms</td>
+<td align="left">F</td>
+<td align="right">48</td>
+<td align="right">1122.438</td>
+<td align="right">1181.971</td>
+<td align="right">735.5</td>
+</tr>
+<tr class="even">
+<td align="left">Malignant Neoplasms</td>
+<td align="left">M</td>
+<td align="right">48</td>
+<td align="right">1093.542</td>
+<td align="right">1120.950</td>
+<td align="right">835.0</td>
+</tr>
+</tbody>
+</table>
+<p>A slight inequality can be observed in the sample size per group.</p>
+<p><strong>Visualization</strong></p>
+<p><img src="analysis_files/figure-html/unnamed-chunk-13-1.png" width="90%" /></p>
+<p><strong>Two-way ANOVA test</strong></p>
+<pre><code>Anova Table (Type III tests)
+
+Response: deaths
+                 Sum Sq  Df F value          Pr(&gt;F)    
+(Intercept)     2791001   1  1.6904          0.1947    
+leading_cause  82720630   2 25.0507 0.0000000001077 ***
+sex              553642   1  0.3353          0.5630    
+Residuals     439182875 266                            
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Two-way ANOVA test with interaction effect</p>
+<pre><code>Anova Table (Type III tests)
+
+Response: deaths
+                     Sum Sq  Df F value      Pr(&gt;F)    
+(Intercept)         1302849   1  0.7841      0.3767    
+leading_cause      47177320   2 14.1960 0.000001394 ***
+sex                   10052   1  0.0060      0.9381    
+leading_cause:sex    508347   2  0.1530      0.8582    
+Residuals         438674528 264                        
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>At 0.05 significance level, the following inferences can be made based on the p-values given above:</p>
+<ul>
+<li>The leading causes of deaths (Diseases of Heart, Malignant Neoplasms, Diabetes Mellitus and Chronic Lower Respiratory Diseases) are associated with significant death counts in the New York City (p = 0.000001394).</li>
+<li>The sex variable and the interaction term (sex and leading causes of death variable) don’t have any significant association with death counts in New York City</li>
+</ul>
+<p><strong>Assumptions</strong></p>
+<p>Homogeneity of variances</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">df1</th>
+<th align="right">df2</th>
+<th align="right">statistic</th>
+<th align="right">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">264</td>
+<td align="right">14.53361</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p>Levene’s test was performed to check for the homogeneity of variances assumption. Based on the p-value, it can be inferred that there is no homogeneity of variances in the observed groups.</p>
+<p>Normality</p>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  mod_residuals_2
+W = 0.85107, p-value = 0.000000000000001976</code></pre>
+<p>Since the p-value = 0.000000000000001976, it can be assumed that the residuals are not normally distributed. Therefore, a Aligned Rank Transformed ANOVA will be performed because the assumptions of two-way ANOVA have been violated.</p>
+<p><strong>Aligned Rank Transformed ANOVA for two-way</strong></p>
+<pre><code>Analysis of Variance of Aligned Rank Transformed Data
+
+Table Type: Anova Table (Type III tests) 
+Model: No Repeated Measures (lm)
+Response: art(deaths)
+
+                    Df Df.res   F value           Pr(&gt;F)    
+1 leading_cause      2    264 24.405426 0.00000000018816 ***
+2 sex                1    264  0.249360          0.61794    
+3 leading_cause:sex  2    264  0.050777          0.95050    
+---
+Signif. codes:   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1 </code></pre>
+<p><strong>Report</strong></p>
+<p>Based on the Aligned Rank Transformed ANOVA for two-way procedure result, there is evidence to state that the leading causes of deaths (Diseases of Heart, Malignant Neoplasms, Diabetes Mellitus and Chronic Lower Respiratory Diseases) is the only factor associated with significant death counts in the New York City (p = 0.00000000018816).</p>
+</div>
+<div id="are-there-significant-differences-in-the-top-2-leading-causes-of-death-across-different-ethnicities-in-nyc" class="section level3">
+<h3>Are there significant differences in the top 2 leading causes of death across different ethnicities in NYC?</h3>
+<p><strong>Summary statistics</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">leading_cause</th>
+<th align="left">race_ethnicity</th>
+<th align="right">count</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">median</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Diseases of Heart</td>
+<td align="left">Asian/PI</td>
+<td align="right">16</td>
+<td align="right">469.3125</td>
+<td align="right">53.71991</td>
+<td align="right">459.0</td>
+</tr>
+<tr class="even">
+<td align="left">Diseases of Heart</td>
+<td align="left">Black</td>
+<td align="right">16</td>
+<td align="right">2201.3750</td>
+<td align="right">275.66958</td>
+<td align="right">2157.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Diseases of Heart</td>
+<td align="left">Hispanic</td>
+<td align="right">16</td>
+<td align="right">1316.4375</td>
+<td align="right">66.96165</td>
+<td align="right">1321.5</td>
+</tr>
+<tr class="even">
+<td align="left">Diseases of Heart</td>
+<td align="left">Other</td>
+<td align="right">16</td>
+<td align="right">46.0625</td>
+<td align="right">12.10768</td>
+<td align="right">41.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Diseases of Heart</td>
+<td align="left">Unknown</td>
+<td align="right">16</td>
+<td align="right">91.2500</td>
+<td align="right">25.21507</td>
+<td align="right">93.0</td>
+</tr>
+<tr class="even">
+<td align="left">Diseases of Heart</td>
+<td align="left">White</td>
+<td align="right">16</td>
+<td align="right">5097.5000</td>
+<td align="right">961.90575</td>
+<td align="right">4867.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Malignant Neoplasms</td>
+<td align="left">Asian/PI</td>
+<td align="right">16</td>
+<td align="right">495.4375</td>
+<td align="right">89.36440</td>
+<td align="right">487.5</td>
+</tr>
+<tr class="even">
+<td align="left">Malignant Neoplasms</td>
+<td align="left">Black</td>
+<td align="right">16</td>
+<td align="right">1680.3750</td>
+<td align="right">150.39542</td>
+<td align="right">1663.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Malignant Neoplasms</td>
+<td align="left">Hispanic</td>
+<td align="right">16</td>
+<td align="right">1097.6250</td>
+<td align="right">59.01963</td>
+<td align="right">1111.0</td>
+</tr>
+<tr class="even">
+<td align="left">Malignant Neoplasms</td>
+<td align="left">Other</td>
+<td align="right">16</td>
+<td align="right">32.3750</td>
+<td align="right">12.86274</td>
+<td align="right">32.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Malignant Neoplasms</td>
+<td align="left">Unknown</td>
+<td align="right">16</td>
+<td align="right">49.8750</td>
+<td align="right">23.07921</td>
+<td align="right">46.5</td>
+</tr>
+<tr class="even">
+<td align="left">Malignant Neoplasms</td>
+<td align="left">White</td>
+<td align="right">16</td>
+<td align="right">3292.2500</td>
+<td align="right">117.97712</td>
+<td align="right">3301.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Visualization</strong></p>
+<p><img src="analysis_files/figure-html/unnamed-chunk-20-1.png" width="90%" /></p>
+<p><strong>Two-way ANOVA test</strong></p>
+<pre><code>                Df    Sum Sq  Mean Sq F value               Pr(&gt;F)    
+race_ethnicity   5 402119267 80423853   416.9 &lt; 0.0000000000000002 ***
+leading_cause    1   8833968  8833968    45.8       0.000000000168 ***
+Residuals      185  35684365   192888                                 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Two-way ANOVA test with interaction effect</p>
+<pre><code>                              Df    Sum Sq  Mean Sq F value              Pr(&gt;F)
+race_ethnicity                 5 402119267 80423853  912.08 &lt;0.0000000000000002
+leading_cause                  1   8833968  8833968  100.19 &lt;0.0000000000000002
+race_ethnicity:leading_cause   5  19812666  3962533   44.94 &lt;0.0000000000000002
+Residuals                    180  15871699    88176                            
+                                
+race_ethnicity               ***
+leading_cause                ***
+race_ethnicity:leading_cause ***
+Residuals                       
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>At 0.05 significance level, the following inferences can be made based on the p-values given above:</p>
+<ul>
+<li>The leading causes of deaths (Diseases of Heart and Malignant Neoplasms) are associated with significant death counts in the New York City (p &lt;0.0000000000000002).</li>
+<li>The different categories of ethnicities are associated with significant death counts in the New York City (p &lt;0.0000000000000002).</li>
+<li>The interaction term (ethnicities and leading causes of death variable) is associated with significant death counts in the New York City (p &lt;0.0000000000000002).</li>
+</ul>
+<p><strong>Assumptions</strong></p>
+<p>Homogeneity of variances</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">df1</th>
+<th align="right">df2</th>
+<th align="right">statistic</th>
+<th align="right">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">180</td>
+<td align="right">20.57732</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p>Levene’s test was performed to check for the homogeneity of variances assumption. Based on the p-value, it can be inferred that there is no homogeneity of variances in the observed groups.</p>
+<p>Normality</p>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  mod_residuals_4
+W = 0.60017, p-value &lt; 0.00000000000000022</code></pre>
+<p>Since the p-value &lt; 0.00000000000000022, it can be assumed that the residuals are not normally distributed. Therefore, a Aligned Rank Transformed ANOVA will be performed because the assumptions of two-way ANOVA have been violated.</p>
+<p><strong>Aligned Rank Transformed ANOVA for two-way</strong></p>
+<pre><code>Analysis of Variance of Aligned Rank Transformed Data
+
+Table Type: Anova Table (Type III tests) 
+Model: No Repeated Measures (lm)
+Response: art(deaths)
+
+                               Df Df.res F value                 Pr(&gt;F)    
+1 race_ethnicity                5    180 900.297 &lt; 0.000000000000000222 ***
+2 leading_cause                 1    180 233.836 &lt; 0.000000000000000222 ***
+3 race_ethnicity:leading_cause  5    180  76.828 &lt; 0.000000000000000222 ***
+---
+Signif. codes:   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1 </code></pre>
+<p><strong>Report</strong></p>
+<p>Based on the Aligned Rank Transformed ANOVA for two-way procedure result, there is evidence to state that all the factor (race_ethnicity, leading_cause and interaction term) are associated with significant death counts in the New York City (p &lt; 0.000000000000000222). Therefore, it is safe to state that there are significant differences in the top 2 leading causes of death across different ethnicities in NYC.</p>
 </div>
 </div>
 

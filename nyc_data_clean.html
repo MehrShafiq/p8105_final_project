@@ -28,6 +28,15 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      </style>
+
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
   pre:not([class]) {
@@ -368,13 +377,6 @@ div.tocify {
   </a>
 </li>
 <li>
-  <a href="discuss.html">
-    <span class="fa fa-comments fa-lg"></span>
-     
-    Discussion
-  </a>
-</li>
-<li>
   <a href="screencast.html">
     <span class="fa fa-video-camera fa-lg"></span>
      
@@ -423,8 +425,9 @@ janitor::clean_names() %&gt;%
     leading_cause,
     into = c(&quot;leading_cause&quot;, NA),
     sep = &quot;\\(&quot;,
-    )</code></pre>
-<pre><code>## Parsed with column specification:
+    ) </code></pre>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   year = col_double(),
 ##   leading_cause = col_character(),
@@ -452,10 +455,11 @@ janitor::clean_names() %&gt;%
 <pre><code>## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 96 rows [9, 27,
 ## 29, 33, 51, 69, 111, 135, 136, 148, 153, 162, 172, 189, 194, 198, 236, 240, 244,
 ## 261, ...].</code></pre>
-<pre class="r"><code>write.csv(nyc_df,&quot;data\\nyc_clean.csv&quot;, row.names = FALSE)
+<pre class="r"><code>nyc_df$leading_cause[nyc_df$leading_cause == &quot;Human Immunodeficiency Virus Disease &quot;] = &quot;HIV&quot;
 
-nyc_df %&gt;% 
-  view()</code></pre>
+nyc_df$leading_cause[nyc_df$leading_cause == &quot;Mental and Behavioral Disorders due to Accidental Poisoning and Other Psychoactive Substance Use &quot;] = &quot;Mental and Behavioral Disorders&quot;
+
+write.csv(nyc_df,&quot;data\\nyc_clean.csv&quot;, row.names = FALSE)</code></pre>
 
 
 

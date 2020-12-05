@@ -28,6 +28,15 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      </style>
+
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
   pre:not([class]) {
@@ -368,13 +377,6 @@ div.tocify {
   </a>
 </li>
 <li>
-  <a href="discuss.html">
-    <span class="fa fa-comments fa-lg"></span>
-     
-    Discussion
-  </a>
-</li>
-<li>
   <a href="screencast.html">
     <span class="fa fa-video-camera fa-lg"></span>
      
@@ -406,17 +408,18 @@ div.tocify {
 <h3>1) <a href="https://data.cityofnewyork.us/Health/New-York-City-Leading-Causes-of-Death/jb7j-dtam">New York City Leading Causes of Death</a> <br></h3>
 <div id="data-description" class="section level4">
 <h4><strong>Data Description</strong></h4>
-<p>New York City Leading Causes of Death contains the leading causes of death by sex and ethnicity in New York City since 2007. Cause of death is derived from the NYC death certificate which is issued for every death that occurs in New York City.</p>
+<p>New York City Leading Causes of Death contains the leading causes of death by sex and ethnicity in New York City from 2007 to 2014. Cause of death is derived from the NYC death certificate which is issued for every death that occurs in New York City.</p>
+<p>Source: Bureau of Vital Statistics and New York City Department of Health and Mental Hygiene</p>
 <div id="the-file-contains-a-single-dataframe-with-1094-rows-of-data-on-7-variables" class="section level5">
 <h5>The file contains a single dataframe with 1094 rows of data on 7 variables:</h5>
 <ul>
-<li>year</li>
-<li>leading_cause</li>
-<li>sex</li>
-<li>race_ethnicity</li>
-<li>deaths</li>
-<li>death_rate</li>
-<li>age_adjusted_death_rate.</li>
+<li>year: the year of death</li>
+<li>leading_cause: the cause of death</li>
+<li>sex: the decedent’s sex</li>
+<li>race_ethnicity: the decedent’s ethnicity</li>
+<li>deaths: the number of people who died due to cause of death</li>
+<li>death_rate: the death rate within the sex and race/ethnicity category</li>
+<li>age_adjusted_death_rate: the age-adjusted death rate within the sex and race/ethnicity category</li>
 </ul>
 </div>
 </div>
@@ -429,12 +432,12 @@ div.tocify {
 <div id="the-file-contains-a-single-dataframe-with-10659-rows-of-data-on-6-variables" class="section level5">
 <h5>The file contains a single dataframe with 10659 rows of data on 6 variables:</h5>
 <ul>
-<li>year</li>
-<li>x113_cause_name</li>
-<li>cause_name</li>
-<li>state</li>
-<li>deaths</li>
-<li>age_adjusted_death_rate</li>
+<li>year: the year of death</li>
+<li>x113_cause_name: the broader category of cause of death</li>
+<li>cause_name: the cause of death</li>
+<li>state: the name of state</li>
+<li>deaths: the number of people who died due to cause of death</li>
+<li>age_adjusted_death_rate: the age-adjusted death rate</li>
 </ul>
 </div>
 </div>

@@ -198,7 +198,7 @@ US_df_1_plot =
   mutate(x113_cause_name = fct_reorder(x113_cause_name, total_death)) %>% 
   ggplot(aes(x = x113_cause_name, y = total_death, fill = x113_cause_name)) +
   geom_col() +
-  labs(title = "Top 10 Leading Causes of Death in the U.S.", 
+  labs(title = "Top 10 Leading Causes of Death in the US", 
     x = "Cause of Death", 
     y = "Number of Deaths") +
   theme(legend.position = "none") +

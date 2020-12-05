@@ -205,7 +205,7 @@ US_df_1_plot_1 =
   mutate(x113_cause_name = fct_reorder(x113_cause_name, total_death)) %>% 
   ggplot(aes(x = year, y = total_death, color = x113_cause_name)) + 
   geom_line(size = 1) + 
-  labs(title = 'Top 3 Leading Causes of Death in US (2000-2015)', x = 'Year', y = 'Death Count', color = "Leading Cause") + 
+  labs(title = 'Top 3 Leading Causes of Death in US (1999-2017)', x = 'Year', y = 'Death Count', color = "Leading Cause") + 
   transition_reveal(year)
 
 US_df_1_plot_1

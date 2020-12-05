@@ -1,0 +1,404 @@
+---
+title: "Analysis"
+output: html_document
+---
+```{r setup, include = FALSE}
+library(tidyverse)
+library(patchwork)
+library(ggplot2)
+library(rstatix)
+library(knitr)
+library(gganimate)
+library(png)
+library(gifski)
+library(ARTool)
+
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
+options(
+  ggplot2.continuous.colour = "viridis", 
+  ggplot2.continuous.fill = "viridis"
+)
+scale_colour_discrete = scale_color_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
+knitr::opts_chunk$set(
+  fig.width = 6, 
+  fig.asp = .6, 
+  out.width = "90%"
+)
+```
+
+```{r datasets, echo = FALSE, error = TRUE, message = FALSE}
+nyc_df_1 = read_csv(file = "./data/nyc_clean.csv")
+US_df_1 = read_csv(file = "./data/Leading_Causes_of_Death_States_Only.csv")
+
+# to create ranking
+US_df_2 = US_df_1 %>%
+          subset(US_df_1$x113_cause_name != "All Causes") %>%
+          group_by(x113_cause_name, year) %>% 
+          summarise(total_death = sum(deaths)) %>% 
+          arrange(desc(total_death)) %>% 
+          group_by(year) %>% 
+          mutate(order = min_rank(total_death) * 1.0) %>% 
+          ungroup()
+
+```
+
+## **Statistical Analyses**
+
+### Is there a statistically significant difference in death rates between men and women in New York City?
+
+__Summary statistics__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_df_1 %>%
+  group_by(sex) %>%
+  get_summary_stats(death_rate, type = "common") %>%
+  kable()
+```
+
+__Visualization__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_df_1 %>%
+  ggplot(aes(x = sex, y = death_rate)) +
+  geom_boxplot() +
+  labs(x='Sex', y= 'Death rate')
+```
+
+__Assumptions__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_df_1 %>%
+  group_by(sex) %>%
+  shapiro_test(death_rate) %>%
+  kable()
+
+```
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_male = nyc_df_1 %>%
+  filter(sex == "M") %>%
+  select(death_rate) 
+
+  qqnorm(nyc_male$death_rate) 
+  qqline(nyc_male$death_rate) 
+```
+
+From the boxplot visualization and the p-values (< 0.05) associated with the The Shapiro–Wilk test, there is evidence that the data from both the sex groups is not normally distributed. This is also evident from the qqplot above.     
+
+Since the normality assumption has been violated, the Wilcoxon rank sum test (non-parametric) will be performed. 
+
+__Test__
+
+```{r stat_test1, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+
+nyc_df_1 %>% 
+  wilcox_test(death_rate ~ sex) %>%
+  add_significance() %>%
+  kable()
+```
+
+p-value = 0.00125 < 0.05
+
+__Report__
+
+The respective median death rates for male and female groups are as follows: 20 and 17.45. Based on the Wilcoxon rank sum test result, we have evidence to state that there is a statistically significant difference in death rates between men and women in New York City (p = 0.00125). 
+        
+            
+### Is there a statistically significant difference in death rates across different ethnicities in New York City?    
+       
+__Summary statistics__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_df_1 %>%
+  mutate(race_ethnicity = as.factor(race_ethnicity)) %>%
+  group_by(race_ethnicity) %>%
+  summarize(mean = mean(death_rate), 
+            sd = sd(death_rate), 
+            median = median(death_rate), 
+            IQR = IQR(death_rate, na.rm = T)) %>%
+  kable()
+```
+
+Since the "Other" and "Unknown" categories of race don't have any associated death rates, these categories have been filtered out. 
+
+__Visualization__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_df_1 %>%
+  filter(!race_ethnicity == "Other" & !race_ethnicity == "Unknown") %>%
+  ggplot(aes(x = race_ethnicity, y = death_rate)) +
+  geom_boxplot() +
+  labs(x='Race', y= 'Death rate')
+```
+
+__One-way ANOVA test__
+
+```{r anova, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE}
+anova_df = nyc_df_1 %>%
+           filter(!race_ethnicity == "Other" & !race_ethnicity == "Unknown")
+
+anova_test(death_rate ~ race_ethnicity, data = anova_df) %>% kable()
+```
+        
+          
+p-value = 1.83e-14 < 0.05
+
+At 0.05 significance level, we reject the null hypothesis and conclude that there is a significant difference in death rates across different ethnicities, in New York City.
+
+__Multiple Comparisons__
+
+A Tukey pairwise-comparisons test is performed to account for multiple comparisons
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+mod.aov = aov(death_rate ~ race_ethnicity, data = anova_df)
+
+TukeyHSD(mod.aov) 
+```
+
+From the above table, it can be inferred that there was a significant difference in death rates for the following pairs: Black and Asian/PI, White-Asian/PI, Hispanic-Black, White-Hispanic. 
+
+
+__Assumptions__
+
+Homogeneity of variances   
+    
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+levene_test(death_rate ~ race_ethnicity, data = anova_df) %>% kable()
+```
+
+Levene’s test was performed to check for the homogeneity of variances assumption. Based on the p-value, it can be inferred that there is no homogeneity of variances in different ethnicities.  
+
+Normality
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+mod_residuals = residuals(object = mod.aov)
+
+shapiro.test(x = mod_residuals)
+```
+
+Since the p-value < 0.00000000000000022, it can be assumed that the residuals are not normally distributed. Therefore, a Kruskal-Wallis rank sum test will be performed because the assumptions of one-way ANOVA have been violated. 
+
+__Kruskal-Wallis rank sum test__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+kruskal.test(death_rate ~ race_ethnicity, data = anova_df)
+```
+
+__Report__
+
+Based on the Kruskal-Wallis rank sum test result, we have evidence to state that there is a statistically significant difference in death rates across different ethnicities in New York City (p-value < 0.00000000000000022). 
+
+### Are there significant differences in the leading causes of death between men and women in NYC?  
+
+__Summary statistics__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_df_1 %>%
+  filter(leading_cause %in% c("Diseases of Heart","Malignant Neoplasms", "Diabetes   Mellitus", "Chronic Lower Respiratory Diseases")) %>% 
+  group_by(leading_cause, sex) %>%
+  summarize(count = n(),
+            mean = mean(deaths), 
+            sd = sd(deaths), 
+            median = median(deaths)) %>%
+  kable()
+```
+
+A slight inequality can be observed in the sample size per group. 
+
+__Visualization__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_df_1 %>%
+  filter(leading_cause %in% c("Diseases of Heart","Malignant Neoplasms", "Diabetes   Mellitus", "Chronic Lower Respiratory Diseases")) %>% 
+  group_by(leading_cause, sex) %>%
+  ggplot(aes(x = leading_cause, y = deaths, color = sex)) +
+  geom_boxplot() +
+  labs(x='Leading Causes of Death', y= 'Death count')
+```
+
+__Two-way ANOVA test__
+
+```{r , echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+two_anova_df = nyc_df_1 %>%
+           filter(leading_cause %in% c("Diseases of Heart","Malignant Neoplasms",  "Diabetes   Mellitus", "Chronic Lower Respiratory Diseases")) %>%
+           mutate(
+           sex = as.factor(sex),
+           leading_cause = as.factor(leading_cause))
+
+mod_two_anova = aov(deaths ~ leading_cause + sex, data = two_anova_df)
+
+Anova(mod_two_anova, type = "III")
+```
+  
+Two-way ANOVA test with interaction effect
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+mod_two_anova_2 = aov(deaths ~ leading_cause * sex, data = two_anova_df)
+
+Anova(mod_two_anova_2, type = "III")
+```
+
+At 0.05 significance level, the following inferences can be made based on the p-values given above:
+
+* The leading causes of deaths (Diseases of Heart, Malignant Neoplasms, Diabetes   Mellitus and Chronic Lower Respiratory Diseases) are associated with significant death counts in the New York City (p = 0.000001394). 
+* The sex variable and the interaction term (sex and leading causes of death variable) don't have any significant association with death counts in New York City
+
+__Assumptions__
+
+Homogeneity of variances   
+    
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+levene_test(deaths ~ leading_cause*sex, data = two_anova_df) %>% kable()
+```
+
+Levene’s test was performed to check for the homogeneity of variances assumption. Based on the p-value, it can be inferred that there is no homogeneity of variances in the observed groups.  
+
+Normality
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+mod_residuals_2 = residuals(object = mod_two_anova_2)
+
+shapiro.test(x = mod_residuals_2)
+```
+
+Since the p-value = 0.000000000000001976, it can be assumed that the residuals are not normally distributed. Therefore, a Aligned Rank Transformed ANOVA will be performed because the assumptions of two-way ANOVA have been violated. 
+
+__Aligned Rank Transformed ANOVA for two-way__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+art_df = two_anova_df %>% 
+  drop_na(deaths) %>% 
+  select(leading_cause, sex, deaths)
+
+mod_art = art(deaths ~ leading_cause*sex, data = art_df)
+anova(mod_art)
+```
+
+__Report__
+
+Based on the Aligned Rank Transformed ANOVA for two-way procedure result, there is evidence to state that the leading causes of deaths (Diseases of Heart, Malignant Neoplasms, Diabetes   Mellitus and Chronic Lower Respiratory Diseases) is the only factor associated with significant death counts in the New York City (p = 0.00000000018816). 
+
+### Are there significant differences in the top 2 leading causes of death across different ethnicities in NYC?  
+
+__Summary statistics__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_df_1 %>%
+  filter(leading_cause %in% c("Diseases of Heart","Malignant Neoplasms")) %>% 
+  group_by(leading_cause, race_ethnicity) %>%
+  summarize(count = n(),
+            mean = mean(deaths), 
+            sd = sd(deaths), 
+            median = median(deaths)) %>%
+  kable()
+```
+
+__Visualization__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+nyc_df_1 %>%
+  filter(leading_cause %in% c("Diseases of Heart","Malignant Neoplasms")) %>% 
+  group_by(leading_cause, race_ethnicity) %>%
+  ggplot(aes(x = race_ethnicity, y = deaths, color = leading_cause)) +
+  geom_boxplot() +
+  labs(x='Ethnicities', y= 'Death count', color = "Leading causes")
+```
+
+__Two-way ANOVA test__
+
+```{r , echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+two_anova_df_2 = nyc_df_1 %>%
+           filter(leading_cause %in% c("Diseases of Heart","Malignant Neoplasms")) %>%
+           mutate(
+           race_ethnicity = as.factor(race_ethnicity),
+           leading_cause = as.factor(leading_cause))
+
+mod_two_anova_3 = aov(deaths ~ race_ethnicity + leading_cause, data = two_anova_df_2)
+
+summary(mod_two_anova_3)
+```
+  
+Two-way ANOVA test with interaction effect
+
+```{r , echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+mod_two_anova_4 = aov(deaths ~ race_ethnicity*leading_cause, data = two_anova_df_2)
+
+summary(mod_two_anova_4)
+```
+
+At 0.05 significance level, the following inferences can be made based on the p-values given above:
+
+* The leading causes of deaths (Diseases of Heart and Malignant Neoplasms) are associated with significant death counts in the New York City (p <0.0000000000000002).
+* The different categories of ethnicities are associated with significant death counts in the New York City (p <0.0000000000000002).
+* The interaction term (ethnicities and leading causes of death variable) is associated with significant death counts in the New York City (p <0.0000000000000002).  
+
+__Assumptions__
+
+Homogeneity of variances   
+    
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+levene_test(deaths ~ race_ethnicity*leading_cause, data = two_anova_df_2) %>% kable()
+```
+
+Levene’s test was performed to check for the homogeneity of variances assumption. Based on the p-value, it can be inferred that there is no homogeneity of variances in the observed groups.  
+
+Normality
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+mod_residuals_4 = residuals(object = mod_two_anova_4)
+
+shapiro.test(x = mod_residuals_4)
+```
+
+Since the p-value < 0.00000000000000022, it can be assumed that the residuals are not normally distributed. Therefore, a Aligned Rank Transformed ANOVA will be performed because the assumptions of two-way ANOVA have been violated. 
+
+__Aligned Rank Transformed ANOVA for two-way__
+
+```{r, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE, comment = ""}
+art_df_2 = two_anova_df_2 %>% 
+  drop_na(deaths) %>% 
+  select(leading_cause, race_ethnicity, deaths)
+
+mod_art_2 = art(deaths ~ race_ethnicity*leading_cause, data = art_df_2)
+anova(mod_art_2)
+```
+
+__Report__
+
+Based on the Aligned Rank Transformed ANOVA for two-way procedure result, there is evidence to state that all the factor (race_ethnicity, leading_cause and interaction term) are associated with significant death counts in the New York City (p < 0.000000000000000222). Therefore, it is safe to state that there are significant differences in the top 2 leading causes of death across different ethnicities in NYC.  
+
+```{r, echo = FALSE, message = FALSE, error = TRUE}
+
+
+# find top 10 leading causes for each state each year from 1999 - 2017
+states_df = read_csv(file = "./data/Leading_Causes_of_Death_States_Only.csv", col_types = "ffffid") %>%
+  filter(cause_name != "All Causes") %>%
+  arrange(year, state, age_adjusted_death_rate) %>%
+  slice(which(row_number() %% 10 == 0))
+
+# mode function
+mode <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
+
+states_summary =   
+  states_df %>% group_by(year) %>% 
+  summarize(Mode = mode(cause_name))
+
+```
+
+
+```{r us plot 3, echo = FALSE, error = TRUE, message = FALSE, warning = FALSE}
+#US_df_1_plot_2 = 
+#  US_df_1 %>% 
+#  filter(x113_cause_name == c("Diseases of heart", "Malignant neoplasms", "Cerebrovascular diseases")) %>% 
+#  group_by(x113_cause_name, state) %>%  
+#  summarize(total_death = sum(deaths)) %>%
+#  arrange(desc(total_death)) %>%
+#  ggplot(aes(x = state, y = total_death, color = x113_cause_name)) + 
+#  geom_line(size = 1) + 
+#  facet_wrap(~x113_cause_name, ncol=3, scales = 'free_y') +
+#  labs(title = 'Top 3 Leading Causes of Death by States', x = 'State', y = 'Death Count') 
+
+```

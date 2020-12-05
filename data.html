@@ -28,15 +28,6 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-      </style>
-
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
   pre:not([class]) {
@@ -403,12 +394,14 @@ div.tocify {
 </div>
 
 
+<p><br></p>
 <p>For this project, two datasets were used:</p>
-<div id="new-york-city-leading-causes-of-death" class="section level3">
-<h3>1) <a href="https://data.cityofnewyork.us/Health/New-York-City-Leading-Causes-of-Death/jb7j-dtam">New York City Leading Causes of Death</a> <br></h3>
+<div id="new-york-city-leading-causes-of-death" class="section level4">
+<h4><strong>1) New York City Leading Causes of Death</strong></h4>
+</div>
 <div id="data-description" class="section level4">
-<h4><strong>Data Description</strong></h4>
-<p>New York City Leading Causes of Death contains the leading causes of death by sex and ethnicity in New York City from 2007 to 2014. Cause of death is derived from the NYC death certificate which is issued for every death that occurs in New York City.</p>
+<h4><em>Data Description</em></h4>
+<p><a href="https://data.cityofnewyork.us/Health/New-York-City-Leading-Causes-of-Death/jb7j-dtam">New York City Leading Causes of Death</a> contains the leading causes of death by sex and ethnicity in New York City from 2007 to 2014. Cause of death is derived from the NYC death certificate which is issued for every death that occurs in New York City.</p>
 <p>Source: Bureau of Vital Statistics and New York City Department of Health and Mental Hygiene</p>
 <div id="the-file-contains-a-single-dataframe-with-1094-rows-of-data-on-7-variables" class="section level5">
 <h5>The file contains a single dataframe with 1094 rows of data on 7 variables:</h5>
@@ -419,16 +412,17 @@ div.tocify {
 <li>race_ethnicity: the decedent’s ethnicity</li>
 <li>deaths: the number of people who died due to cause of death</li>
 <li>death_rate: the death rate within the sex and race/ethnicity category</li>
-<li>age_adjusted_death_rate: the age-adjusted death rate within the sex and race/ethnicity category</li>
+<li>age_adjusted_death_rate: the age-adjusted death rate within the sex and race/ethnicity category<br> <br></li>
 </ul>
 </div>
 </div>
+<div id="us-leading-causes-of-death-at-the-state-level" class="section level4">
+<h4><strong>2) US Leading Causes of Death at the State-Level</strong></h4>
 </div>
-<div id="us-leading-causes-of-death-state-level" class="section level3">
-<h3>2) <a href="https://data.cdc.gov/NCHS/NCHS-Leading-Causes-of-Death-United-States/bi63-dtpu">US Leading Causes of Death, State-Level</a></h3>
 <div id="data-description-1" class="section level4">
-<h4><strong>Data Description</strong></h4>
-<p>This dataset presents the age-adjusted death rates for the 10 leading causes of death in the United States beginning in 1999. Data are based on information from all resident death certificates filed in the 50 states and the District of Columbia using demographic and medical characteristics.</p>
+<h4><em>Data Description</em></h4>
+<p>This dataset presents the age-adjusted death rates for the 10 <a href="https://data.cdc.gov/NCHS/NCHS-Leading-Causes-of-Death-United-States/bi63-dtpu">leading causes of death in the United States</a> beginning in 1999. Data are based on information from all resident death certificates filed in the 50 states and the District of Columbia using demographic and medical characteristics.</p>
+<p>Source: Centers for Disease Control and Prevention</p>
 <div id="the-file-contains-a-single-dataframe-with-10659-rows-of-data-on-6-variables" class="section level5">
 <h5>The file contains a single dataframe with 10659 rows of data on 6 variables:</h5>
 <ul>
@@ -439,7 +433,6 @@ div.tocify {
 <li>deaths: the number of people who died due to cause of death</li>
 <li>age_adjusted_death_rate: the age-adjusted death rate</li>
 </ul>
-</div>
 </div>
 </div>
 

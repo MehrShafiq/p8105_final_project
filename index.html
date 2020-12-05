@@ -28,15 +28,6 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-      </style>
-
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
   pre:not([class]) {
@@ -399,7 +390,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore"><center>
-Leading Causes of Death in NYC 2007 - 2014
+Leading Causes of Death
 </center></h1>
 <h4 class="author"><center>
 Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli
@@ -411,16 +402,17 @@ Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli
 <center>
 <img src="data/health_issues.jpg" width="700" />
 </center>
+<p><br></p>
 <div id="motivation" class="section level3">
 <h3><strong>Motivation</strong></h3>
 <p>The goal of the project is to examine the leading causes of death at a micro-level (New York City) and at a macro-level (nationwide). Cause of death statistics including information about the total number of people who die each year and the reason for their death is important for measuring the effectiveness of a country’s health system. For example, if deaths from heart ailments are rising rapidly over the years in one country, this trend can help government authorities decide on the focus of their surveillance and response programs in order to reduce preventable deaths. Therefore, obtaining high quality cause-of-death data and appropriate analyses are crucial for improving public health actions.</p>
 </div>
 <div id="related-work" class="section level3">
-<h3><strong>Related work</strong></h3>
-<p>Originally, we were going to look at the impact of COVID-19 on the trends of commercial activity (foot traffic) in the travel, hospitality, and restaurant industries in the U.S based on the data from Safe Graph. However, the datasets we were able to get access to did not have enough data points and we decided to work with a different topic. We were inspired to investigate leading causes of death using data from NYC Open Data and CDC because in the face of a pandemic, it is easy to forget about preventive care. While the cause of death data we used is not the most up-to-date and does not show excess deaths related to COVID-19, we thought it was still important to learn more about the list of diseases for which routine care might not be delivered at the recommended levels due to the pandemic. The fact that data on the underlying leading causes of death is widely available further motivated us to pursue this topic.</p>
+<h3><strong>Related Work</strong></h3>
+<p>Originally, we were going to look at the impact of COVID-19 on the trends of commercial activity (foot traffic) in the travel, hospitality, and restaurant industries in the U.S. based on the data from Safe Graph. However, the datasets we were able to get access to did not have enough data points and we decided to work with a different topic. We were inspired to investigate leading causes of death using data from NYC Open Data and CDC because in the face of a pandemic, it is easy to forget about preventive care. While the cause of death data we used is not the most up-to-date and does not show excess deaths related to COVID-19, we thought it was still important to learn more about the list of diseases for which routine care might not be delivered at the recommended levels due to the pandemic. The fact that data on the underlying leading causes of death is widely available further motivated us to pursue this topic.</p>
 </div>
 <div id="initial-questions" class="section level3">
-<h3><strong>Initial questions</strong></h3>
+<h3><strong>Initial Questions</strong></h3>
 <ol style="list-style-type: decimal">
 <li>What is the general trend of leading causes of death over time in the US and NYC?</li>
 <li>How do the leading causes of death in NYC compare to the nationwide trends?</li>
@@ -428,9 +420,9 @@ Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli
 <li>Are there any ethnicity differences in leading causes of death in NYC?</li>
 </ol>
 </div>
-<div id="data" class="section level3">
+<div id="data" class="section level3 tabset tabset-pills">
 <h3><strong>Data</strong></h3>
-<p>The data used in this project was retrieved primarily from two sources, <a href="https://data.cityofnewyork.us">NYC Open Data</a> and <a href="https://data.cdc.gov/browse?category=NCHS&amp;sortBy=last_modified">CDC</a>. Specifically, the “New York City Leading Causes of Death” dataset published on the NYC Open Data website was used to analyze the leading causes of death in NYC. Additionally, the dataset available on the National Center for Health Statistics from the CDC was used to analyze the overall leading causes of death in the US. More details on the datasets can be found in the <a href="data.html">Data</a> tab of this website.</p>
+<p>The data used in this project was retrieved primarily from two sources, <a href="https://data.cityofnewyork.us">NYC Open Data</a> and <a href="https://data.cdc.gov/browse?category=NCHS&amp;sortBy=last_modified">CDC</a>. Specifically, the “New York City Leading Causes of Death” dataset published on the NYC Open Data website was used to analyze the leading causes of death in NYC. Additionally, the dataset available on the National Center for Health Statistics from the CDC was used to analyze the overall leading causes of death in the U.S. More details on the datasets can be found in the <a href="data.html">Data</a> tab of this website.</p>
 <div id="data-cleaning" class="section level4">
 <h4>Data Cleaning</h4>
 <p>While these public data generated by government agencies are generally relatively tidy, as part of the data cleaning procedure, the raw datasets were modified in the following ways.</p>
@@ -439,7 +431,9 @@ Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli
 <li>Irrelevant or redundant rows were removed (e.g., All causes).</li>
 <li>Variable types were converted to a category that is appropriate for analysis (e.g., character to numeric).</li>
 <li>The variable names for causes of death and ethnicity groups were cleaned and shortened to make them easier to visualize.</li>
+<li>Where relevant, string variables were converted into numeric variables for ease of analyses.</li>
 </ul>
+<hr />
 </div>
 <div id="data-challenges" class="section level4">
 <h4>Data Challenges</h4>
@@ -447,10 +441,11 @@ Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli
 <li><p>Different cause of death categories: Although the datasets were already relatively clean, we decided not to merge the two datasets because some of the categories for the causes of death did not overlap between the two datasets and we did not have the clinical background to ensure that the reassignment or merging of those categories is correct. However, the plots still allowed us to make informative comparisons.</p></li>
 <li><p>Fragmented data: Additionally, for the NYC dataset, some of the leading causes were not collected all throughout the years so the data was fragmented for some of the causes. We considered using the nationwide dataset only and filter for New York state but it did not have the gender-level and ethnicity-level information that the NYC dataset provided so we decided to use both separately and focus specifically on New York City for additional analyses.</p></li>
 </ul>
+<hr />
 </div>
 </div>
-<div id="exploratory-analysis" class="section level3">
-<h3><strong>Exploratory analysis</strong></h3>
+<div id="exploratory-analyses" class="section level3">
+<h3><strong>Exploratory Analyses</strong></h3>
 <div id="trends-of-leading-causes-of-death-over-time" class="section level4">
 <h4>Trends of leading causes of death over time</h4>
 <ul>
@@ -468,10 +463,10 @@ Chloe Chah, Mehr Shafiq, Amanda Tsai, Krishna Vemulapalli
 </ul>
 </div>
 </div>
-<div id="additional-analysis" class="section level3">
-<h3><strong>Additional analysis</strong></h3>
+<div id="additional-analyses" class="section level3">
+<h3><strong>Additional Analyses</strong></h3>
 <p>After inspecting the visualizations, we decided to run statistical analyses to formally test the hypothesis that there are gender or racial differences in these causes of death in New York City.</p>
-<p>In order to test for significant differences in death rates between men and women, a t-test was performed. Similarly, an ANOVA was performed to test for significant differences in death rates across the various ethnicities.</p>
+<p>In order to test for significant differences in death rates between men and women, a t-test was performed. Similarly, an ANOVA was performed to test for significant differences in death rates across the various races and ethnicities.</p>
 </div>
 <div id="discussion" class="section level3">
 <h3><strong>Discussion</strong></h3>

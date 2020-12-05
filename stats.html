@@ -25,6 +25,13 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -411,207 +418,1915 @@ div.tocify {
 </div>
 
 
-<div id="statistical-analyses" class="section level2">
-<h2><strong>Statistical Analyses</strong></h2>
+<div id="statistical-analyses" class="section level1">
+<h1><strong>Statistical Analyses</strong></h1>
+<p><br> <br></p>
 <div id="is-there-a-statistically-significant-difference-in-death-rates-between-men-and-women-in-new-york-city" class="section level3">
 <h3>Is there a statistically significant difference in death rates between men and women in New York City?</h3>
-<p><strong>Summary statistics</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">sex</th>
-<th align="left">variable</th>
-<th align="right">n</th>
-<th align="right">min</th>
-<th align="right">max</th>
-<th align="right">median</th>
-<th align="right">iqr</th>
-<th align="right">mean</th>
-<th align="right">sd</th>
-<th align="right">se</th>
-<th align="right">ci</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">F</td>
-<td align="left">death_rate</td>
-<td align="right">354</td>
-<td align="right">2.4</td>
-<td align="right">491.4</td>
-<td align="right">17.45</td>
-<td align="right">46.900</td>
-<td align="right">51.401</td>
-<td align="right">78.049</td>
-<td align="right">4.148</td>
-<td align="right">8.158</td>
-</tr>
-<tr class="even">
-<td align="left">M</td>
-<td align="left">death_rate</td>
-<td align="right">354</td>
-<td align="right">2.8</td>
-<td align="right">421.0</td>
-<td align="right">20.00</td>
-<td align="right">59.625</td>
-<td align="right">55.477</td>
-<td align="right">75.024</td>
-<td align="right">3.987</td>
-<td align="right">7.842</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Visualization</strong></p>
-<p><img src="stats_files/figure-html/unnamed-chunk-2-1.png" width="90%" /></p>
+<p><br></p>
+<p><strong>Summary Statistics</strong></p>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#tadsocafvl .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#tadsocafvl .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tadsocafvl .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tadsocafvl .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tadsocafvl .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tadsocafvl .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tadsocafvl .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tadsocafvl .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#tadsocafvl .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#tadsocafvl .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#tadsocafvl .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#tadsocafvl .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tadsocafvl .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tadsocafvl .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tadsocafvl .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tadsocafvl .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tadsocafvl .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#tadsocafvl .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tadsocafvl .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#tadsocafvl .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tadsocafvl .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tadsocafvl .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tadsocafvl .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tadsocafvl .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tadsocafvl .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tadsocafvl .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tadsocafvl .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tadsocafvl .gt_left {
+  text-align: left;
+}
+
+#tadsocafvl .gt_center {
+  text-align: center;
+}
+
+#tadsocafvl .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tadsocafvl .gt_font_normal {
+  font-weight: normal;
+}
+
+#tadsocafvl .gt_font_bold {
+  font-weight: bold;
+}
+
+#tadsocafvl .gt_font_italic {
+  font-style: italic;
+}
+
+#tadsocafvl .gt_super {
+  font-size: 65%;
+}
+
+#tadsocafvl .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="tadsocafvl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="10" class="gt_heading gt_title gt_font_normal gt_bottom_border" style><strong>Death Rate by Sex</strong></th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Sex</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>N</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Minimum</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Maximum</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Median</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Interquartile Range</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Mean</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Standard Deviation</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Standard Error</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">ci</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">F</td>
+<td class="gt_row gt_right">354</td>
+<td class="gt_row gt_right">2.4</td>
+<td class="gt_row gt_right">491.4</td>
+<td class="gt_row gt_right">17.4</td>
+<td class="gt_row gt_right">46.900</td>
+<td class="gt_row gt_right">51.4</td>
+<td class="gt_row gt_right">78.0</td>
+<td class="gt_row gt_right">4.1</td>
+<td class="gt_row gt_right">8.2</td></tr>
+    <tr><td class="gt_row gt_left">M</td>
+<td class="gt_row gt_right">354</td>
+<td class="gt_row gt_right">2.8</td>
+<td class="gt_row gt_right">421.0</td>
+<td class="gt_row gt_right">20.0</td>
+<td class="gt_row gt_right">59.625</td>
+<td class="gt_row gt_right">55.5</td>
+<td class="gt_row gt_right">75.0</td>
+<td class="gt_row gt_right">4.0</td>
+<td class="gt_row gt_right">7.8</td></tr>
+  </tbody>
+  
+  
+</table></div>
+<p><em>Distribution</em></p>
+<div id="htmlwidget-cf99f8e33ed4be055f66" style="width:90%;height:345.6px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cf99f8e33ed4be055f66">{"x":{"data":[{"x":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"y":[18.7,5.8,45.9,14,null,null,17.5,39.3,149.7,null,3,26.8,null,null,5.7,null,26.1,26.1,null,null,7.3,null,null,null,36.3,7,null,null,126.5,null,32.9,null,117.1,null,null,null,null,25.9,null,null,43.8,12.8,26.8,null,null,null,15.5,null,4.6,354.1,36,15.8,56,4.2,81.6,112.7,null,32.9,167.6,11.4,18,5.9,null,null,null,null,7.5,9.2,null,16.1,null,6.5,9.7,183.2,2.7,12.4,null,12.8,null,102,11.7,null,null,28,null,18,4.3,13.7,39.2,8.9,null,258.6,null,null,18.3,null,null,20.5,35,null,234.5,39.7,64.6,12.7,88.6,null,null,5.3,13,null,116.8,26.5,6.7,80.2,176.5,null,null,7.5,17.8,5.6,10.5,null,4.4,217.7,12.2,null,null,null,12.7,null,9.8,43.7,110,18.5,16.3,8.3,70.5,10,15.9,26.2,null,3.7,73.6,null,4.4,11.3,17.3,70.2,78.9,null,null,9.6,82.7,null,null,6.2,null,null,319,18,374.2,229.6,118.9,8,172.6,9.9,null,3.2,4.5,10.2,85.9,40.2,6,35.7,7.3,24,null,4.7,16.5,12.8,35.3,217.1,48.7,null,165.7,null,18.2,null,null,null,null,null,2.5,214.3,null,5.8,6.8,null,13.5,null,null,238,73.8,null,170.8,18,null,23,12.9,null,null,6.7,null,13.2,12.9,null,null,117.2,null,91.6,181.9,null,11,89.5,49.1,null,4.8,17.7,21,2.5,11.3,4.3,438.3,null,null,null,34,null,36.3,null,null,30.4,null,null,29.5,21.7,null,19.3,36.6,null,null,7.5,null,null,12.7,5.8,null,4.8,5.2,5.3,null,90.8,null,29.3,2.5,8.2,null,null,9.5,null,15.8,null,25.5,null,14,null,3.8,16,124.6,8.6,4.8,null,8.6,null,54.2,43.3,83.1,224.2,null,null,null,26.4,null,5.2,8.3,15,null,null,8,null,36.7,null,null,null,9.3,null,13.8,16.3,null,39.1,53.3,17.9,91.1,14.5,null,17.6,4.9,89.6,null,171,null,null,242.1,49.4,332.7,null,5.8,null,6.8,491.4,11.7,121,null,13.8,10.5,6.8,240.4,5.5,4.5,24.7,476.2,25.3,14.5,17.8,72.8,226.4,13.2,36.1,172.3,null,8.3,6.2,15.7,8.5,64.7,16.9,72.5,83.7,19.6,7.2,null,8.3,7.9,18,13.6,17.2,null,3.3,21.5,23.4,7.8,168.6,null,null,14.6,null,null,10.1,141.9,null,4.8,5.8,null,4.2,4.6,10.8,3.1,8.2,null,318,13.3,null,5.1,14.3,null,null,null,13.4,null,null,null,121.5,16.7,4.2,null,16.3,6.7,null,null,4.7,30,null,68.8,19.9,null,null,13,85.6,15.2,null,null,25.9,31.9,16.1,14.5,27.1,16.9,76.7,8.3,null,101,null,209.1,null,140.7,8.8,6.2,19.7,null,null,8.8,6.7,null,null,12.9,245.2,11.2,null,null,null,97.1,12.5,null,null,37.9,88.5,5.6,6.7,86.7,null,null,5,null,9.1,108.1,19.2,182.9,null,74.9,8.9,21.1,14.6,8,null,27.3,92.1,2.4,null,10,null,149.1,13.6,40.6,null,null,null,5.6,null,null,40.1,83,222.5,5,null,42.3,11.1,17.4,null,null,null,11.9,9.6,null,15.1,8.4,null,null,10.2,19.5,6.7,7.5,77.8,null,6,null,28.2,13,182.5,21.7,15.3,24.7,null,null,17.2,25.9,36.6,8.1,null,null,260.1,null,null,17.9,14,null,null,6.6,null,null,6.1,16.1,79.1,19.5,null,null,null,232.9,null,146.4,null,122.3,23.6,26.7,70.1],"hoverinfo":"y","type":"box","fillcolor":"rgba(68,1,84,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(51,51,51,1)","width":1.88976377952756},"name":"Female","legendgroup":"Female","showlegend":true,"xaxis":"x","yaxis":"y","frame":null},{"x":[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],"y":[13.6,14.1,2.8,17.3,20.1,20.2,16.7,14.1,null,13,16.9,9.9,36,null,41.9,17.3,12.8,null,null,108.5,9.2,21.6,107.1,10.6,102.1,41.3,20.1,11.6,335.1,null,null,null,null,null,null,6,null,11.2,217.7,15.3,12.1,null,15.2,135.9,7.4,39.6,12.4,15.6,102.5,null,null,null,null,null,30,17.3,410,null,22.2,19.3,null,16.2,null,13.5,21.5,11.7,13.3,248.9,44.2,18.3,91.8,11,16.3,20.1,17.5,172.4,9.7,101,120.3,null,9.6,9.8,22.8,16.5,27.5,241.6,19.2,null,156.7,19.9,null,8.9,232.7,20.6,null,16.3,19.7,27.6,null,5.1,14.1,22.3,15.8,15.8,19.5,null,12.6,null,null,null,18.5,20.6,null,null,null,null,8.7,null,109.1,162.3,18.4,17.3,32.5,null,null,null,15.9,null,13,null,null,null,169.4,15.7,null,null,null,9.2,null,86.8,null,26.1,170.3,null,8.8,12.2,null,null,null,null,90.6,20.7,115.1,104.2,null,null,null,14.5,303.5,13.4,null,26.9,64.3,18,null,21.5,102.6,18.3,null,96.5,21.4,11.4,23.7,15.9,null,null,null,12.3,23.6,15.9,16,97.7,16.5,3.5,95,40.3,31.2,16.9,183.4,null,null,156.3,24.4,null,11.6,10.8,13.8,null,18.1,28,3.7,96.7,null,null,10.3,5.2,15.6,null,null,2.8,7,23.8,177.5,12,null,null,25.8,236.7,17.7,20.3,14.9,null,null,421,17.2,24.3,16.8,159.3,6.2,null,16,7.2,11.6,null,null,146.7,28.5,107.3,7.4,31.2,35,32.5,null,10.7,11.4,114.5,14.1,18.1,null,316.4,15,123.1,17.3,null,384.2,22.7,null,35.1,12.9,16.1,92.5,10.6,18.3,15.2,null,null,null,96,21.4,null,3.6,null,null,226.8,85.5,10.2,37.4,null,11,null,null,null,47.8,null,null,5.2,null,20,null,null,null,28.9,null,5.4,null,19.7,92.9,null,null,18.1,null,null,130.7,59.2,29.7,34.9,28.9,101,null,null,null,null,12.3,136.5,null,16.4,121.7,12.8,23.4,null,20,null,null,null,21.7,6.9,null,45.7,14,null,185.5,null,null,21.2,null,14.5,10.6,180.9,36,118.5,10,null,null,15.4,31.3,19.1,null,9.4,172.9,8.8,310.3,96.4,95.8,19.9,10.4,26.1,null,null,null,11.4,7.4,12.1,11.4,3.3,18.3,null,null,16.6,11.3,17.3,null,20.4,32.8,109.6,226.8,21.7,23.4,99.1,null,null,61.6,null,null,16.3,15.8,null,33.3,14.8,25,16.4,null,16.6,null,15.6,null,null,null,11.4,null,9.3,178.7,null,14.7,17.1,36.8,null,5.8,11.9,39.4,null,18.1,45.9,null,17.5,null,4.9,28.3,31.9,null,12.6,null,null,48.4,null,null,3.7,182.7,6,null,null,43.1,23.4,250.4,13.6,null,null,16.7,17.8,110.7,244.6,95,null,18.5,135.1,21.8,null,null,104.7,25.9,33.6,15.1,null,97.1,100.1,null,null,38.7,20.7,null,null,12.3,114.2,20.3,104.1,33.7,13.1,null,null,null,null,99.2,254.1,151.6,11,11.5,234,11.6,21.5,null,18.5,null,20.6,null,null,45.8,null,null,237.7,143.2,20.3,16.1,null,10.4,null,154.3,null,250.9,null,20.9,null,13.7,243.5,null,12.7,186.4,13,null,13,144.5,215.7,null,null,16.8,null,17.8,16.9,10.4,21.3,null,297.1,71.3,null,19,73.9,null,null,7.7,null,null,null,11.9,105.1,null,10.5,13.8,26.3,null,240.5,14.2,17.2],"hoverinfo":"y","type":"box","fillcolor":"rgba(253,231,37,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(51,51,51,1)","width":1.88976377952756},"name":"Male","legendgroup":"Male","showlegend":true,"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":28.1800844517574,"r":7.30593607305936,"b":42.1344223513008,"l":43.1050228310502},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,2.6],"tickmode":"array","ticktext":["Female","Male"],"tickvals":[1,2],"categoryorder":"array","categoryarray":["Female","Male"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Sex","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-22.05,515.85],"tickmode":"array","ticktext":["0","100","200","300","400","500"],"tickvals":[-3.5527136788005e-15,100,200,300,400,500],"categoryorder":"array","categoryarray":["0","100","200","300","400","500"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Death Rate","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.95487539455542},"annotations":[{"text":"sex","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"416078817069":{"x":{},"y":{},"fill":{},"type":"box"}},"cur_data":"416078817069","visdat":{"416078817069":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p><strong>Assumptions</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">sex</th>
-<th align="left">variable</th>
-<th align="right">statistic</th>
-<th align="right">p</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">F</td>
-<td align="left">death_rate</td>
-<td align="right">0.6276062</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="left">M</td>
-<td align="left">death_rate</td>
-<td align="right">0.6597610</td>
-<td align="right">0</td>
-</tr>
-</tbody>
-</table>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#pzydufgtry .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pzydufgtry .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pzydufgtry .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pzydufgtry .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pzydufgtry .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pzydufgtry .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pzydufgtry .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pzydufgtry .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pzydufgtry .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pzydufgtry .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pzydufgtry .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pzydufgtry .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pzydufgtry .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pzydufgtry .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pzydufgtry .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pzydufgtry .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pzydufgtry .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#pzydufgtry .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pzydufgtry .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#pzydufgtry .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pzydufgtry .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pzydufgtry .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pzydufgtry .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pzydufgtry .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pzydufgtry .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#pzydufgtry .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pzydufgtry .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#pzydufgtry .gt_left {
+  text-align: left;
+}
+
+#pzydufgtry .gt_center {
+  text-align: center;
+}
+
+#pzydufgtry .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pzydufgtry .gt_font_normal {
+  font-weight: normal;
+}
+
+#pzydufgtry .gt_font_bold {
+  font-weight: bold;
+}
+
+#pzydufgtry .gt_font_italic {
+  font-style: italic;
+}
+
+#pzydufgtry .gt_super {
+  font-size: 65%;
+}
+
+#pzydufgtry .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="pzydufgtry" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal" style><strong>Shapiro-Wilks Normality Test</strong></th>
+    </tr>
+    <tr>
+      <th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>Death Rates by Sex</th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Sex</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Statistic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>P-value</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">0.628</td>
+<td class="gt_row gt_right">0.000</td></tr>
+    <tr><td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">0.660</td>
+<td class="gt_row gt_right">0.000</td></tr>
+  </tbody>
+  
+  
+</table></div>
 <p><img src="stats_files/figure-html/unnamed-chunk-4-1.png" width="90%" /></p>
-<p>From the boxplot visualization and the p-values (&lt; 0.05) associated with the The Shapiro–Wilk test, there is evidence that the data from both the sex groups is not normally distributed. This is also evident from the qqplot above.</p>
+<details>
+<p><summary> Description </summary></p>
+<p>From the boxplot visualization and the p-values (&lt; 0.05) associated with the The Shapiro–Wilks test, there is evidence that the data from both the sex groups is not normally distributed. This is also evident from the qqplot above.</p>
 <p>Since the normality assumption has been violated, the Wilcoxon rank sum test (non-parametric) will be performed.</p>
+</details>
+<p><br> <br></p>
 <p><strong>Test</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">.y.</th>
-<th align="left">group1</th>
-<th align="left">group2</th>
-<th align="right">n1</th>
-<th align="right">n2</th>
-<th align="right">statistic</th>
-<th align="right">p</th>
-<th align="left">p.signif</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">death_rate</td>
-<td align="left">F</td>
-<td align="left">M</td>
-<td align="right">554</td>
-<td align="right">540</td>
-<td align="right">53875</td>
-<td align="right">0.00125</td>
-<td align="left">**</td>
-</tr>
-</tbody>
-</table>
-<p>p-value = 0.00125 &lt; 0.05</p>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#rtbgrggimx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#rtbgrggimx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rtbgrggimx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#rtbgrggimx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#rtbgrggimx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rtbgrggimx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rtbgrggimx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#rtbgrggimx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#rtbgrggimx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#rtbgrggimx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#rtbgrggimx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#rtbgrggimx .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rtbgrggimx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rtbgrggimx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#rtbgrggimx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#rtbgrggimx .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#rtbgrggimx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#rtbgrggimx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rtbgrggimx .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#rtbgrggimx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rtbgrggimx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#rtbgrggimx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#rtbgrggimx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rtbgrggimx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rtbgrggimx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#rtbgrggimx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rtbgrggimx .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#rtbgrggimx .gt_left {
+  text-align: left;
+}
+
+#rtbgrggimx .gt_center {
+  text-align: center;
+}
+
+#rtbgrggimx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#rtbgrggimx .gt_font_normal {
+  font-weight: normal;
+}
+
+#rtbgrggimx .gt_font_bold {
+  font-weight: bold;
+}
+
+#rtbgrggimx .gt_font_italic {
+  font-style: italic;
+}
+
+#rtbgrggimx .gt_super {
+  font-size: 65%;
+}
+
+#rtbgrggimx .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="rtbgrggimx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="7" class="gt_heading gt_title gt_font_normal gt_bottom_border" style><strong>Wilcoxon Rank-Sum Test</strong></th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Group 1</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Group 2</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>N (Females)</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>N (Males)</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Statistic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>P-value</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>P-value Significance</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">554</td>
+<td class="gt_row gt_right">540</td>
+<td class="gt_row gt_right">53875</td>
+<td class="gt_row gt_right">0.00125</td>
+<td class="gt_row gt_left">**</td></tr>
+  </tbody>
+  
+  
+</table></div>
+<p><br> p-value = 0.00125 &lt; 0.05 <br></p>
 <p><strong>Report</strong></p>
-<p>The respective median death rates for male and female groups are as follows: 20 and 17.45. Based on the Wilcoxon rank sum test result, we have evidence to state that there is a statistically significant difference in death rates between men and women in New York City (p = 0.00125).</p>
+<p>The respective median death rates for male and female groups are as follows: 20 and 17.45. Based on the Wilcoxon rank sum test result, we have evidence to state that there is a statistically significant difference in death rates between men and women in New York City (p = 0.00125).<br> <br></p>
 </div>
-<div id="is-there-a-statistically-significant-difference-in-death-rates-across-different-ethnicities-in-new-york-city" class="section level3">
-<h3>Is there a statistically significant difference in death rates across different ethnicities in New York City?</h3>
-<p><strong>Summary statistics</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">race_ethnicity</th>
-<th align="right">mean</th>
-<th align="right">sd</th>
-<th align="right">median</th>
-<th align="right">IQR</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Asian/PI</td>
-<td align="right">27.31356</td>
-<td align="right">32.50134</td>
-<td align="right">11.4</td>
-<td align="right">36.300</td>
-</tr>
-<tr class="even">
-<td align="left">Black</td>
-<td align="right">65.94663</td>
-<td align="right">74.79932</td>
-<td align="right">26.1</td>
-<td align="right">107.375</td>
-</tr>
-<tr class="odd">
-<td align="left">Hispanic</td>
-<td align="right">35.85876</td>
-<td align="right">38.89141</td>
-<td align="right">16.0</td>
-<td align="right">71.400</td>
-</tr>
-<tr class="even">
-<td align="left">Other</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">Unknown</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">White</td>
-<td align="right">84.74261</td>
-<td align="right">115.18831</td>
-<td align="right">24.6</td>
-<td align="right">116.200</td>
-</tr>
-</tbody>
-</table>
+<div id="is-there-a-statistically-significant-difference-in-death-rates-across-different-ethnicity-in-new-york-city" class="section level3">
+<h3>Is there a statistically significant difference in death rates across different ethnicity in New York City?</h3>
+<p><br> <br></p>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#lzdygyvqxa .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#lzdygyvqxa .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lzdygyvqxa .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#lzdygyvqxa .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#lzdygyvqxa .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lzdygyvqxa .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lzdygyvqxa .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#lzdygyvqxa .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#lzdygyvqxa .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#lzdygyvqxa .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#lzdygyvqxa .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#lzdygyvqxa .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lzdygyvqxa .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lzdygyvqxa .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#lzdygyvqxa .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#lzdygyvqxa .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#lzdygyvqxa .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#lzdygyvqxa .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lzdygyvqxa .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#lzdygyvqxa .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lzdygyvqxa .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#lzdygyvqxa .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#lzdygyvqxa .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lzdygyvqxa .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lzdygyvqxa .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#lzdygyvqxa .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lzdygyvqxa .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#lzdygyvqxa .gt_left {
+  text-align: left;
+}
+
+#lzdygyvqxa .gt_center {
+  text-align: center;
+}
+
+#lzdygyvqxa .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#lzdygyvqxa .gt_font_normal {
+  font-weight: normal;
+}
+
+#lzdygyvqxa .gt_font_bold {
+  font-weight: bold;
+}
+
+#lzdygyvqxa .gt_font_italic {
+  font-style: italic;
+}
+
+#lzdygyvqxa .gt_super {
+  font-size: 65%;
+}
+
+#lzdygyvqxa .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="lzdygyvqxa" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="5" class="gt_heading gt_title gt_font_normal" style><strong>Summary Statistics</strong></th>
+    </tr>
+    <tr>
+      <th colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style><strong>by Race/Ethnicity</strong></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Race/Ethnicity</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Mean</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Standard Deviation</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Median</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Interquartile Range</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_center">Asian/PI</td>
+<td class="gt_row gt_right">27.31356</td>
+<td class="gt_row gt_right">32.50134</td>
+<td class="gt_row gt_right">11.4</td>
+<td class="gt_row gt_right">36.300</td></tr>
+    <tr><td class="gt_row gt_center">Black</td>
+<td class="gt_row gt_right">65.94663</td>
+<td class="gt_row gt_right">74.79932</td>
+<td class="gt_row gt_right">26.1</td>
+<td class="gt_row gt_right">107.375</td></tr>
+    <tr><td class="gt_row gt_center">Hispanic</td>
+<td class="gt_row gt_right">35.85876</td>
+<td class="gt_row gt_right">38.89141</td>
+<td class="gt_row gt_right">16.0</td>
+<td class="gt_row gt_right">71.400</td></tr>
+    <tr><td class="gt_row gt_center">Other</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_center">Unknown</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_center">White</td>
+<td class="gt_row gt_right">84.74261</td>
+<td class="gt_row gt_right">115.18831</td>
+<td class="gt_row gt_right">24.6</td>
+<td class="gt_row gt_right">116.200</td></tr>
+  </tbody>
+  
+  
+</table></div>
+<details>
+<p><summary> Description </summary></p>
 <p>Since the “Other” and “Unknown” categories of race don’t have any associated death rates, these categories have been filtered out.</p>
-<p><strong>Visualization</strong></p>
-<p><img src="stats_files/figure-html/unnamed-chunk-6-1.png" width="90%" /></p>
-<p><strong>One-way ANOVA test</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Effect</th>
-<th align="right">DFn</th>
-<th align="right">DFd</th>
-<th align="right">F</th>
-<th align="right">p</th>
-<th align="left">p&lt;.05</th>
-<th align="right">ges</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">race_ethnicity</td>
-<td align="right">3</td>
-<td align="right">704</td>
-<td align="right">23.428</td>
-<td align="right">0</td>
-<td align="left">*</td>
-<td align="right">0.091</td>
-</tr>
-</tbody>
-</table>
+</details>
+<p><br> <br></p>
+<p><strong>Distribution</strong></p>
+<div id="htmlwidget-1a13511871d3c1a6f1e6" style="width:90%;height:345.6px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1a13511871d3c1a6f1e6">{"x":{"data":[{"x":[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],"y":[18.7,5.8,89.6,6.8,5.1,9.9,17.8,102,19.2,89.5,5.7,108.1,7.3,4.7,18,121.5,7,88.6,16.1,4.8,4.4,122.3,15.2,17.2,5.3,16.9,83.7,18,19.3,17.8,12.8,13.5,85.9,91.1,8.8,83,16.3,11.2,5.2,4.6,92.1,90.8,17.4,64.7,17.7,9.2,13.6,70.2,4.2,12.9,74.9,18,5,16,86.7,6.1,4.8,16.3,14.6,12.7,5.8,9.3,8.3,17.6,14,82.7,6.5,4.8,16.5,101,6.7,12.9,8,88.5,110,112.7,7.8,4.8,8.2,13.8,9.6,12.9,97.1,13.2,9.6,91.6,4.7,12.8,10.2,83.1,4.5,15.8,85.6,4.3,6,70.1,4.2,6.7,40.1,78.9,4.6,76.7,13,13.7,4.3,40.2,70.5,3.1,80.2,5.5,6.7,5,35.3,17.5,2.7,13.2,3.2,73.6,17.2,6.7,6.6,17.9,4.2,3.8,8.9,54.2,14.5,2.5,72.8,5.6,56,81.6,13.3,8.3,13.6,42.3,4.4,72.5,3.3,64.6,5.6,5.8,11.3,6.8,6.7,53.3,12.7,3,5.3,12.8,77.8,8.1,4.9,2.5,10,2.4,11.1,12.2,73.8,2.5,5.9,9.1,6.2,15.1,9.8,8,7.5,48.7,8.8,10,5.8,4.5,5.8,79.1,5.6,68.8,3.7,234.5,12.5,318,39.7,117.2,11.7,149.7,16.7,26.7,7.5,43.3,29.5,15,32.9,17.3,32.9,172.3,14.5,117.1,10.5,35.7,6.2,438.3,11.3,491.4,36.6,332.7,10.8,224.2,245.2,45.9,172.6,30,229.6,238,43.7,43.8,36,118.9,476.2,181.9,14.6,6,13.4,27.1,222.5,7.5,17.9,49.1,25.9,182.5,19.5,11.9,36.1,9.5,232.9,12.7,16.3,240.4,319,16.1,40.6,18.5,14,374.2,49.4,14.3,13,354.1,11.4,15.9,10.5,16.1,35,36.3,31.9,8,15.7,16.9,29.3,8.3,26.4,12.4,14,15.3,5.2,18,6.2,217.1,28,214.3,24.7,34,10.1,27.3,167.6,19.7,25.9,23,26.1,26.8,26.2,141.9,176.5,36.6,18.2,7.9,126.5,18.3,7.5,171,8.4,124.6,39.3,258.6,26.8,19.6,209.1,260.1,21.7,19.5,37.9,19.9,8.6,26.5,24,11,21.7,15.8,140.7,25.9,21,8.9,21.5,121,15.5,165.7,36.3,23.4,116.8,20.5,182.9,36.7,168.6,39.1,28.2,6.8,217.7,8.3,13,183.2,30.4,11.7,8.2,149.1,26.1,242.1,9.7,170.8,8.5,24.7,6.7,25.3,13.8,25.5,226.4,10.2,39.2,14.5,8.6,23.6,146.4,7.2,7.3,21.1,8.3,18],"hoverinfo":"y","type":"box","fillcolor":"rgba(255,255,255,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(68,1,84,1)","width":1.88976377952756},"name":"Female","legendgroup":"Female","showlegend":true,"xaxis":"x","yaxis":"y","frame":null},{"x":[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"y":[45.9,240.5,27.6,410,172.9,21.7,21.2,25.9,335.1,232.7,19.5,18.5,41.3,21.7,297.1,11.6,384.2,310.3,14.5,14.9,33.3,15.2,20,32.5,11.4,250.4,16.9,162.3,19.3,15.2,135.1,18.3,250.9,316.4,13,25.8,37.4,151.6,18.3,20.2,39.4,241.6,421,19,135.9,9.2,20.1,11,170.3,20.7,20.3,254.1,40.3,16.9,22.2,234,11.4,19.7,20.4,14,48.4,21.6,39.6,21.4,29.7,26.3,13.3,14.2,21.8,12.3,28.9,15.7,18.3,17.7,19.2,13.6,45.8,20.6,303.5,237.7,130.7,20.3,23.4,169.4,21.3,10.6,20.6,16.4,16.8,100.1,16.4,16.9,12.8,12.1,14.8,17.3,15.1,16.3,13.4,12,105.1,12.3,9.8,10.5,11,12.6,8.8,14.1,16.8,14.5,12.6,11.6,17.5,104.2,12.7,10.3,96.7,13.8,13.1,15.6,120.3,102.6,96,101,7.7,18.1,92.9,16.3,13.5,17.5,118.5,14.1,107.1,20,12.1,15.6,9.9,16,11.6,16.5,97.7,16.2,11.9,104.7,95,17.3,107.3,97.1,96.4,102.1,15.3,110.7,90.6,10.6,16.3,14.7,20.6,15.6,16.7,20.1,17.3,123.1,12.2,13.7,92.5,12.9,16,15.9,19.7,11.2,16.6,121.7,11.3,10.7,99.2,13,27.5,23.4,226.8,17.2,19.9,17.3,159.3,24.3,30,35.1,25,182.7,22.8,21.5,20.1,38.7,28.3,16.1,26.1,32.5,31.2,180.9,33.7,41.9,18.5,156.7,215.7,22.3,248.9,35,20.3,21.5,20.9,34.9,146.7,15.4,15.8,15.8,44.2,19.1,26.9,23.6,18,23.8,156.3,178.7,17.3,144.5,28,28.9,18.5,31.2,22.7,36,33.6,243.5,19.9,172.4,177.5,21.4,36.8,23.4,183.4,143.2,31.9,17.2,17.8,18.1,15.8,36,236.7,23.7,244.6,21.5,26.1,16.7,186.4,217.7,185.5,16.1,28.5,31.3,18.1,24.4,226.8,154.3,136.5,17.1,32.8,16.6,11.5,9.6,10.4,59.2,64.3,71.3,5.8,8.8,6,47.8,7.4,10,102.5,11.4,15.9,85.5,3.6,18.1,45.7,61.6,13.8,95.8,104.1,12.8,5.4,2.8,10.6,10.4,115.1,7.4,8.7,11.9,9.3,114.2,5.1,16.5,9.4,3.5,7,20.7,109.1,11,99.1,8.9,13,15.9,4.9,96.5,5.2,114.5,7.2,10.4,101,5.2,12.3,2.8,11.4,14.1,6.9,17.3,86.8,3.7,109.6,18.3,3.3,12.4,108.5,6.2,11.4,7.4,10.8,6,91.8,3.7,13.6,18.4,14.1,9.7,43.1,13,11.7,95,17.8,73.9,10.2,9.2,15,11.6],"hoverinfo":"y","type":"box","fillcolor":"rgba(255,255,255,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(253,231,37,1)","width":1.88976377952756},"name":"Male","legendgroup":"Male","showlegend":true,"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":28.1800844517574,"r":7.30593607305936,"b":42.1344223513008,"l":43.1050228310502},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,4.6],"tickmode":"array","ticktext":["Asian/PI","Black","Hispanic","White"],"tickvals":[1,2,3,4],"categoryorder":"array","categoryarray":["Asian/PI","Black","Hispanic","White"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Race","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-22.05,515.85],"tickmode":"array","ticktext":["0","100","200","300","400","500"],"tickvals":[-3.5527136788005e-15,100,200,300,400,500],"categoryorder":"array","categoryarray":["0","100","200","300","400","500"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Death Rate","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.95487539455542},"annotations":[{"text":"sex","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"416010963ce9":{"x":{},"y":{},"colour":{},"type":"box"}},"cur_data":"416010963ce9","visdat":{"416010963ce9":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p><strong>One-way ANOVA Test</strong></p>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#mczisqxpuk .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mczisqxpuk .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mczisqxpuk .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mczisqxpuk .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mczisqxpuk .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mczisqxpuk .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mczisqxpuk .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mczisqxpuk .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mczisqxpuk .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mczisqxpuk .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mczisqxpuk .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mczisqxpuk .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mczisqxpuk .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mczisqxpuk .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mczisqxpuk .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mczisqxpuk .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mczisqxpuk .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#mczisqxpuk .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mczisqxpuk .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#mczisqxpuk .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mczisqxpuk .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mczisqxpuk .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mczisqxpuk .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mczisqxpuk .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mczisqxpuk .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#mczisqxpuk .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mczisqxpuk .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#mczisqxpuk .gt_left {
+  text-align: left;
+}
+
+#mczisqxpuk .gt_center {
+  text-align: center;
+}
+
+#mczisqxpuk .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mczisqxpuk .gt_font_normal {
+  font-weight: normal;
+}
+
+#mczisqxpuk .gt_font_bold {
+  font-weight: bold;
+}
+
+#mczisqxpuk .gt_font_italic {
+  font-style: italic;
+}
+
+#mczisqxpuk .gt_super {
+  font-size: 65%;
+}
+
+#mczisqxpuk .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="mczisqxpuk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="7" class="gt_heading gt_title gt_font_normal gt_bottom_border" style><strong>One-way ANOVA Test by Race/Ethnicity</strong></th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Effect</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>DF - Numerator</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>DF - Denominator</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>F-Statistic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>P-value</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>p &lt; 0.05</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Generalized ETA Squared</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">race_ethnicity</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">704</td>
+<td class="gt_row gt_right">23.428</td>
+<td class="gt_row gt_right">0.000</td>
+<td class="gt_row gt_left">*</td>
+<td class="gt_row gt_right">0.091</td></tr>
+  </tbody>
+  
+  
+</table></div>
+<details>
+<p><summary> Description </summary></p>
 <p>p-value = 1.83e-14 &lt; 0.05</p>
-<p>At 0.05 significance level, we reject the null hypothesis and conclude that there is a significant difference in death rates across different ethnicities, in New York City.</p>
+<p>At 0.05 significance level, we reject the null hypothesis and conclude that there is a significant difference in death rates across different ethnicity , in New York City.</p>
+</details>
+<p><br> <br></p>
 <p><strong>Multiple Comparisons</strong></p>
-<p>A Tukey pairwise-comparisons test is performed to account for multiple comparisons</p>
+<p>A Tukey pairwise-comparisons test is performed to account for multiple comparisons.<br> <br></p>
 <pre><code>  Tukey multiple comparisons of means
     95% family-wise confidence level
 
@@ -625,112 +2340,808 @@ White-Asian/PI     57.429054  37.383762  77.47435 0.0000000
 Hispanic-Black    -30.087872 -50.076618 -10.09913 0.0006691
 White-Black        18.795984  -1.221215  38.81318 0.0746105
 White-Hispanic     48.883857  28.838564  68.92915 0.0000000</code></pre>
+<details>
+<p><summary> Description </summary></p>
 <p>From the above table, it can be inferred that there was a significant difference in death rates for the following pairs: Black and Asian/PI, White-Asian/PI, Hispanic-Black, White-Hispanic.</p>
-<p><strong>Assumptions</strong></p>
-<p>Homogeneity of variances</p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">df1</th>
-<th align="right">df2</th>
-<th align="right">statistic</th>
-<th align="right">p</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">3</td>
-<td align="right">704</td>
-<td align="right">18.61912</td>
-<td align="right">0</td>
-</tr>
-</tbody>
-</table>
-<p>Levene’s test was performed to check for the homogeneity of variances assumption. Based on the p-value, it can be inferred that there is no homogeneity of variances in different ethnicities.</p>
-<p>Normality</p>
+</details>
+<p><br> <br></p>
+<p><strong>Assumptions</strong><br> <br></p>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#bkpczlgexs .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bkpczlgexs .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bkpczlgexs .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bkpczlgexs .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bkpczlgexs .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bkpczlgexs .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bkpczlgexs .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bkpczlgexs .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bkpczlgexs .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bkpczlgexs .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bkpczlgexs .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bkpczlgexs .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bkpczlgexs .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bkpczlgexs .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bkpczlgexs .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bkpczlgexs .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bkpczlgexs .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#bkpczlgexs .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bkpczlgexs .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#bkpczlgexs .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bkpczlgexs .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#bkpczlgexs .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#bkpczlgexs .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bkpczlgexs .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bkpczlgexs .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#bkpczlgexs .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bkpczlgexs .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#bkpczlgexs .gt_left {
+  text-align: left;
+}
+
+#bkpczlgexs .gt_center {
+  text-align: center;
+}
+
+#bkpczlgexs .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bkpczlgexs .gt_font_normal {
+  font-weight: normal;
+}
+
+#bkpczlgexs .gt_font_bold {
+  font-weight: bold;
+}
+
+#bkpczlgexs .gt_font_italic {
+  font-style: italic;
+}
+
+#bkpczlgexs .gt_super {
+  font-size: 65%;
+}
+
+#bkpczlgexs .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="bkpczlgexs" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="4" class="gt_heading gt_title gt_font_normal" style><strong>Homogeneity of Variances</strong></th>
+    </tr>
+    <tr>
+      <th colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style><strong>by Race/Ethnicity</strong></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>DF1</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>DF2</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Statistic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>P-value</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">704</td>
+<td class="gt_row gt_right">18.619</td>
+<td class="gt_row gt_right">0.000</td></tr>
+  </tbody>
+  
+  
+</table></div>
+<details>
+<p><summary> Description </summary></p>
+<p>Levene’s test was performed to check for the homogeneity of variances assumption. Based on the p-value, it can be inferred that there is no homogeneity of variances in different ethnicity .</p>
+</details>
+<p><br> <br></p>
+<p><strong>Normality</strong><br> <br></p>
 <pre><code>
     Shapiro-Wilk normality test
 
 data:  mod_residuals
 W = 0.7833, p-value &lt; 2.2e-16</code></pre>
+<details>
+<p><summary> Description </summary></p>
 <p>Since the p-value &lt; 0.00000000000000022, it can be assumed that the residuals are not normally distributed. Therefore, a Kruskal-Wallis rank sum test will be performed because the assumptions of one-way ANOVA have been violated.</p>
-<p><strong>Kruskal-Wallis rank sum test</strong></p>
+</details>
+<p><br> <br></p>
+<p><strong>Kruskal-Wallis rank sum test</strong><br> <br></p>
 <pre><code>
     Kruskal-Wallis rank sum test
 
 data:  death_rate by race_ethnicity
 Kruskal-Wallis chi-squared = 117.22, df = 3, p-value &lt; 2.2e-16</code></pre>
 <p><strong>Report</strong></p>
-<p>Based on the Kruskal-Wallis rank sum test result, we have evidence to state that there is a statistically significant difference in death rates across different ethnicities in New York City (p-value &lt; 0.00000000000000022).</p>
+<p>Based on the Kruskal-Wallis rank sum test result, we have evidence to state that there is a statistically significant difference in death rates across different race/ethnicity in New York City (p-value &lt; 0.05).<br> <br></p>
 </div>
 <div id="are-there-significant-differences-in-the-leading-causes-of-death-between-men-and-women-in-nyc" class="section level3">
 <h3>Are there significant differences in the leading causes of death between men and women in NYC?</h3>
-<p><strong>Summary statistics</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">leading_cause</th>
-<th align="left">sex</th>
-<th align="right">count</th>
-<th align="right">mean</th>
-<th align="right">sd</th>
-<th align="right">median</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Chronic Lower Respiratory Diseases</td>
-<td align="left">F</td>
-<td align="right">45</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="left">Chronic Lower Respiratory Diseases</td>
-<td align="left">M</td>
-<td align="right">43</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">Diseases of Heart</td>
-<td align="left">F</td>
-<td align="right">48</td>
-<td align="right">1640.667</td>
-<td align="right">1992.524</td>
-<td align="right">846.0</td>
-</tr>
-<tr class="even">
-<td align="left">Diseases of Heart</td>
-<td align="left">M</td>
-<td align="right">48</td>
-<td align="right">1433.312</td>
-<td align="right">1633.663</td>
-<td align="right">877.5</td>
-</tr>
-<tr class="odd">
-<td align="left">Malignant Neoplasms</td>
-<td align="left">F</td>
-<td align="right">48</td>
-<td align="right">1122.438</td>
-<td align="right">1181.971</td>
-<td align="right">735.5</td>
-</tr>
-<tr class="even">
-<td align="left">Malignant Neoplasms</td>
-<td align="left">M</td>
-<td align="right">48</td>
-<td align="right">1093.542</td>
-<td align="right">1120.950</td>
-<td align="right">835.0</td>
-</tr>
-</tbody>
-</table>
-<p>A slight inequality can be observed in the sample size per group.</p>
-<p><strong>Visualization</strong></p>
-<p><img src="stats_files/figure-html/unnamed-chunk-12-1.png" width="90%" /></p>
+<p><br> <br> <strong>Summary statistics</strong></p>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#gfriwogmzb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#gfriwogmzb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gfriwogmzb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#gfriwogmzb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#gfriwogmzb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gfriwogmzb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gfriwogmzb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#gfriwogmzb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#gfriwogmzb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#gfriwogmzb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#gfriwogmzb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#gfriwogmzb .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gfriwogmzb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gfriwogmzb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#gfriwogmzb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#gfriwogmzb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#gfriwogmzb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#gfriwogmzb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gfriwogmzb .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#gfriwogmzb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gfriwogmzb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#gfriwogmzb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#gfriwogmzb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gfriwogmzb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gfriwogmzb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#gfriwogmzb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gfriwogmzb .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#gfriwogmzb .gt_left {
+  text-align: left;
+}
+
+#gfriwogmzb .gt_center {
+  text-align: center;
+}
+
+#gfriwogmzb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#gfriwogmzb .gt_font_normal {
+  font-weight: normal;
+}
+
+#gfriwogmzb .gt_font_bold {
+  font-weight: bold;
+}
+
+#gfriwogmzb .gt_font_italic {
+  font-style: italic;
+}
+
+#gfriwogmzb .gt_super {
+  font-size: 65%;
+}
+
+#gfriwogmzb .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="gfriwogmzb" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="5" class="gt_heading gt_title gt_font_normal" style><strong>Summary Statistics</strong></th>
+    </tr>
+    <tr>
+      <th colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style><strong>by Leading Cause of Deaths and Sex</strong></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Sex</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>N</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Mean</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Standard Deviation</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Median</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="5" class="gt_group_heading">Chronic Lower Respiratory Diseases</td>
+    </tr>
+    <tr><td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">45</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">43</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="5" class="gt_group_heading">Diseases of Heart</td>
+    </tr>
+    <tr><td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">48</td>
+<td class="gt_row gt_right">1640.667</td>
+<td class="gt_row gt_right">1992.524</td>
+<td class="gt_row gt_right">846.0</td></tr>
+    <tr><td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">48</td>
+<td class="gt_row gt_right">1433.312</td>
+<td class="gt_row gt_right">1633.663</td>
+<td class="gt_row gt_right">877.5</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="5" class="gt_group_heading">Malignant Neoplasms</td>
+    </tr>
+    <tr><td class="gt_row gt_left">Female</td>
+<td class="gt_row gt_right">48</td>
+<td class="gt_row gt_right">1122.438</td>
+<td class="gt_row gt_right">1181.971</td>
+<td class="gt_row gt_right">735.5</td></tr>
+    <tr><td class="gt_row gt_left">Male</td>
+<td class="gt_row gt_right">48</td>
+<td class="gt_row gt_right">1093.542</td>
+<td class="gt_row gt_right">1120.950</td>
+<td class="gt_row gt_right">835.0</td></tr>
+  </tbody>
+  
+  
+</table></div>
+<details>
+<p><summary> Description </summary></p>
+A slight inequality can be observed in the sample size per group.
+</details>
+<p><br> <br></p>
+<p><strong>Distribution</strong></p>
+<div id="htmlwidget-86a8ccb7db8b99c3985f" style="width:90%;height:345.6px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-86a8ccb7db8b99c3985f">{"x":{"data":[{"x":[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"y":[76,5016,106,111,2269,108,2535,43,35,448,48,95,6297,82,1418,1263,40,2722,402,68,1349,50,43,4535,4507,428,456,31,2282,2725,402,1445,2365,2194,41,1261,437,6836,4719,394,1230,7050,1316,462,2243,5351,70,1348,29,395,3366,1784,3371,1097,969,19,11,36,1912,1125,43,50,467,3153,1735,94,51,41,1852,1149,461,29,1045,66,502,344,414,398,3438,1918,3187,21,1085,3346,22,1046,3518,3256,1154,34,36,1756,33,1768,451,1800,5,191,9,null,8,193,7,116,163,518,156,6,6,6,220,206,27,null,12,null,510,258,168,507,29,501,472,30,156,155,null,158,515,30,null,30,39,521,458,204,188,156,221,36,28],"hoverinfo":"y","type":"box","fillcolor":"rgba(255,255,255,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(68,1,84,1)","width":1.88976377952756},"name":"Female","legendgroup":"Female","showlegend":true,"xaxis":"x","yaxis":"y","frame":null},{"x":[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"y":[4495,2121,62,86,1327,1251,554,5168,3990,1382,52,4085,5632,39,1201,496,1868,4220,546,1958,1281,38,452,42,2068,1330,1940,94,63,5503,469,99,151,39,554,531,1307,2077,478,92,115,70,36,1354,1840,2015,72,4156,1144,1146,1126,1590,526,29,73,32,1557,3132,1592,3222,1523,3184,528,46,550,1146,45,3142,1057,1532,34,1540,47,3236,3356,36,633,33,27,473,99,53,12,3361,1180,1563,3408,622,1464,506,657,1013,60,50,1080,25,95,14,null,202,43,169,5,61,null,6,371,72,123,111,352,137,null,142,184,51,388,444,347,132,145,437,null,345,46,10,147,184,55,200,15,186,149,73,null,11,399,132,12],"hoverinfo":"y","type":"box","fillcolor":"rgba(255,255,255,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(253,231,37,1)","width":1.88976377952756},"name":"Male","legendgroup":"Male","showlegend":true,"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":28.1800844517574,"r":7.30593607305936,"b":229.166385821621,"l":48.9497716894977},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,3.6],"tickmode":"array","ticktext":["Chronic Lower Respiratory Diseases","Diseases of Heart","Malignant Neoplasms"],"tickvals":[1,2,3],"categoryorder":"array","categoryarray":["Chronic Lower Respiratory Diseases","Diseases of Heart","Malignant Neoplasms"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-90,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Leading Causes of Death","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-347.25,7402.25],"tickmode":"array","ticktext":["0","2000","4000","6000"],"tickvals":[0,2000,4000,6000],"categoryorder":"array","categoryarray":["0","2000","4000","6000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Death Count","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.95487539455542},"annotations":[{"text":"sex","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"41602dcd6663":{"x":{},"y":{},"colour":{},"type":"box"}},"cur_data":"41602dcd6663","visdat":{"41602dcd6663":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p><strong>Two-way ANOVA test</strong></p>
 <pre><code>Anova Table (Type III tests)
 
@@ -742,7 +3153,8 @@ sex              553642   1  0.3353    0.5630
 Residuals     439182875 266                      
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>Two-way ANOVA test with interaction effect</p>
+<p><br><br />
+<em>Two-way ANOVA test with interaction effect:</em> <br></p>
 <pre><code>Anova Table (Type III tests)
 
 Response: deaths
@@ -754,40 +3166,395 @@ leading_cause:sex    508347   2  0.1530    0.8582
 Residuals         438674528 264                      
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<details>
+<p><summary> Description </summary></p>
 <p>At 0.05 significance level, the following inferences can be made based on the p-values given above:</p>
 <ul>
 <li>The leading causes of deaths (Diseases of Heart, Malignant Neoplasms, Diabetes Mellitus and Chronic Lower Respiratory Diseases) are associated with significant death counts in the New York City (p = 0.000001394).</li>
 <li>The sex variable and the interaction term (sex and leading causes of death variable) don’t have any significant association with death counts in New York City</li>
 </ul>
-<p><strong>Assumptions</strong></p>
-<p>Homogeneity of variances</p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">df1</th>
-<th align="right">df2</th>
-<th align="right">statistic</th>
-<th align="right">p</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">5</td>
-<td align="right">264</td>
-<td align="right">14.53361</td>
-<td align="right">0</td>
-</tr>
-</tbody>
-</table>
-<p>Levene’s test was performed to check for the homogeneity of variances assumption. Based on the p-value, it can be inferred that there is no homogeneity of variances in the observed groups.</p>
-<p>Normality</p>
+</details>
+<p><br> <br></p>
+<p><strong>Assumptions</strong><br> <br></p>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#uadnipmtfo .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uadnipmtfo .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uadnipmtfo .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uadnipmtfo .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uadnipmtfo .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uadnipmtfo .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uadnipmtfo .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#uadnipmtfo .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uadnipmtfo .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uadnipmtfo .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uadnipmtfo .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uadnipmtfo .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uadnipmtfo .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uadnipmtfo .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uadnipmtfo .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uadnipmtfo .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uadnipmtfo .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#uadnipmtfo .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uadnipmtfo .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#uadnipmtfo .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uadnipmtfo .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uadnipmtfo .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uadnipmtfo .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uadnipmtfo .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uadnipmtfo .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#uadnipmtfo .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uadnipmtfo .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#uadnipmtfo .gt_left {
+  text-align: left;
+}
+
+#uadnipmtfo .gt_center {
+  text-align: center;
+}
+
+#uadnipmtfo .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uadnipmtfo .gt_font_normal {
+  font-weight: normal;
+}
+
+#uadnipmtfo .gt_font_bold {
+  font-weight: bold;
+}
+
+#uadnipmtfo .gt_font_italic {
+  font-style: italic;
+}
+
+#uadnipmtfo .gt_super {
+  font-size: 65%;
+}
+
+#uadnipmtfo .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="uadnipmtfo" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="4" class="gt_heading gt_title gt_font_normal" style><strong>Homogeneity of Variances</strong></th>
+    </tr>
+    <tr>
+      <th colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style><strong>by Race/Ethnicity</strong></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>DF1</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>DF2</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Statistic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>P-value</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">5</td>
+<td class="gt_row gt_right">264</td>
+<td class="gt_row gt_right">14.534</td>
+<td class="gt_row gt_right">0.000</td></tr>
+  </tbody>
+  
+  
+</table></div>
+<details>
+<p><summary> Description </summary></p>
+Levene’s test was performed to check for the homogeneity of variances assumption. Based on the p-value, it can be inferred that there is no homogeneity of variances in the observed groups.
+</details>
+<p><br> <br></p>
+<p><em>Normality</em><br> <br></p>
 <pre><code>
     Shapiro-Wilk normality test
 
 data:  mod_residuals_2
 W = 0.85107, p-value = 1.976e-15</code></pre>
-<p>Since the p-value = 0.000000000000001976, it can be assumed that the residuals are not normally distributed. Therefore, a Aligned Rank Transformed ANOVA will be performed because the assumptions of two-way ANOVA have been violated.</p>
-<p><strong>Aligned Rank Transformed ANOVA for two-way</strong></p>
+<details>
+<p><summary> Description </summary></p>
+<p>Since the p-value &lt; 0.05, it can be assumed that the residuals are not normally distributed. Therefore, a Aligned Rank Transformed ANOVA will be performed because the assumptions of two-way ANOVA have been violated.</p>
+</details>
+<p><br> <br></p>
+<p><strong>Aligned Rank Transformed ANOVA for Two-way</strong><br> <br></p>
 <pre><code>Analysis of Variance of Aligned Rank Transformed Data
 
 Table Type: Anova Table (Type III tests) 
@@ -800,132 +3567,449 @@ Response: art(deaths)
 3 leading_cause:sex  2    264  0.050777    0.95050    
 ---
 Signif. codes:   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1 </code></pre>
-<p><strong>Report</strong></p>
-<p>Based on the Aligned Rank Transformed ANOVA for two-way procedure result, there is evidence to state that the leading causes of deaths (Diseases of Heart, Malignant Neoplasms, Diabetes Mellitus and Chronic Lower Respiratory Diseases) is the only factor associated with significant death counts in the New York City (p = 0.00000000018816).</p>
+<p><strong>Report</strong><br></p>
+<p>Based on the Aligned Rank Transformed ANOVA for two-way procedure result, there is evidence to state that the leading causes of deaths (Diseases of Heart, Malignant Neoplasms, Diabetes Mellitus and Chronic Lower Respiratory Diseases) is the only factor associated with significant death counts in the New York City (p &lt; 0.05).<br> <br></p>
 </div>
-<div id="are-there-significant-differences-in-the-top-2-leading-causes-of-death-across-different-ethnicities-in-nyc" class="section level3">
-<h3>Are there significant differences in the top 2 leading causes of death across different ethnicities in NYC?</h3>
-<p><strong>Summary statistics</strong></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">leading_cause</th>
-<th align="left">race_ethnicity</th>
-<th align="right">count</th>
-<th align="right">mean</th>
-<th align="right">sd</th>
-<th align="right">median</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Diseases of Heart</td>
-<td align="left">Asian/PI</td>
-<td align="right">16</td>
-<td align="right">469.3125</td>
-<td align="right">53.71991</td>
-<td align="right">459.0</td>
-</tr>
-<tr class="even">
-<td align="left">Diseases of Heart</td>
-<td align="left">Black</td>
-<td align="right">16</td>
-<td align="right">2201.3750</td>
-<td align="right">275.66958</td>
-<td align="right">2157.5</td>
-</tr>
-<tr class="odd">
-<td align="left">Diseases of Heart</td>
-<td align="left">Hispanic</td>
-<td align="right">16</td>
-<td align="right">1316.4375</td>
-<td align="right">66.96165</td>
-<td align="right">1321.5</td>
-</tr>
-<tr class="even">
-<td align="left">Diseases of Heart</td>
-<td align="left">Other</td>
-<td align="right">16</td>
-<td align="right">46.0625</td>
-<td align="right">12.10768</td>
-<td align="right">41.5</td>
-</tr>
-<tr class="odd">
-<td align="left">Diseases of Heart</td>
-<td align="left">Unknown</td>
-<td align="right">16</td>
-<td align="right">91.2500</td>
-<td align="right">25.21507</td>
-<td align="right">93.0</td>
-</tr>
-<tr class="even">
-<td align="left">Diseases of Heart</td>
-<td align="left">White</td>
-<td align="right">16</td>
-<td align="right">5097.5000</td>
-<td align="right">961.90575</td>
-<td align="right">4867.5</td>
-</tr>
-<tr class="odd">
-<td align="left">Malignant Neoplasms</td>
-<td align="left">Asian/PI</td>
-<td align="right">16</td>
-<td align="right">495.4375</td>
-<td align="right">89.36440</td>
-<td align="right">487.5</td>
-</tr>
-<tr class="even">
-<td align="left">Malignant Neoplasms</td>
-<td align="left">Black</td>
-<td align="right">16</td>
-<td align="right">1680.3750</td>
-<td align="right">150.39542</td>
-<td align="right">1663.5</td>
-</tr>
-<tr class="odd">
-<td align="left">Malignant Neoplasms</td>
-<td align="left">Hispanic</td>
-<td align="right">16</td>
-<td align="right">1097.6250</td>
-<td align="right">59.01963</td>
-<td align="right">1111.0</td>
-</tr>
-<tr class="even">
-<td align="left">Malignant Neoplasms</td>
-<td align="left">Other</td>
-<td align="right">16</td>
-<td align="right">32.3750</td>
-<td align="right">12.86274</td>
-<td align="right">32.5</td>
-</tr>
-<tr class="odd">
-<td align="left">Malignant Neoplasms</td>
-<td align="left">Unknown</td>
-<td align="right">16</td>
-<td align="right">49.8750</td>
-<td align="right">23.07921</td>
-<td align="right">46.5</td>
-</tr>
-<tr class="even">
-<td align="left">Malignant Neoplasms</td>
-<td align="left">White</td>
-<td align="right">16</td>
-<td align="right">3292.2500</td>
-<td align="right">117.97712</td>
-<td align="right">3301.0</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Visualization</strong></p>
-<p><img src="stats_files/figure-html/unnamed-chunk-19-1.png" width="90%" /></p>
-<p><strong>Two-way ANOVA test</strong></p>
+<div id="are-there-significant-differences-in-the-top-2-leading-causes-of-death-across-different-ethnicity-in-nyc" class="section level3">
+<h3>Are there significant differences in the top 2 leading causes of death across different ethnicity in NYC?</h3>
+<p><br></p>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#sidbdfcuhn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#sidbdfcuhn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#sidbdfcuhn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#sidbdfcuhn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#sidbdfcuhn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sidbdfcuhn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#sidbdfcuhn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#sidbdfcuhn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#sidbdfcuhn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#sidbdfcuhn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#sidbdfcuhn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#sidbdfcuhn .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#sidbdfcuhn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#sidbdfcuhn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#sidbdfcuhn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#sidbdfcuhn .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#sidbdfcuhn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#sidbdfcuhn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sidbdfcuhn .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#sidbdfcuhn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sidbdfcuhn .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#sidbdfcuhn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#sidbdfcuhn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sidbdfcuhn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#sidbdfcuhn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#sidbdfcuhn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#sidbdfcuhn .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#sidbdfcuhn .gt_left {
+  text-align: left;
+}
+
+#sidbdfcuhn .gt_center {
+  text-align: center;
+}
+
+#sidbdfcuhn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#sidbdfcuhn .gt_font_normal {
+  font-weight: normal;
+}
+
+#sidbdfcuhn .gt_font_bold {
+  font-weight: bold;
+}
+
+#sidbdfcuhn .gt_font_italic {
+  font-style: italic;
+}
+
+#sidbdfcuhn .gt_super {
+  font-size: 65%;
+}
+
+#sidbdfcuhn .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="sidbdfcuhn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="5" class="gt_heading gt_title gt_font_normal" style><strong>Summary Statistics</strong></th>
+    </tr>
+    <tr>
+      <th colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style><strong>by Leading Cause of Deaths and Race/Ethnicity</strong></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Race/Ethnicity</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>N</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Mean</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Standard Deviation</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Median</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="5" class="gt_group_heading">Diseases of Heart</td>
+    </tr>
+    <tr><td class="gt_row gt_left">Asian/PI</td>
+<td class="gt_row gt_right">16</td>
+<td class="gt_row gt_right">469.3</td>
+<td class="gt_row gt_right">53.7</td>
+<td class="gt_row gt_right">459.0</td></tr>
+    <tr><td class="gt_row gt_left">Black</td>
+<td class="gt_row gt_right">16</td>
+<td class="gt_row gt_right">2,201.4</td>
+<td class="gt_row gt_right">275.7</td>
+<td class="gt_row gt_right">2,157.5</td></tr>
+    <tr><td class="gt_row gt_left">Hispanic</td>
+<td class="gt_row gt_right">16</td>
+<td class="gt_row gt_right">1,316.4</td>
+<td class="gt_row gt_right">67.0</td>
+<td class="gt_row gt_right">1,321.5</td></tr>
+    <tr><td class="gt_row gt_left">Other</td>
+<td class="gt_row gt_right">16</td>
+<td class="gt_row gt_right">46.1</td>
+<td class="gt_row gt_right">12.1</td>
+<td class="gt_row gt_right">41.5</td></tr>
+    <tr><td class="gt_row gt_left">Unknown</td>
+<td class="gt_row gt_right">16</td>
+<td class="gt_row gt_right">91.2</td>
+<td class="gt_row gt_right">25.2</td>
+<td class="gt_row gt_right">93.0</td></tr>
+    <tr><td class="gt_row gt_left">White</td>
+<td class="gt_row gt_right">16</td>
+<td class="gt_row gt_right">5,097.5</td>
+<td class="gt_row gt_right">961.9</td>
+<td class="gt_row gt_right">4,867.5</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="5" class="gt_group_heading">Malignant Neoplasms</td>
+    </tr>
+    <tr><td class="gt_row gt_left">Asian/PI</td>
+<td class="gt_row gt_right">16</td>
+<td class="gt_row gt_right">495.4</td>
+<td class="gt_row gt_right">89.4</td>
+<td class="gt_row gt_right">487.5</td></tr>
+    <tr><td class="gt_row gt_left">Black</td>
+<td class="gt_row gt_right">16</td>
+<td class="gt_row gt_right">1,680.4</td>
+<td class="gt_row gt_right">150.4</td>
+<td class="gt_row gt_right">1,663.5</td></tr>
+    <tr><td class="gt_row gt_left">Hispanic</td>
+<td class="gt_row gt_right">16</td>
+<td class="gt_row gt_right">1,097.6</td>
+<td class="gt_row gt_right">59.0</td>
+<td class="gt_row gt_right">1,111.0</td></tr>
+    <tr><td class="gt_row gt_left">Other</td>
+<td class="gt_row gt_right">16</td>
+<td class="gt_row gt_right">32.4</td>
+<td class="gt_row gt_right">12.9</td>
+<td class="gt_row gt_right">32.5</td></tr>
+    <tr><td class="gt_row gt_left">Unknown</td>
+<td class="gt_row gt_right">16</td>
+<td class="gt_row gt_right">49.9</td>
+<td class="gt_row gt_right">23.1</td>
+<td class="gt_row gt_right">46.5</td></tr>
+    <tr><td class="gt_row gt_left">White</td>
+<td class="gt_row gt_right">16</td>
+<td class="gt_row gt_right">3,292.2</td>
+<td class="gt_row gt_right">118.0</td>
+<td class="gt_row gt_right">3,301.0</td></tr>
+  </tbody>
+  
+  
+</table></div>
+<p><br> <br></p>
+<p><strong>Distribution</strong></p>
+<div id="htmlwidget-fb8638551edbd09df7fe" style="width:90%;height:345.6px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fb8638551edbd09df7fe">{"x":{"data":[{"x":[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],"y":[76,43,115,62,111,99,95,82,92,70,70,106,151,94,86,108,1958,2722,2282,2121,1868,1940,2243,2015,2535,2269,2365,2068,2194,2077,2725,1840,428,469,437,402,496,452,402,448,478,554,546,462,531,394,456,554,7050,5632,5016,6297,4719,3990,5503,4156,4535,4220,4495,4507,5168,4085,5351,6836,1281,1418,1327,1307,1251,1263,1349,1354,1445,1230,1261,1382,1201,1330,1316,1348,43,41,42,48,36,50,39,63,68,52,72,40,31,38,39,35],"hoverinfo":"y","type":"box","fillcolor":"rgba(255,255,255,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(68,1,84,1)","width":1.88976377952756},"name":"Diseases of Heart","legendgroup":"Diseases of Heart","showlegend":true,"xaxis":"x","yaxis":"y","frame":null},{"x":[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],"y":[25,33,34,43,12,33,29,32,29,36,21,66,34,19,50,22,3187,3346,3438,3371,3356,3256,3366,3142,3408,3153,3361,3222,3518,3236,3184,3132,1557,1735,1852,1540,1784,1523,1590,1912,1918,1464,1592,1800,1563,1532,1768,1756,51,46,11,60,29,41,36,53,73,45,36,50,47,94,99,27,398,395,622,526,467,473,461,657,633,502,550,528,414,451,506,344,969,1046,1126,1144,1125,1057,1013,1149,1045,1154,1146,1080,1180,1146,1097,1085],"hoverinfo":"y","type":"box","fillcolor":"rgba(255,255,255,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(253,231,37,1)","width":1.88976377952756},"name":"Malignant Neoplasms","legendgroup":"Malignant Neoplasms","showlegend":true,"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":28.1800844517574,"r":7.30593607305936,"b":42.1344223513008,"l":48.9497716894977},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,6.6],"tickmode":"array","ticktext":["Asian/PI","Black","Hispanic","Other","Unknown","White"],"tickvals":[1,2,3,4,5,6],"categoryorder":"array","categoryarray":["Asian/PI","Black","Hispanic","Other","Unknown","White"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Race/Ethniciy","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-340.95,7401.95],"tickmode":"array","ticktext":["0","2000","4000","6000"],"tickvals":[0,2000,4000,6000],"categoryorder":"array","categoryarray":["0","2000","4000","6000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Death Count","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.95487539455542},"annotations":[{"text":"Leading Cause","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"416010d972fd":{"x":{},"y":{},"colour":{},"type":"box"}},"cur_data":"416010d972fd","visdat":{"416010d972fd":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p><strong>Two-way ANOVA test</strong><br> <br></p>
 <pre><code>                Df    Sum Sq  Mean Sq F value   Pr(&gt;F)    
 race_ethnicity   5 402119267 80423853   416.9  &lt; 2e-16 ***
 leading_cause    1   8833968  8833968    45.8 1.68e-10 ***
 Residuals      185  35684365   192888                     
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>Two-way ANOVA test with interaction effect</p>
+<p><br> <em>Two-way ANOVA test with interaction effect:</em> <br></p>
 <pre><code>                              Df    Sum Sq  Mean Sq F value Pr(&gt;F)    
 race_ethnicity                 5 402119267 80423853  912.08 &lt;2e-16 ***
 leading_cause                  1   8833968  8833968  100.19 &lt;2e-16 ***
@@ -933,41 +4017,396 @@ race_ethnicity:leading_cause   5  19812666  3962533   44.94 &lt;2e-16 ***
 Residuals                    180  15871699    88176                   
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<details>
+<p><summary> Description </summary></p>
 <p>At 0.05 significance level, the following inferences can be made based on the p-values given above:</p>
 <ul>
-<li>The leading causes of deaths (Diseases of Heart and Malignant Neoplasms) are associated with significant death counts in the New York City (p &lt;0.0000000000000002).</li>
-<li>The different categories of ethnicities are associated with significant death counts in the New York City (p &lt;0.0000000000000002).</li>
-<li>The interaction term (ethnicities and leading causes of death variable) is associated with significant death counts in the New York City (p &lt;0.0000000000000002).</li>
+<li>The leading causes of deaths (Diseases of Heart and Malignant Neoplasms) are associated with significant death counts in the New York City (p &lt;0.05).</li>
+<li>The different categories of ethnicity are associated with significant death counts in the New York City (p &lt;0.0000000000000002).</li>
+<li>The interaction term (ethnicity and leading causes of death variable) is associated with significant death counts in the New York City (p &lt;0.05).</li>
 </ul>
-<p><strong>Assumptions</strong></p>
-<p>Homogeneity of variances</p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">df1</th>
-<th align="right">df2</th>
-<th align="right">statistic</th>
-<th align="right">p</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">11</td>
-<td align="right">180</td>
-<td align="right">20.57732</td>
-<td align="right">0</td>
-</tr>
-</tbody>
-</table>
+</details>
+<p><br> <br></p>
+<p><strong>Assumptions</strong><br> <br></p>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#lzfbqhiauc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#lzfbqhiauc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lzfbqhiauc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#lzfbqhiauc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#lzfbqhiauc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lzfbqhiauc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lzfbqhiauc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#lzfbqhiauc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#lzfbqhiauc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#lzfbqhiauc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#lzfbqhiauc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#lzfbqhiauc .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lzfbqhiauc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lzfbqhiauc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#lzfbqhiauc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#lzfbqhiauc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#lzfbqhiauc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#lzfbqhiauc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lzfbqhiauc .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#lzfbqhiauc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lzfbqhiauc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#lzfbqhiauc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#lzfbqhiauc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lzfbqhiauc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lzfbqhiauc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#lzfbqhiauc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lzfbqhiauc .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#lzfbqhiauc .gt_left {
+  text-align: left;
+}
+
+#lzfbqhiauc .gt_center {
+  text-align: center;
+}
+
+#lzfbqhiauc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#lzfbqhiauc .gt_font_normal {
+  font-weight: normal;
+}
+
+#lzfbqhiauc .gt_font_bold {
+  font-weight: bold;
+}
+
+#lzfbqhiauc .gt_font_italic {
+  font-style: italic;
+}
+
+#lzfbqhiauc .gt_super {
+  font-size: 65%;
+}
+
+#lzfbqhiauc .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="lzfbqhiauc" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="4" class="gt_heading gt_title gt_font_normal" style><strong>Homogeneity of Variances</strong></th>
+    </tr>
+    <tr>
+      <th colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style><strong>by Race/Ethnicity</strong></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>DF1</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>DF2</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>Statistic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><strong>P-value</strong></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">11</td>
+<td class="gt_row gt_right">180</td>
+<td class="gt_row gt_right">20.577</td>
+<td class="gt_row gt_right">0.000</td></tr>
+  </tbody>
+  
+  
+</table></div>
+<details>
+<p><summary> Description </summary></p>
 <p>Levene’s test was performed to check for the homogeneity of variances assumption. Based on the p-value, it can be inferred that there is no homogeneity of variances in the observed groups.</p>
-<p>Normality</p>
+</details>
+<p><br> <br></p>
+<p><em>Normality</em><br> <br></p>
 <pre><code>
     Shapiro-Wilk normality test
 
 data:  mod_residuals_4
 W = 0.60017, p-value &lt; 2.2e-16</code></pre>
+<details>
+<p><summary> Description </summary></p>
 <p>Since the p-value &lt; 0.00000000000000022, it can be assumed that the residuals are not normally distributed. Therefore, a Aligned Rank Transformed ANOVA will be performed because the assumptions of two-way ANOVA have been violated.</p>
-<p><strong>Aligned Rank Transformed ANOVA for two-way</strong></p>
+</details>
+<p><br> <br></p>
+<p><strong>Aligned Rank Transformed ANOVA for Two-way</strong></p>
 <pre><code>Analysis of Variance of Aligned Rank Transformed Data
 
 Table Type: Anova Table (Type III tests) 
@@ -980,8 +4419,9 @@ Response: art(deaths)
 3 race_ethnicity:leading_cause  5    180  76.828 &lt; 2.22e-16 ***
 ---
 Signif. codes:   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1 </code></pre>
+<p><br></p>
 <p><strong>Report</strong></p>
-<p>Based on the Aligned Rank Transformed ANOVA for two-way procedure result, there is evidence to state that all the factor (race_ethnicity, leading_cause and interaction term) are associated with significant death counts in the New York City (p &lt; 0.000000000000000222). Therefore, it is safe to state that there are significant differences in the top 2 leading causes of death across different ethnicities in NYC.</p>
+<p>Based on the Aligned Rank Transformed ANOVA for two-way procedure result, there is evidence to state that all the factor (race_ethnicity, leading_cause and interaction term) are associated with significant death counts in the New York City (p &lt; 0.000000000000000222). Therefore, it is safe to state that there are significant differences in the top 2 leading causes of death across different ethnicity in NYC.</p>
 </div>
 </div>
 

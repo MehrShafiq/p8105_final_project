@@ -8,7 +8,14 @@ navbar:
       href: data.html
     - text: "Analysis"
       icon: fa-bar-chart fa-lg
-      href: analysis.html
+      menu:
+        - text: Visualization
+          href: analysis.html
+        - text: Statistical Tests
+          href: stats.html
+    - text: "Interactive"
+      icon: fa-mouse-pointer fa-lg
+      href: https://at-crx.shinyapps.io/us_death_map/
     - text: "Screencast"
       icon: fa-video-camera fa-lg
       href: screencast.html
